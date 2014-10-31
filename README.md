@@ -8,4 +8,4 @@ Componentes del equipo
 
 - - -
 
-- [**Grupo de Git**](https://github.com/babeltowerteam)
+- Grupo de Git: [**BabelTowerTeam**](https://github.com/babeltowerteam)
