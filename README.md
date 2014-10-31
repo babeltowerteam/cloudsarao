@@ -6,5 +6,5 @@ Componentes del equipo
 - [Luis **Baca Ruiz**](https://github.com/eleion)
 - [Daniel **Álvarez González**](https://github.com/Crixo24)
 - [Álvaro **Muñoz Molina**](https://github.com/alvaromm)
-
-- [**Web del repositorio**](https://github.com/babeltowerteam)
+- 
+- [**Grupo de Git**](https://github.com/babeltowerteam)
