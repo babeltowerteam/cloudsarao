@@ -2,6 +2,6 @@ Marcad aquí vuestro nombre con un tick, si podeis asistir a la reunión con JJ 
 
 - [X] Jesús
 - [ ] Alvaro. No puedo asistir. Crear un issue con los requisitos del proyecto.
-- [ ] Luis
+- [X] Luis
 - [X] Daniel
 - [X] Sergio
