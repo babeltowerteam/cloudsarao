@@ -6,12 +6,9 @@ Componentes del equipo
 - [Sergio **González Vázquez**](https://github.com/sergiogvz) (sergiogvz@correo.ugr.es)
 - [Luis **Baca Ruiz**](https://github.com/eleion)
 - [Daniel **Álvarez González**](https://github.com/Crixo24)
-- [Álvaro **Muñoz Molina**](https://github.com/alvaromm)
-
-*Correos de la ugr para el certamen. Si quereis poned otros también.*
+- [Álvaro **Muñoz Molina**](https://github.com/alvaromm) (alvaromm@correo.ugr.es)
 
 - - -
-
 - Grupo de Git: [**BabelTowerTeam**](https://github.com/babeltowerteam)
 
 
