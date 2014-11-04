@@ -4,7 +4,7 @@ Componentes del equipo
 ----------------------
 - [Jesús **Maillo Hidalgo**](https://github.com/JMailloH) (jesusmh@correo.ugr.es)
 - [Sergio **González Vázquez**](https://github.com/sergiogvz) (sergiogvz@correo.ugr.es)
-- [Luis **Baca Ruiz**](https://github.com/eleion) (dany24@correo.ugr.es)
+- [Luis **Baca Ruiz**](https://github.com/eleion)  (dany24@correo.ugr.es)
 - [Daniel **Álvarez González**](https://github.com/Crixo24)
 - [Álvaro **Muñoz Molina**](https://github.com/alvaromm) (alvaromm@correo.ugr.es)
 
