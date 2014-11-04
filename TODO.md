@@ -5,6 +5,7 @@
 * Presentar el proyecto al [Certamen de Proyectos libres de la ugr 2014-2015](http://osl.ugr.es/bases-de-los-premios-a-proyectos-libres-de-la-ugr/).
 	* Generar el blog de nuestro proyecto con [GitHub Pages](https://pages.github.com)
 
+- - -
 
 * [Tutorial Google App Engine con Python](https://cloud.google.com/appengine/docs/python/gettingstartedpython27/introduction)
 * [Tutorial para subir nuestra aplicación a la web](https://cloud.google.com/appengine/docs/python/gettingstartedpython27/uploading)
