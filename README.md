@@ -10,8 +10,9 @@ Componentes del equipo
 
 *Correos de la ugr para el certamen. Si quereis poned otros también.*
 
-- - -
+- **Álvaro**: alvaromm@correo.ugr.es
 
+- - -
 - Grupo de Git: [**BabelTowerTeam**](https://github.com/babeltowerteam)
 
 
