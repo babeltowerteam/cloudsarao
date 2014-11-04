@@ -5,3 +5,5 @@ Marcad aquí vuestro nombre con un tick, si podeis asistir a la reunión con JJ 
 - [X] Luis
 - [X] Daniel
 - [X] Sergio
+
+Nos vemos en la calle Doctor Oloriz a las 10:30 a.m. En la gasolinera.
