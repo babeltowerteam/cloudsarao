@@ -2,7 +2,7 @@ Este proyecto pretende presentarse al [Certamen de Proyectos libres de la ugr 20
 
 Componentes del equipo  
 ----------------------
-- [Jesús **Maillo Hidalgo**](https://github.com/JMailloH)
+- [Jesús **Maillo Hidalgo**](https://github.com/JMailloH) (jesusmh@correo.ugr.es)
 - [Sergio **González Vázquez**](https://github.com/sergiogvz) (sergiogvz@correo.ugr.es)
 - [Luis **Baca Ruiz**](https://github.com/eleion)
 - [Daniel **Álvarez González**](https://github.com/Crixo24)
