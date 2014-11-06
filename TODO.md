@@ -5,6 +5,10 @@
 * Presentar el proyecto al [Certamen de Proyectos libres de la ugr 2014-2015](http://osl.ugr.es/bases-de-los-premios-a-proyectos-libres-de-la-ugr/).
 	* Generar el blog de nuestro proyecto con [GitHub Pages](https://pages.github.com)
 
+#Planificación temporal de objetivos
+
+El viernes 7 de noviembre haremos el tutorial de GAE en el horario de clase, con el propósito de si encontramos problemas ayudarnos entre nosotros mismos.
+
 - - -
 
 * [Tutorial Google App Engine con Python](https://cloud.google.com/appengine/docs/python/gettingstartedpython27/introduction)
