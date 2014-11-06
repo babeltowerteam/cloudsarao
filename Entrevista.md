@@ -6,7 +6,8 @@
 
 * ¿Funcionalidad / Datos que se desean almacenar para cada evento?
 
-*Principalmente lo que se pretende es tener un registro de los **saraos**. De modo que se quiere tener una opción para crearlos a partir de una plantilla con los datos básicos tales como: Nombre, responsable, fecha, número de plazas... Otra opción que ha de ofrecerse es la de crear informes.
+*Principalmente lo que se pretende es tener un registro de los saraos. De modo que se quiere tener una opción para crearlos a partir de una plantilla con los datos básicos tales como: Nombre, responsable, fecha, número de plazas... Otra opción que ha de ofrecerse es la de crear informes.*
+*Jesús Maillo está invitado al archivo que se utiliza ahora mismo para ver los datos más relevantes a almacenar*
 
 * ¿Quién puede introducir/modificar/eliminar datos de la aplicación?
 
@@ -18,7 +19,7 @@
 
 * ¿Qué tipos de informes quieres que tenga la aplicación?
 
-*Informes tales como: ¿cuánta gente ha acudido?, ¿cuántos han ido y cuánta gento no ha acudido?... Además que permita crear diplomas para aquellos que han acudido.**
+*Informes tales como: ¿cuánta gente ha acudido?, ¿cuántos han ido y cuánta gente no ha acudido?... También tendrá la funcionalidad de crear diplomas para aquellos que han acudido.*
 
 * ¿Alguna aplicación similar a lo que desea para refinar esa idea y mejorarla?
 
