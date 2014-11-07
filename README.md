@@ -12,3 +12,10 @@ Componentes del equipo
 - Grupo de Git: [**BabelTowerTeam**](https://github.com/babeltowerteam)
 
 
+
+Descripción del problema
+------------------------
+
+	 Es una aplicación para la OSL (Oficina de Software Libre) con el objetivo de gestionar los eventos (saraos) de la misma. La idea es proveer de una interfaz amigable que permita crear y modificar fácilmente nuevos saraos, así como la generación automática de informes y diplomas.
+
+
