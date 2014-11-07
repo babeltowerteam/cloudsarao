@@ -10,6 +10,7 @@ Componentes del equipo
 
 - - -
 - Grupo de Git: [**BabelTowerTeam**](https://github.com/babeltowerteam)
+- Blog del proyecto: [Aquí](http://babeltowerteam.github.io/cloudsarao/)
 
 
 
