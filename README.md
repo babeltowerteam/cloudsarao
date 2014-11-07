@@ -1,4 +1,4 @@
-Este proyecto pretende presentarse al [Certamen de Proyectos libres de la ugr 2014-2015](http://osl.ugr.es/bases-de-los-premios-a-proyectos-libres-de-la-ugr/)
+Este proyecto se ha presentado al [Certamen de Proyectos libres de la ugr 2014-2015](http://osl.ugr.es/bases-de-los-premios-a-proyectos-libres-de-la-ugr/)
 
 Componentes del equipo  
 ----------------------
