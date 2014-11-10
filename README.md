@@ -19,4 +19,7 @@ Descripción del problema
 
 Es una aplicación para la OSL (Oficina de Software Libre) con el objetivo de gestionar los eventos (*saraos*) de la misma. La idea es proveer de una interfaz amigable que permita crear y modificar fácilmente nuevos *saraos*, así como la generación automática de informes y diplomas.
 
+# Primera entrevista
+
+Puede verse la entrevista realizada el día 5 de noviembre de 2014 [aquí](Entrevista.md)
 
