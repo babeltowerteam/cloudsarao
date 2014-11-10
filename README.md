@@ -21,5 +21,5 @@ Es una aplicación para la OSL (Oficina de Software Libre) con el objetivo de ge
 
 ### Primera entrevista
 
-Puede verse la entrevista realizada el día 5 de noviembre de 2014 [aquí](Entrevista.md)
+Puede verse la entrevista realizada el día 5 de noviembre de 2014 [aquí](Entrevista.md).
 
