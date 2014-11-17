@@ -1,4 +1,5 @@
 #Objetivos principales a corto plazo
+* Aprender a usar los issues desde línea de órdenes
 * Buscar tutoriales sobre Google App Engine.
 * Seguir tutoriales sobre Google App Engine para una primera toma de contacto.
 * Reunión en la OSL para especificar funcionalidades y requisitos.
