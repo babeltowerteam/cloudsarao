@@ -23,3 +23,6 @@ Es una aplicación para la OSL (Oficina de Software Libre) con el objetivo de ge
 
 Puede verse la entrevista realizada el día 5 de noviembre de 2014 [aquí](Entrevista.md).
 
+### Tareas.
+
+La relación de tareas se encuentra descrita [aquí](Tareas.md).
