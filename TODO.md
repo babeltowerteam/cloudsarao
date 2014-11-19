@@ -19,3 +19,4 @@ El viernes 7 de noviembre haremos el tutorial de GAE en el horario de clase, con
 * [Tutorial de cómo trabajar con Google Drive desde App Engine](https://developers.google.com/drive/web/examples/python)
 * [Video tutorial de GitHub Pages, para realizar el blog para el certamen](https://www.youtube.com/watch?v=4TrOCv5Kukk)
 
+
