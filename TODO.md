@@ -1,5 +1,6 @@
 #Objetivos principales a corto plazo
 - [X] Aprender a usar los issues desde línea de órdenes
+    + Explicación rápida de gestión de los issues: mirar el fichero [Tuto-issues](https://github.com/babeltowerteam/cloudsarao/blob/master/Tuto-issues.md)
 * Buscar tutoriales sobre Google App Engine.
 * Seguir tutoriales sobre Google App Engine para una primera toma de contacto.
 * Reunión en la OSL para especificar funcionalidades y requisitos.
