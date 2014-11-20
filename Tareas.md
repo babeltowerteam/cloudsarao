@@ -1,5 +1,5 @@
 # Tareas
-* Diseño de la base de datos relacional
+* Diseño de la base de datos relacional (**Luis**)
 	* Id de sarao.
 	* Lugar (normalizado, hay que extaer los sitios comunes asignándole una clave primaria y una que sea "otros sitios").
 	* Hora.
@@ -7,6 +7,11 @@
 	* Aforo máximo.
 	* Otros atributos.
 	* Identificación de tablas, claves primarias, etc.
+	- [ ] Diseñar base de datos (tablas y relaciones) *saraos, lugares, ...*.
+	- [ ] Mirar cómo GAE gestiona el almacenamiento de información.
+	- [ ] Mirar las BBDD con las que GAE trabaja.
+
+- - -
 
 * Extracción de funcionalidad.
 	* Autentificación con gmail.
