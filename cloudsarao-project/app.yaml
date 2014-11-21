@@ -1,12 +1,17 @@
-application: cloudsarao
-version: 1
-runtime: python27
-api_version: 1
-threadsafe: true
+# Fichero de configuración
+# ------------------------
+# En este fichero se describe entre otras cosas cuál es 
+#  el script encargado de manejar cada URL.
+
+application: cloudsarao					# El identificador, único para cada aplicación. 
+version: 1								# Versión del código. Varía según las modificaciones de la aplicación.
+runtime: python27						# El código se ejecutará en pyton 2.7., 
+api_version: 1							#   en la versión de la API 1.
+threadsafe: true						# Esto indica que la aplicación es multi-hilo.
 
 handlers:
-- url: /.*
-  script: main.application
+- url: /.*								# Todas las URL deben ser manejadas se manejarán 
+  script: main.application				#   por la aplicación que hay en el módulo 'main'.
   login: admin
 
 libraries:
