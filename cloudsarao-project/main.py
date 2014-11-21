@@ -21,7 +21,12 @@ class MainPage(webapp2.RequestHandler):
             self.redirect(users.create_login_url(self.request.uri))
         # [END if_not_user]
 
+class Saraos(webapp2.RequestHandler):
+    def get(self):
+        self.response.write('Web Sarao')
+
 
 application = webapp2.WSGIApplication([
     ('/', MainPage),
+    ('/saraos', Saraos),
 ], debug=True)
