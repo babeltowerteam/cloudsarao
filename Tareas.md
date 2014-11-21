@@ -10,6 +10,7 @@
 	- [ ] Diseñar base de datos (tablas y relaciones) *saraos, lugares, ...*.
 	- [ ] Mirar cómo GAE gestiona el almacenamiento de información.
 	- [ ] Mirar las BBDD con las que GAE trabaja.
+	- [X] Comprobado el cierre del ISSUE con lína de comandos.
 
 - - -
 
