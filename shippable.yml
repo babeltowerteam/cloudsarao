@@ -4,6 +4,33 @@ language: python
 python:
 	- "2.7"
 
-install: "pip install -r requirements.txt --use-mirrors"
+env:
+	global:
+		- GAE_DIR=/tmp/gae
+		- EMAIL=shippable@gmail.com
+		- secure: AAAAB3NzaC1yc2EAAAADAQABAAABAQDo9ApoQUHx3YpxKx1U46Vp06V8TkuerTa2jQlVOUw5A3wrbel44GTQ3QYfth+JzIr/Cv600S4thpzkLfip45ab4u9l35/xchby/R0R6vS6V0YE6tWUVLAQH5QnFDY4VE0uzlICM2gOfngAu/FdZeqtE4Lk98PqczjtkDXMY4vWdIr+DXaGs90jtXJp2fdT4B4pKaLxMZTKHxKw/1ldXKPnjhAJF/+p7/EvsHdUupDv6PsO7G9MJPs3YWUpjpuV2DgszqLGHWOqxWV9j43bjAsRm/DE94pSVpbM6sTMS8LCpVhAwhG1tXYTno8AoBUFiwZ3vXn+88aW6tVL98mSa3+r 546f7b3b1877271400f2a252 
 
 
+before_install:
+	- >
+		test -e $GAE_DIR ||
+		(mkdir -p $GAE_DIR &&
+		wget https://storage.googleapis.com/appengine-sdks/featured/google_appengine_1.9.6.zip -q -O /tmp/gae.zip &&
+		unzip /tmp/gae.zip -d $GAE_DIR)
+
+install:
+	- pip install -r requirements.txt
+
+before_script:
+	- mkdir -p shippable/testresults
+	- mkdir -p shippable/codecoverage
+
+script:
+	- >
+		nosetests test.py func_test.py
+		--with-gae --without-sandbox --gae-lib-root=$GAE_DIR/google_appengine
+		--with-xunit --xunit-file=shippable/testresults/test.xml
+		--with-coverage --cover-xml --cover-xml-file=shippable/codecoverage/coverage.xml
+
+after_success:
+	- echo "$GAE_PASSWORD" | $GAE_DIR/google_appengine/appcfg.py -e "$EMAIL" --passin update .
