@@ -10,8 +10,8 @@ python:
 env:
    global:
       - GAE_DIR=/tmp/gae
-      - EMAIL=sergio.gvz@gmail.com
-      - secure: z7o1dCcU+O+p7PX9Tlz6KqhmGx0HNnXaYOE0oCKuQWlYIGwxH3/B+hKCDWQv9J38wBnx9CUTwS4MlheeiuHAssA5fyHhmGeedSsQOnbTPY0+MNBCSB5dFbv9IqG2WuFG1nSrYV2BZtUVBH7/RrUCBH9C6hT1NHNglP0O/3Cfr995v+5V0whY439+kuNy7+ObeMWKCRtSceLUt53ieu9H1C0xNHV38N+eA0zphfvoFpYs/CShiWdXA2NHoPb7iUEyFsNZwREPRHYdYsFQkUuoibUDYRhqdD7VN8jCI7+A2y3Wo4o9NHjkxHSpac9oKwYAciCA25txOgnUUiFQSDvYTA==
+      - EMAIL=amunozm92@gmail.com
+      - secure: QQ/1n+D3UpKq3zD1o9NHcBMbFjTniOB9qvzmp0pY9WqkzSGJaQNACFPXBNhRHh8LjVoMOAhPkL6a1WiQJIMH0k5xoLM+LYZ3jWaUUP8mOUpoiFXDn3fV9Rg/9yrWRtIZ9jFyGK75cwUb64RuPnO/Dz/z9/mZ1M5ZXDkV0E1SDGgS6M5hmYqU5/bI0HKrWvl8lvF1P/6RPYk/VrKeoprqLrxFQ3Z5DMh9+00AVh/O44EHfM5PRrTZoOzDy6uuwdbNCd42Eg5Lw66SZHs/KKZzTHuljRpCyJHPnS4kXfDxRYCn85CWeWKcxZ/OAOFW8kXTWVsgtdTTJkebAA30D6fRlg==
 
 #Instalarse la mágina virtual GAE
 before_install:
