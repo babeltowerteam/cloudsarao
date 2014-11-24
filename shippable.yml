@@ -40,4 +40,4 @@ before_script:
 #   - python manage.py appsamblea
 #Si se construye bien hacer esto
 after_success:
-   - echo $GAE_PASSWORD | $GAE_DIR/google_appengine/appcfg.py -e "$EMAIL" --passin update /cloudsarao-project/app.yaml
+   - echo $GAE_PASSWORD | $GAE_DIR/google_appengine/appcfg.py -e "$EMAIL" --passin update /cloudsarao-project/
