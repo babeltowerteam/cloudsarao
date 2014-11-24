@@ -27,6 +27,7 @@ install:
 
 before_script: 
    - echo 'Europe/Madrid' | sudo tee /etc/timezone
+   - sudo dpkg-reconfigure --frontend noninteractive tzdata
    - mkdir -p shippable/testresults
    - mkdir -p shippable/codecoverage
 
