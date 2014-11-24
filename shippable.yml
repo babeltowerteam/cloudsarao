@@ -7,15 +7,15 @@ python:
 env:
 	global:
 		- GAE_DIR=/tmp/gae
-		- EMAIL=shippable@gmail.com
-		- secure: AAAAB3NzaC1yc2EAAAADAQABAAABAQDo9ApoQUHx3YpxKx1U46Vp06V8TkuerTa2jQlVOUw5A3wrbel44GTQ3QYfth+JzIr/Cv600S4thpzkLfip45ab4u9l35/xchby/R0R6vS6V0YE6tWUVLAQH5QnFDY4VE0uzlICM2gOfngAu/FdZeqtE4Lk98PqczjtkDXMY4vWdIr+DXaGs90jtXJp2fdT4B4pKaLxMZTKHxKw/1ldXKPnjhAJF/+p7/EvsHdUupDv6PsO7G9MJPs3YWUpjpuV2DgszqLGHWOqxWV9j43bjAsRm/DE94pSVpbM6sTMS8LCpVhAwhG1tXYTno8AoBUFiwZ3vXn+88aW6tVL98mSa3+r 546f7b3b1877271400f2a252 
+		- EMAIL=sergio.gvz@gmail.com
+		- secure: XtfuESIrpBZS/xiE6A0Y5Ng5jIQTp3dD8H/YmPv5MHdsRcJmbDCgo9GFan1tAv4ebfbQ8AZdtqdAKaWyDrgM5MobcdgFgSBy6Ku+n7oAoTa6PFRbxIpbck8TOyoI9iOkK4Jm4xyDzOKT9jPIjBqc0yOv/kSGsXk+GMGta2hSsbzrNUqUhbBl8WDJYZVsdO+GWX+/yWFL0mpRulZIXfBqGwaUWwNxiT2RQEkG27NbJxEsHazll0vC3XLX1nWIB9MfkyUlPRA5+/CWgi4PZ7G36vWDf3A5jDeKbj2IqsLQlRDVUzmt1FidC9oesXteDj6xQVRD0/L9906QdDS4CsMXbA==
 
 
 before_install:
 	- >
 		test -e $GAE_DIR ||
 		(mkdir -p $GAE_DIR &&
-		wget https://storage.googleapis.com/appengine-sdks/featured/google_appengine_1.9.6.zip -q -O /tmp/gae.zip &&
+		wget https://storage.googleapis.com/appengine-sdks/featured/google_appengine_1.9.15.zip -q -O /tmp/gae.zip &&
 		unzip /tmp/gae.zip -d $GAE_DIR)
 
 install:
