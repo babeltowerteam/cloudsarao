@@ -1,36 +1,40 @@
-#Archivo de especificación del lenguaje y su versión así como todas sus dependencias.
+#IMPORTANTE: Validar con yamllint.com para no hacer 1000000 commits como he hecho yo.
+
+#Lenguaje que se va a usar
 language: python
 
 python:
-	- "2.7"
+  - "2.7"
 
+#Esto es para desplegar en App Engine
 env:
-	global:
-		- GAE_DIR=/tmp/gae
-		- EMAIL=sergio.gvz@gmail.com
-		- secure: XtfuESIrpBZS/xiE6A0Y5Ng5jIQTp3dD8H/YmPv5MHdsRcJmbDCgo9GFan1tAv4ebfbQ8AZdtqdAKaWyDrgM5MobcdgFgSBy6Ku+n7oAoTa6PFRbxIpbck8TOyoI9iOkK4Jm4xyDzOKT9jPIjBqc0yOv/kSGsXk+GMGta2hSsbzrNUqUhbBl8WDJYZVsdO+GWX+/yWFL0mpRulZIXfBqGwaUWwNxiT2RQEkG27NbJxEsHazll0vC3XLX1nWIB9MfkyUlPRA5+/CWgi4PZ7G36vWDf3A5jDeKbj2IqsLQlRDVUzmt1FidC9oesXteDj6xQVRD0/L9906QdDS4CsMXbA==
+   global:
+      - GAE_DIR=/tmp/gae
+      - EMAIL=sergio.gvz@gmail.com
+      - secure: XtfuESIrpBZS/xiE6A0Y5Ng5jIQTp3dD8H/YmPv5MHdsRcJmbDCgo9GFan1tAv4ebfbQ8AZdtqdAKaWyDrgM5MobcdgFgSBy6Ku+n7oAoTa6PFRbxIpbck8TOyoI9iOkK4Jm4xyDzOKT9jPIjBqc0yOv/kSGsXk+GMGta2hSsbzrNUqUhbBl8WDJYZVsdO+GWX+/yWFL0mpRulZIXfBqGwaUWwNxiT2RQEkG27NbJxEsHazll0vC3XLX1nWIB9MfkyUlPRA5+/CWgi4PZ7G36vWDf3A5jDeKbj2IqsLQlRDVUzmt1FidC9oesXteDj6xQVRD0/L9906QdDS4CsMXbA==
 
-
+#Instalarse la mágina virtual GAE
 before_install:
-	- >
-		test -e $GAE_DIR ||
-		(mkdir -p $GAE_DIR &&
-		wget https://storage.googleapis.com/appengine-sdks/featured/google_appengine_1.9.15.zip -q -O /tmp/gae.zip &&
-		unzip /tmp/gae.zip -d $GAE_DIR)
+  - >
+    test -e $GAE_DIR || 
+    (mkdir -p $GAE_DIR && 
+     wget https://storage.googleapis.com/appengine-sdks/featured/google_appengine_1.9.6.zip -q -O /tmp/gae.zip &&
+     unzip /tmp/gae.zip -d $GAE_DIR)
 
+#Instalar requerimientos
 install:
-	- pip install -r requirements.txt
+   - pip install -r requirements.txt
 
-before_script:
-	- mkdir -p shippable/testresults
-	- mkdir -p shippable/codecoverage
+before_script: 
+   - mkdir -p shippable/testresults
+   - mkdir -p shippable/codecoverage
 
-script:
-	- >
-		nosetests test.py func_test.py
-		--with-gae --without-sandbox --gae-lib-root=$GAE_DIR/google_appengine
-		--with-xunit --xunit-file=shippable/testresults/test.xml
-		--with-coverage --cover-xml --cover-xml-file=shippable/codecoverage/coverage.xml
-
+#Script que se va a ejecutar, pero solo si se está en la rama master.
+#De momento solo ejecuta un programita de testeo tonto.
+#script:
+#  - >
+#    [[ $BRANCH = 'master' ]] && python test.py
+#   - python manage.py appsamblea
+#Si se construye bien hacer esto
 after_success:
-	- echo "$GAE_PASSWORD" | $GAE_DIR/google_appengine/appcfg.py -e "$EMAIL" --passin update .
+   - echo "$GAE_PASSWORD" | $GAE_DIR/google_appengine/appcfg.py -e "$EMAIL" --passin update .
