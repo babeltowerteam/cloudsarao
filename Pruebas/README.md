@@ -2,4 +2,5 @@ En este directorio se harán las pruebas propias para no interferir en el desarr
 
 # Notas
 
-* Es importante no meter texto extraño *(ni tildes, ni nada, ni en los comentarios)*. **Da error en la aplicación.**
+* Es importante no meter caracteres extraños *(no meter tildes ni en los comentarios)*. **Da error en la aplicación.**
+* En el archivo **yaml** no permite meter *tabulaciones* en cualquier lado.

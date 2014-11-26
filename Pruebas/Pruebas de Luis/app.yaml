@@ -8,6 +8,6 @@ handlers:
 - url: /.*
   script: guestbook.application
   
-libraries:							# Indicamos que estamos utilizando la librería
-- name: webapp2						#   'webapp2' 
+libraries:
+- name: webapp2                     # Indicamos que estamos utilizando la librería 'webapp2'.
   version: latest
