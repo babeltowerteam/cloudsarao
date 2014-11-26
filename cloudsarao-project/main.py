@@ -1,3 +1,5 @@
+# Importamos el servicio de usuarios para que la aplicacion se integre con las
+#   cuentas de usuario de Google.
 from google.appengine.api import users
 
 # Importamos el marco de trabajo de aplicaciones web.
@@ -12,20 +14,19 @@ import webapp2
 class MainPage(webapp2.RequestHandler):
 
     def get(self):
-        # [START get_current_user]
-        # Checks for active Google account session
+        # Comprobamos que hay una cuenta de Google activa.
         user = users.get_current_user()
-        # [END get_current_user]
 
-        # [START if_user]
+        # Si esta activo el usuario.
         if user:
             self.response.headers['Content-Type'] = 'text/plain'
+            # Le saludamos con su nombre.
             self.response.write('Hello, ' + user.nickname())
-        # [END if_user]
-        # [START if_not_user]
+        
+        # Si no hay una cuenta activa.
         else:
+            # Le mandamos a la pagina de login.
             self.redirect(users.create_login_url(self.request.uri))
-        # [END if_not_user]
 
 #==============================================================================
 #==============================================================================
