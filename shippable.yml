@@ -8,10 +8,10 @@ python:
 
 #Esto es para desplegar en App Engine
 env:
-   global:
-      - GAE_DIR=/tmp/gae
-      - EMAIL=sergio.gvz@gmail.com
-      - secure: z7o1dCcU+O+p7PX9Tlz6KqhmGx0HNnXaYOE0oCKuQWlYIGwxH3/B+hKCDWQv9J38wBnx9CUTwS4MlheeiuHAssA5fyHhmGeedSsQOnbTPY0+MNBCSB5dFbv9IqG2WuFG1nSrYV2BZtUVBH7/RrUCBH9C6hT1NHNglP0O/3Cfr995v+5V0whY439+kuNy7+ObeMWKCRtSceLUt53ieu9H1C0xNHV38N+eA0zphfvoFpYs/CShiWdXA2NHoPb7iUEyFsNZwREPRHYdYsFQkUuoibUDYRhqdD7VN8jCI7+A2y3Wo4o9NHjkxHSpac9oKwYAciCA25txOgnUUiFQSDvYTA==
+  global:
+    - GAE_DIR=/tmp/gae
+    - EMAIL=amunozm92@gmail.com
+    - secure: OFWFhxKdU2UrvcB1y13mUhnuyGrlnvznxGdbJzjjYaQ1DkyWIpL4a4gDt3acfpQC2rG0A6WJAYd4YWayfMJ2IQkv2z/KKH92cfo7NAmJZa8KbaHiLNwyzsssLagk8HEuhy2paU4kUVzCSgtz8Ozzv+RMjgNRIxdQbRS0IpssUI3wMez3aLu1pNpzR/S/qDRiB/ar5IL5QD3eSXr2g2lwSuqQdvG0iV07eC/qGXn/v8fD49YQIC7nTS10iDZJMImdLWGzq2/9VUj2IX4PkODAEMBGb0VazBFyAx3rfzHbLDrTX7LWGUknvn74rq9kp9RmbWT7EgiD+eBO2g1DtI49eg==
 
 #Instalarse la mágina virtual GAE
 before_install:
@@ -25,8 +25,10 @@ before_install:
 install:
    - pip install -r requirements.txt
 
+
 before_script: 
    - echo 'Europe/Madrid' | sudo tee /etc/timezone
+   - sudo dpkg-reconfigure --frontend noninteractive tzdata
    - mkdir -p shippable/testresults
    - mkdir -p shippable/codecoverage
 
@@ -38,4 +40,4 @@ before_script:
 #   - python manage.py appsamblea
 #Si se construye bien hacer esto
 after_success:
-   - echo $GAE_PASSWORD | $GAE_DIR/google_appengine/appcfg.py -e "$EMAIL" --passin update ./cloudsarao-project/
+   - echo $GAE_PASSWORD | $GAE_DIR/google_appengine/appcfg.py -e "$EMAIL" --passin --no_cookies update ./cloudsarao-project/
