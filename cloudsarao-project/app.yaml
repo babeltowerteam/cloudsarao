@@ -14,5 +14,5 @@ handlers:
   script: main.application              #   por la aplicación que hay en el módulo 'main'.
 
 libraries:
-- name: webapp2
+- name: webapp2                         # Indicamos que vamos a usar la librería 'webapp2'.
   version: latest
