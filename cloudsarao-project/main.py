@@ -12,7 +12,7 @@ import webapp2
 #==============================================================================
 # RequestHandler se encarga de procesar las peticiones y contruir respuestas.
 class MainPage(webapp2.RequestHandler):
- 
+
     def get(self):
         # Comprobamos que hay una cuenta de Google activa.
         user = users.get_current_user()
@@ -33,10 +33,12 @@ class MainPage(webapp2.RequestHandler):
 # # Controlador de solicitudes 'Saraos'.
 #==============================================================================
 #==============================================================================
-class Saraos(webapp2.RequestHandler):
+class Sarao(webapp2.RequestHandler):
     def get(self):
         self.response.write('Web Sarao')
 
+    def realizaAlgunaOperacionGuay(self, numero):
+        return numero*numero/2
 
 #==============================================================================
 #==============================================================================
@@ -47,12 +49,11 @@ class Saraos(webapp2.RequestHandler):
 #   entrantes a los manipuladores basados en la URL.
 # Asignamos el controlador de solicitudes (MainPage) a la URL raiz (/), de modo
 #   que cuando 'webapp2' recibe una solicitud 'GET HTTP' a la URL '/' se crea
-#   una instancia de la clase 'MainPage' y llama a al método 'get'.
 # La informacion acerca de la solicitud se puede obtener usando 'self.request'.
 # Asignamos el controlador de solicitudes (Saraos) a la URL '/saraos'.
 # debug=True sirve para imprimir la traza de la pila en la salida del
 #   navegador.
 application = webapp2.WSGIApplication([
     ('/', MainPage),
-    ('/saraos', Saraos),
+    ('/saraos', Sarao),
 ], debug=True)
