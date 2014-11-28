@@ -10,14 +10,14 @@ python:
 env:
   global:
     - GAE_DIR=/tmp/gae
-    - EMAIL=amunozm92@gmail.com
-    - secure: zRNpIJ+m1jNvA12ip0m1b51Hh1FjD+eaN/Tvst4WvJco37Z9ymvyM9PrLzNxNqHYFa8hu2+CqeGXeOh04FwMAT8LjKZkhGKZamLqt4NBmQ/ntEKbqzYyx7gFx2wVMcmBmTcQNCKILfNq8F1pxfhuUFwAkhtV0wwCfUVGzR29ymynNYgbiJsjvvThdxBNLQXcCtsuR/5/HIkBjRO01oPUdJiVkRHqjcK3Ddcts2IaAUKU6BEBSRTGsyJr948rvOIRjViw4Nvw51f9necUEPggfw7zwXGWIdnyDGZkeHjEKJEwZr9X4ftvVf+LwSugPA8d3eB8HGFggAps4COs/sFTQA==
+    - EMAIL=sergio.gvz@gmail.com
+    - secure: 3gT8GcyZYcjVkqVpUpgiTcCUyC5gcislVnAMFKRDU457xAo51cX+4KoNMv6ZJEhpcLIFRu/zyDcJtikAKsT9wnypVUdIKQH8rwwjoEMNs25lQUb1Jh+2iLbuoxRfwg6Hy5LIKJOPPQUbnsIm+QUeaA68jmqLe+tWRIp9DCYsFO6Rf6CbJjoSuZxckVau2mRxv/Iw73TDuY+/yIPNUfcbnj9HHNPdZ9klRWTK1B/x2jgTQX12GyHxxZbASI9bYXuGVQz7Y0t5xkwvmXIhOb/37iOZ+3GbyF/AM6+bQjVQllP6IJPQ4tGgSkZZOZjaJUwunEjFzFXMPHEuduC6i193lQ==
 
 #Instalarse la mágina virtual GAE
 before_install:
   - >
-    test -e $GAE_DIR || 
-    (mkdir -p $GAE_DIR && 
+    test -e $GAE_DIR ||
+    (mkdir -p $GAE_DIR &&
      wget https://storage.googleapis.com/appengine-sdks/featured/google_appengine_1.9.15.zip -q -O /tmp/gae.zip &&
      unzip /tmp/gae.zip -d $GAE_DIR)
 
@@ -26,7 +26,7 @@ install:
    - pip install -r requirements.txt
 
 
-before_script: 
+before_script:
    - echo 'Europe/Madrid' | sudo tee /etc/timezone
    - sudo dpkg-reconfigure --frontend noninteractive tzdata
    - mkdir -p shippable/testresults

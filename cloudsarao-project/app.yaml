@@ -3,7 +3,7 @@
 # En este fichero se describe entre otras cosas cuál es 
 #  el script encargado de manejar cada URL.
 
-application: cloudsarao                 # El identificador, único para cada aplicación. 
+application: cloud-sarao                 # El identificador, único para cada aplicación. 
 version: 1                              # Versión del código. Varía según las modificaciones de la aplicación.
 runtime: python27                       # El código se ejecutará en pyton 2.7., 
 api_version: 1                          #   en la versión de la API 1.
