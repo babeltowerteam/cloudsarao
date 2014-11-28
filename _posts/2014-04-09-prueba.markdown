@@ -1,0 +1,9 @@
+---
+layout: post
+title:  "Prueba!!!"
+date:   2014-04-09 15:40:56
+author: <a href="https://github.com/sergiogvz">sergiogvz</a>
+categories: estado
+---
+
+HOLA MUNDO!!
