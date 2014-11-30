@@ -5,6 +5,8 @@ from google.appengine.api import users
 # Importamos el marco de trabajo de aplicaciones web.
 import webapp2
 
+IMAGEN = '<img src="/img/img.png" alt="img7" width="100" height="100">'
+
 #==============================================================================
 #==============================================================================
 # # Controlador de solicitudes 'MainPage'.
@@ -19,9 +21,13 @@ class MainPage(webapp2.RequestHandler):
 
         # Si esta activo el usuario.
         if user:
-            self.response.headers['Content-Type'] = 'text/plain'
+            #self.response.headers['Content-Type'] = 'text/plain'
             # Le saludamos con su nombre.
+            self.response.write("<html><body>")
+            self.response.write(IMAGEN)
+            self.response.write('<br></br>')
             self.response.write('Hello, ' + user.nickname())
+            self.response.write('</body></html>')
 
         # Si no hay una cuenta activa.
         else:
