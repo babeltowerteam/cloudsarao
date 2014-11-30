@@ -5,7 +5,7 @@ from google.appengine.api import users
 # Importamos el marco de trabajo de aplicaciones web.
 import webapp2
 
-IMAGEN = '<img src="/img/img.jpg" alt="header" width="100" height="100">'
+IMAGEN = '<img src="/img/img.jpg" alt="header">'
 
 #==============================================================================
 #==============================================================================
