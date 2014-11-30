@@ -1,3 +1,5 @@
 name: CloudSarao's Blog
 markdown: redcarpet
 #baseurl: /cloudsarao
+baseurl: "/cloudsarao" # the subpath of your site, e.g. /blog/
+url: "http://babeltowerteam.github.io"
