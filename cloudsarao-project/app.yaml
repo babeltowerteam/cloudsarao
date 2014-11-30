@@ -12,6 +12,7 @@ threadsafe: true                        # Esto indica que la aplicación es mult
 handlers:
 - url: /.*                              # Todas las URL deben ser manejadas se manejarán 
   script: main.application              #   por la aplicación que hay en el módulo 'main'.
+  static_dir: img
 
 libraries:
 - name: webapp2                         # Indicamos que vamos a usar la librería 'webapp2'.
