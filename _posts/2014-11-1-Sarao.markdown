@@ -1,0 +1,17 @@
+---
+layout: post
+title:  "Sarao? Vamos que nos vamos!!!"
+date:   2014-11-1
+author: <a href="https://github.com/sergiogvz">sergiogvz</a>
+categories: presentación
+---
+
+Es posible que no sepáis el por qué de CloudSarao. Bueno, Cloud creo que es obvio, es uno de los términos más populares hoy día. Ya sabeís, para indicar que algo está en la nube... Sí, hombre! Una aplicación nube en la red de redes, como Google Drive, iCloud, Office 365, entre otros.
+
+¿Pero y sarao? Te preguntarás, ¿Qué es eso? Bueno, entonces es que no has salido mucho de fiesta!! :|
+
+Sarao, según la [rae](http://lema.rae.es/drae/?val=sarao), significa "reunión nocturna de personas de distinción para divertirse con baile o música".
+
+Para nosotros y la [OSL](http://osl.ugr.es), es más que eso; es básicamente una quedada con fin de divertirse y puede ser de cualquier cosa. Así podríamos decir que evento es un buen sinónimo de sarao :).
+
+Por tanto, CloudSarao es una aplicación nube con objetivo de gestionar los eventos (saraos) de la OSL, extensible a otras organizaciones. La idea es proveer de una interfaz amigable que permita crear y modificar fácilmente nuevos saraos, así como la generación automática de informes y diplomas.
