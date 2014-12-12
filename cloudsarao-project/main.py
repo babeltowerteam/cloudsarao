@@ -1,6 +1,8 @@
 # Importamos el servicio de usuarios para que la aplicacion se integre con las
 #   cuentas de usuario de Google.
 from google.appengine.api import users
+import datetime
+from google.appengine.ext import db
 
 # Importamos el marco de trabajo de aplicaciones web.
 import webapp2
@@ -14,10 +16,11 @@ IMAGEN = '<img src="/img/img.jpg" alt="header">'
 #==============================================================================
 # RequestHandler se encarga de procesar las peticiones y contruir respuestas.
 class MainPage(webapp2.RequestHandler):
-
     def get(self):
         # Comprobamos que hay una cuenta de Google activa.
         user = users.get_current_user()
+        sarao = tablaSarao(nombre=str(user), fecha=datetime.datetime.now().date(), max_asistentes=10, num_asistentes=10, url='http://www.google.es', nota='sarao_prueba')
+        sarao.put()
 
         # Si esta activo el usuario.
         if user:
@@ -27,6 +30,13 @@ class MainPage(webapp2.RequestHandler):
             self.response.write(IMAGEN)
             self.response.write('<br></br>')
             self.response.write('Hello, ' + user.nickname())
+            
+
+            saraos = db.GqlQuery("SELECT * FROM tablaSarao")
+            self.response.write("<h1>ULTIMOS VISITANTES</h1>")
+            for i in saraos:
+                self.response.write("<p>" + i.nombre + " a las " + str(i.fecha) + "</p>")
+        
             self.response.write('</body></html>')
 
         # Si no hay una cuenta activa.
@@ -45,6 +55,22 @@ class Sarao(webapp2.RequestHandler):
 
     def realizaAlgunaOperacionGuay(self, numero):
         return numero*numero/2
+
+#==============================================================================
+#==============================================================================
+# # Clase tablaSarao
+#==============================================================================
+#=================================================
+
+class tablaSarao(db.Model):
+    
+    nombre = db.StringProperty()
+    fecha = db.DateProperty()
+    max_asistentes = int()
+    num_asistentes = int()
+    url = db.StringProperty()
+    nota = db.StringProperty()
+
 
 #==============================================================================
 #==============================================================================
