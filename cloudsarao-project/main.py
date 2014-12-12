@@ -19,8 +19,7 @@ class MainPage(webapp2.RequestHandler):
     def get(self):
         # Comprobamos que hay una cuenta de Google activa.
         user = users.get_current_user()
-        sarao = tablaSarao(nombre=str(user), fecha=datetime.datetime.now().date(), max_asistentes=10, num_asistentes=10, url='http://www.google.es', nota='sarao_prueba')
-        sarao.put()
+        
 
         # Si esta activo el usuario.
         if user:
@@ -31,7 +30,8 @@ class MainPage(webapp2.RequestHandler):
             self.response.write('<br></br>')
             self.response.write('Hello, ' + user.nickname())
             
-
+            sarao = tablaSarao(nombre=str(user), fecha=datetime.datetime.now().date(), max_asistentes=10, num_asistentes=10, url='http://www.google.es', nota='sarao_prueba')
+            sarao.put()
             saraos = db.GqlQuery("SELECT * FROM tablaSarao")
             self.response.write("<h1>ULTIMOS VISITANTES</h1>")
             for i in saraos:
