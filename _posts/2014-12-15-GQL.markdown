@@ -1,0 +1,23 @@
+---
+layout: post
+title:  "Primera toma de contacto con GQL"
+date:   2014-12-15
+author: <a href="https://github.com/Crixo24">Crixo</a>
+categories: Desarrollo
+---
+
+Por fin hemos tenido nuestra primera toma de contacto con GQL, un lenguaje tipo SQL  para interactuar con la base de datos de Google App Engine.
+Aunque tras un primer vistazo pueda imponer un poco, en realidad es bastante sencillo e intuitivo. Para empezar a trabajar con esta herramienta,
+simplemente hay que tener en cuenta que las tablas que se crean son clases que definimos con los campos que queremos como atributos. En el ejemplo que hemos
+hecho para esta primera toma de contacto, almacenamos en la base de datos de Google todos los usuarios que entran a la aplicación y los mostramos junto con
+la fecha de la "visita" como últimos visitantes.
+
+El siguiente código de muestra hace la consulta para obtener todos los visitantes registrados y los muestra:
+
+
+```python
+saraos = db.GqlQuery("SELECT * FROM tablaSarao")
+self.response.write("<h1>ULTIMOS VISITANTES</h1>")
+for i in saraos:
+    self.response.write("<p>" + i.nombre + " a las " + str(i.fecha) + "</p>")
+```
