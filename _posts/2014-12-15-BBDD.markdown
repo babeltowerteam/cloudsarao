@@ -14,4 +14,4 @@ Una visión interesante sobre la aplicación podría ser aquella que nos muestra
   * Tipos de asistentes.
   * Tipos de saraos.
 
-![Diagrama BBDD](https://github.com/eleion/cloudsarao/blob/master/Utiles/Diagrama%20-%20BaseDeDatos.png)
+![Diagrama BBDD](https://raw.githubusercontent.com/babeltowerteam/cloudsarao/master/Utiles/Diagrama%20-%20BaseDeDatos.png)
