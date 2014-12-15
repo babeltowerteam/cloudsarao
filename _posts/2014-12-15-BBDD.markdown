@@ -8,4 +8,4 @@ categories: Desarrollo
 
 Una visión interesante sobre la aplicación podría ser aquella que nos muestra la estructura interna que va a tener la base de datos. De modo que dentro del desarrollo de la misma, se procede en este *post* a describir de forma gráfica la base de datos de la aplicación de **cloudsarao**.
 
-(https://github.com/eleion/cloudsarao/blob/master/Utiles/Diagrama%20-%20BaseDeDatos.png)
+![Diagrama BBDD](https://github.com/eleion/cloudsarao/blob/master/Utiles/Diagrama%20-%20BaseDeDatos.png)
