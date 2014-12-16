@@ -7,7 +7,8 @@ from google.appengine.ext import db
 # Importamos el marco de trabajo de aplicaciones web.
 import webapp2
 
-IMAGEN = '<img src="/img/img.jpg" alt="header">'
+IMAGEN = '<img class="centrado" src="/img/header.jpg" alt="header">'
+CSS = """<head><link rel="stylesheet" type="text/css" href="css/style.css">""" + IMAGEN + """</head>"""
 
 #==============================================================================
 #==============================================================================
@@ -19,25 +20,24 @@ class MainPage(webapp2.RequestHandler):
     def get(self):
         # Comprobamos que hay una cuenta de Google activa.
         user = users.get_current_user()
-        
+
 
         # Si esta activo el usuario.
         if user:
             #self.response.headers['Content-Type'] = 'text/plain'
             # Le saludamos con su nombre.
-            self.response.write("<html><body>")
-            self.response.write(IMAGEN)
+            self.response.write('<html>'+CSS+'<div id="contenido"><body>')
             self.response.write('<br></br>')
             self.response.write('Hello, ' + user.nickname())
-            
+
             sarao = tablaSarao(nombre=str(user), fecha=datetime.datetime.now().date(), max_asistentes=10, num_asistentes=10, url='http://www.google.es', nota='sarao_prueba')
             sarao.put()
             saraos = db.GqlQuery("SELECT * FROM tablaSarao")
             self.response.write("<h1>ULTIMOS VISITANTES</h1>")
             for i in saraos:
                 self.response.write("<p>" + i.nombre + " a las " + str(i.fecha) + "</p>")
-        
-            self.response.write('</body></html>')
+
+            self.response.write('</div></body></html>')
 
         # Si no hay una cuenta activa.
         else:
@@ -63,7 +63,7 @@ class Sarao(webapp2.RequestHandler):
 #=================================================
 
 class tablaSarao(db.Model):
-    
+
     nombre = db.StringProperty()
     fecha = db.DateProperty()
     max_asistentes = int()
