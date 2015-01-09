@@ -1,4 +1,5 @@
-# coding: utf-8
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
 # Importamos el servicio de usuarios para que la aplicacion se integre con las
 #   cuentas de usuario de Google.
