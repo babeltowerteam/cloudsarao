@@ -1,3 +1,5 @@
+# coding: utf-8
+
 # Importamos el servicio de usuarios para que la aplicacion se integre con las
 #   cuentas de usuario de Google.
 from google.appengine.api import users
@@ -30,9 +32,9 @@ class MainPage(webapp2.RequestHandler):
             self.response.write('<br></br>')
             self.response.write('Hello, ' + user.nickname())
 
-            sarao = tablaSarao(nombre=str(user), fecha=datetime.datetime.now().date(), max_asistentes=10, num_asistentes=10, url='http://www.google.es', nota='sarao_prueba')
+            sarao = Sarao(nombre=str(user), fecha=datetime.datetime.now().date(), max_asistentes=10, num_asistentes=10, url='http://www.google.es', nota='sarao_prueba')
             sarao.put()
-            saraos = db.GqlQuery("SELECT * FROM tablaSarao")
+            saraos = db.GqlQuery("SELECT * FROM Sarao")
             self.response.write("<h1>ULTIMOS VISITANTES</h1>")
             for i in saraos:
                 self.response.write("<p>" + i.nombre + " a las " + str(i.fecha) + "</p>")
@@ -49,7 +51,7 @@ class MainPage(webapp2.RequestHandler):
 # # Controlador de solicitudes 'Saraos'.
 #==============================================================================
 #==============================================================================
-class Sarao(webapp2.RequestHandler):
+class WebSarao(webapp2.RequestHandler):
     def get(self):
         self.response.write('Web Sarao')
 
@@ -60,17 +62,50 @@ class Sarao(webapp2.RequestHandler):
 #==============================================================================
 # # Clase tablaSarao
 #==============================================================================
-#=================================================
+#==============================================================================
 
-class tablaSarao(db.Model):
+class Sarao(db.Model):
 
-    nombre = db.StringProperty()
-    fecha = db.DateProperty()
-    max_asistentes = int()
-    num_asistentes = int()
-    url = db.StringProperty()
+    nombre = db.StringProperty(required=True)
+    fecha = db.DateProperty(required=True)
+    max_asistentes = db.IntegerProperty(required=True)
+    num_asistentes = db.IntegerProperty()
+    url = db.StringProperty(required=True)
     nota = db.StringProperty()
+    descripcion = db.TextProperty()
 
+    lugar = db.ReferenceProperty(db.Key, collection_name='lugares')
+    
+
+
+#==============================================================================
+#==============================================================================
+# # Clase tablaLugares
+#==============================================================================
+#==============================================================================
+
+class Lugar(db.Model):
+
+    calle = db.StringProperty(required=True)
+    numero = db.IntegerProperty(required=True)
+    cod_postal = db.IntegerProperty()
+
+#==============================================================================
+#==============================================================================
+# # Clase tablaAsistente
+#==============================================================================
+#==============================================================================
+
+class Asistente(db.Model):
+
+    correo = db.EmailProperty(required=True)
+    nombre = db.StringProperty(required=True)
+    nick_twitter = db.StringProperty()
+    colectivo = db.StringProperty(required=True, choices=('alumno', 'PDI', 'PAS', 'otro'))
+    procedencia = db.StringProperty()
+
+    #Relacion muchos-muchos de saraos y asistentes
+    asistencia_saraos = db.ListProperty(db.Key)
 
 #==============================================================================
 #==============================================================================
@@ -87,5 +122,5 @@ class tablaSarao(db.Model):
 #   navegador.
 application = webapp2.WSGIApplication([
     ('/', MainPage),
-    ('/saraos', Sarao),
+    ('/saraos', WebSarao),
 ], debug=True)
