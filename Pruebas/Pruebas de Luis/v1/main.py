@@ -60,16 +60,23 @@ class Sarao(webapp2.RequestHandler):
 #==============================================================================
 # # Clase tablaSarao
 #==============================================================================
-#=================================================
+#==============================================================================
 
 class tablaSarao(db.Model):
-
-    nombre = db.StringProperty()
-    fecha = db.DateProperty()
-    max_asistentes = int()
-    num_asistentes = int()
-    url = db.StringProperty()
-    nota = db.StringProperty()
+    # Esta clase tiene los siguientes atributos:
+    # - nombre : Nombre del Sarao.
+    # - fecha : Fecha de realizacion del Sarao.
+    # - max_asistentes : El numero máximo de asistentes que puede asistir al
+    #                   Sarao.
+    # - num_asistentes : Número de asistentes que están apuntados al Sarao.
+    # - url : Dirección web del Sarao.
+    # - nota : Todo tipo de notas explicativas asociadas al Sarao. 
+    nombre          = db.StringProperty()
+    fecha           = db.DateProperty()
+    max_asistentes  = int()
+    num_asistentes  = int()
+    url             = db.StringProperty()
+    nota            = db.StringProperty()
 
 
 #==============================================================================
