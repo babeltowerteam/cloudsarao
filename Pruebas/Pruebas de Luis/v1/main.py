@@ -21,6 +21,110 @@ CSS = """<head><link rel="stylesheet" type="text/css" href="css/style.css">""" +
 #==============================================================================
 # RequestHandler se encarga de procesar las peticiones y contruir respuestas.
 class MainPage(webapp2.RequestHandler):
+    def dibujarTabla(self):
+        self.response.write("""<body lang=ES style='tab-interval:35.4pt'>
+
+    <div class=WordSection1>
+
+        <table class=MsoTableMediumShading2Accent5 border=1 cellspacing=0
+            cellpadding=0
+            style='border-collapse:collapse;border:none;mso-border-top-alt:
+ solid windowtext 2.25pt;mso-border-bottom-alt:solid windowtext 2.25pt;
+ mso-yfti-tbllook:1184;mso-padding-alt:0cm 5.4pt 0cm 5.4pt'>
+            <tr style='mso-yfti-irow:-1;mso-yfti-firstrow:yes'>
+                <td width=192 valign=top
+                    style='width:144.05pt;border-top:solid windowtext 2.25pt;
+  border-left:none;border-bottom:solid windowtext 2.25pt;border-right:none;
+  background:#4BACC6;mso-background-themecolor:accent5;padding:0cm 5.4pt 0cm 5.4pt'>
+                    <p class=MsoNormal
+                        style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal;mso-yfti-cnfc:517'>
+                        <b>
+                            <span style='color:white;mso-themecolor:background1'>
+                                Nombre
+                                <o:p></o:p>
+                            </span>
+                        </b>
+                    </p>
+                </td>
+                <td width=192 valign=top
+                    style='width:144.05pt;border-top:solid windowtext 2.25pt;
+  border-left:none;border-bottom:solid windowtext 2.25pt;border-right:none;
+  background:#4BACC6;mso-background-themecolor:accent5;padding:0cm 5.4pt 0cm 5.4pt'>
+                    <p class=MsoNormal
+                        style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal;mso-yfti-cnfc:1'>
+                        <b>
+                            <span style='color:white;mso-themecolor:background1'>
+                                Fecha
+                                <o:p></o:p>
+                            </span>
+                        </b>
+                    </p>
+                </td>
+                <td width=192 valign=top
+                    style='width:144.1pt;border-top:solid windowtext 2.25pt;
+  border-left:none;border-bottom:solid windowtext 2.25pt;border-right:none;
+  background:#4BACC6;mso-background-themecolor:accent5;padding:0cm 5.4pt 0cm 5.4pt'>
+                    <p class=MsoNormal
+                        style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal;mso-yfti-cnfc:1'>
+                        <b>
+                            <span style='color:white;mso-themecolor:background1'>
+                                Max
+                                Asistentes
+                                <o:p></o:p>
+                            </span>
+                        </b>
+                    </p>
+                </td>
+            </tr>
+            <tr style='mso-yfti-irow:0;mso-yfti-lastrow:yes'>
+                <td width=192 valign=top
+                    style='width:144.05pt;border:none;border-bottom:
+  solid windowtext 2.25pt;background:#4BACC6;mso-background-themecolor:accent5;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+                    <p class=MsoNormal
+                        style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal;mso-yfti-cnfc:68'>
+                        <b>
+                            <span style='color:white;mso-themecolor:background1'>
+                                <o:p>&nbsp;
+                                </o:p>
+                            </span>
+                        </b>
+                    </p>
+                </td>
+                <td width=192 valign=top
+                    style='width:144.05pt;border:none;border-bottom:
+  solid windowtext 2.25pt;background:#D8D8D8;mso-background-themecolor:background1;
+  mso-background-themeshade:216;padding:0cm 5.4pt 0cm 5.4pt'>
+                    <p class=MsoNormal
+                        style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal;mso-yfti-cnfc:64'>
+                        <span class=SpellE>MiSarao</span>
+                    </p>
+                </td>
+                <td width=192 valign=top
+                    style='width:144.1pt;border:none;border-bottom:solid windowtext 2.25pt;
+  background:#D8D8D8;mso-background-themecolor:background1;mso-background-themeshade:
+  216;padding:0cm 5.4pt 0cm 5.4pt'>
+                    <p class=MsoNormal
+                        style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal;mso-yfti-cnfc:64'>10/12/2014</p>
+                </td>
+            </tr>
+        </table>
+
+        <p class=MsoNormal>
+            <o:p>&nbsp;
+            </o:p>
+        </p>
+
+    </div>
+
+</body>""")
+
     def get(self):
         # Comprobamos que hay una cuenta de Google activa.
         user = users.get_current_user()
@@ -42,6 +146,9 @@ class MainPage(webapp2.RequestHandler):
                 self.response.write("<p>" + i.nombre + " a las " + str(i.fecha) + "</p>")
 
             self.response.write('</div></body></html>')
+
+            # Dibujamos una tabla.
+            self.dibujarTabla()
 
         # Si no hay una cuenta activa.
         else:
