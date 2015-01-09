@@ -62,6 +62,21 @@ class MainPage(webapp2.RequestHandler):
                         </b>
                     </p>
                 </td>
+                <td width=113 valign=top
+                    style='width:3.0cm;border-top:solid windowtext 2.25pt;
+  border-left:none;border-bottom:solid windowtext 2.25pt;border-right:none;
+  background:#4BACC6;mso-background-themecolor:accent5;padding:0cm 5.4pt 0cm 5.4pt'>
+                    <p class=MsoNormal
+                        style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal;mso-yfti-cnfc:1'>
+                        <b>
+                            <span style='color:white;mso-themecolor:background1'>
+                                Fecha
+                                <o:p></o:p>
+                            </span>
+                        </b>
+                    </p>
+                </td>
             </tr>
             <tr style='mso-yfti-irow:0'>
                 <td width=149 valign=top
@@ -76,6 +91,17 @@ class MainPage(webapp2.RequestHandler):
                                 </o:p>
                             </span>
                         </b>
+                    </p>
+                </td>
+                <td width=113 valign=top
+                    style='width:3.0cm;border:none;background:#D8D8D8;
+  mso-background-themecolor:background1;mso-background-themeshade:216;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+                    <p class=MsoNormal
+                        style='margin-bottom:0cm;margin-bottom:.0001pt;line-height:
+  normal;mso-yfti-cnfc:64'>
+                        <o:p>&nbsp;
+                        </o:p>
                     </p>
                 </td>
                 <td width=113 valign=top
