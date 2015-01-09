@@ -1,3 +1,7 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+
 # Importamos el servicio de usuarios para que la aplicacion se integre con las
 #   cuentas de usuario de Google.
 from google.appengine.api import users
