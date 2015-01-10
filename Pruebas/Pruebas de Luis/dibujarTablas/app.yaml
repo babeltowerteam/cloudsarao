@@ -6,7 +6,7 @@ threadsafe: true
 
 handlers:
 - url: /.*
-  script: dibujarTabla.application
+  script: main.application
   
 libraries:
 - name: webapp2                     # Indicamos que estamos utilizando la librería 'webapp2'.
