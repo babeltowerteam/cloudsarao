@@ -23,6 +23,14 @@ def inicioTabla():
                    mso-yfti-tbllook:1184;mso-padding-alt:0cm 5.4pt 0cm 5.4pt'>
      """
     return texto
+    
+def finalTabla():
+    """ 
+    Esta funcion se encarga de devolver el final de la definicion de la
+    tabla cerrando las primeras etiquetas.
+    """
+    texto = """</table> </div> </body> """
+    return texto
 
 def casillaNombre(texto, anchura="111.75"):
     """
@@ -56,4 +64,4 @@ def casillaNombre(texto, anchura="111.75"):
 #==============================================================================
 #==============================================================================
 if __name__== "__main__": 
-    print(casillaNombre("hola"))
+    print(inicioTabla())

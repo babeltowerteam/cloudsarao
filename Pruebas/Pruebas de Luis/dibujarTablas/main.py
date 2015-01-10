@@ -29,7 +29,9 @@ class MainPage(webapp2.RequestHandler):
     def get(self):
         #self.response.write(casillaNombre('Nombre de prueba'))
         self.response.write(MAIN_PAGE_HTML)
-        self.response.write(casillaNombre('Nombre!'))
+        self.response.write(inicioTabla())
+        self.response.write(casillaNombre('Nombre'))
+        self.response.write(finalTabla())
                     
 
 # WSGIApplication se encarga de instanciar las ruas de las solicitudes
