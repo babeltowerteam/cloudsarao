@@ -7,10 +7,11 @@
 	* Aforo máximo.
 	* Otros atributos.
 	* Identificación de tablas, claves primarias, etc.
-	- [X] Diseñar base de datos (tablas y relaciones) *saraos, lugares, ...*.
-	- [ ] Mirar cómo GAE gestiona el almacenamiento de información.
-	- [ ] Mirar las BBDD con las que GAE trabaja.
-	- [X] Comprobado el cierre del ISSUE con lína de comandos.
+	- [x] Diseñar base de datos (tablas y relaciones) *saraos, lugares, ...*.
+	- [x] Mirar cómo GAE gestiona el almacenamiento de información.
+	- [x] Mirar las BBDD con las que GAE trabaja.
+	- [x] Comprobado el cierre del ISSUE con lína de comandos.
+	- [x] Trabajar en la representación gráfica de las tablas.
 
 - - -
 
