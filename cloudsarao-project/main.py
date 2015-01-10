@@ -7,9 +7,11 @@ from google.appengine.api import users
 import datetime
 # Importamos el archivo persistence.py, que contiene las clases para la persistencia
 from persistence import *
+from formulario import *
 
 # Importamos el marco de trabajo de aplicaciones web.
 import webapp2
+import cgi
 
 IMAGEN = '<img class="centrado" src="/img/header.jpg" alt="header">'
 CSS = """<head><link rel="stylesheet" type="text/css" href="css/style.css">""" + IMAGEN + """</head>"""
@@ -23,9 +25,12 @@ CSS = """<head><link rel="stylesheet" type="text/css" href="css/style.css">""" +
 class MainPage(webapp2.RequestHandler):
     def get(self):
         # Comprobamos que hay una cuenta de Google activa.
-        user = users.get_current_user()
+        #user = users.get_current_user()
 
+        # Crea un formulario y lo muestra
+        self.response.write(FormularioNuevoSarao().parseFormulario())
 
+        """
         # Si esta activo el usuario.
         if user:
             #self.response.headers['Content-Type'] = 'text/plain'
@@ -47,6 +52,14 @@ class MainPage(webapp2.RequestHandler):
         else:
             # Le mandamos a la pagina de login.
             self.redirect(users.create_login_url(self.request.uri))
+        """
+
+    def post(self):
+        self.response.write('<html><body><h1>Petición POST</h1></body></html>')
+        # Obtenemos los parámetros enviados por POST
+        nom = cgi.escape(self.request.get('nombre'))
+        self.response.out.write("Nombre: "+ nom + "<br>")
+
 
 #==============================================================================
 #==============================================================================
