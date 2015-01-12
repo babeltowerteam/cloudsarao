@@ -86,6 +86,7 @@ class NuevoSarao(webapp2.RequestHandler):
               organizacion = cgi.escape(self.request.get('organizacion'))
               #lugar = cgi.escape(self.request.get('lugar'))
         ).put()
+        self.response.write("Añadido sarao.")
 
     def get(self):
         self.response.write('Web Sarao')
@@ -93,6 +94,14 @@ class NuevoSarao(webapp2.RequestHandler):
     def realizaAlgunaOperacionGuay(self, numero):
         return numero*numero/2
 
+
+class NuevoLugar(webapp2.RequestHandler):
+    def post(self):
+        Lugar(nombre = cgi.escape(self.request.get('nombre')),
+              calle = cgi.escape(self.request.get('calle')),
+              cp = cgi.escape(self.request.get('cod_postal'))
+        ).put()
+        self.response.write("Añadido lugar.")
 
 #==============================================================================
 #==============================================================================
@@ -109,5 +118,6 @@ class NuevoSarao(webapp2.RequestHandler):
 #   navegador.
 application = webapp2.WSGIApplication([
     ('/', MainPage),
-    ('/saraos', NuevoSarao),
+    ('/nuevosarao', NuevoSarao),
+    ('/nuevolugar', NuevoLugar),
 ], debug=True)
