@@ -39,15 +39,16 @@ def render_str(template, **params):
 # RequestHandler se encarga de procesar las peticiones y contruir respuestas.
 class MainPage(webapp2.RequestHandler):
     def get(self):
-        #for i in Sarao.getSaraos():
-        #    self.response.write("<p>" + i.nombre + " a las " + str(i.fecha) + "</p>")
-        self.response.write(datetime.datetime.strptime('2/13/2015', '%m/%d/%Y').date())
+        self.response.write('<h1>SARAOS AÑADIDOS</h1>')
+        for i in Sarao.getSaraos():
+            self.response.write("<p>Nombre: " + i.nombre + "</p>")
+            self.response.write("<p>Max_asistentes: " + str(i.max_asistentes) + "</p>")
+            self.response.write("<p>Fecha: " + str(i.fecha) + "</p>")
+            self.response.write("<br>")
 
     def post(self):
         self.response.write('<html><body><h1>Petición POST</h1></body></html>')
-        # Obtenemos los parámetros enviados por POST
-        nom = cgi.escape(self.request.get('nombre'))
-        self.response.out.write("Nombre: "+ nom + "<br>")
+
 
 
 #==============================================================================
@@ -59,8 +60,8 @@ class NuevoSarao(webapp2.RequestHandler):
     def post(self):
         # Obtenemos los parámetros enviados por POST
         Sarao(nombre = cgi.escape(self.request.get('nombre')),
-              fecha = datetime.datetime.strptime('2/13/2015', '%m/%d/%Y').date(), #Casting a datetime format
-              hora = cgi.escape(self.request.get('hora')),
+              fecha = (datetime.datetime.strptime(cgi.escape(self.request.get('fecha')), '%m/%d/%Y')).date(), #Casting a datetime format
+              #hora = cgi.escape(self.request.get('hora')),
               max_asistentes = int(cgi.escape(self.request.get('max_asistentes'))),
               url = cgi.escape(self.request.get('url')),
               nota = cgi.escape(self.request.get('nota')),
