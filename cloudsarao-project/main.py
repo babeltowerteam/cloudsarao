@@ -12,9 +12,23 @@ from formulario import *
 # Importamos el marco de trabajo de aplicaciones web.
 import webapp2
 import cgi
+import jinja2
+import os
 
 IMAGEN = '<img class="centrado" src="/img/header.jpg" alt="header">'
 CSS = """<head><link rel="stylesheet" type="text/css" href="css/style.css">""" + IMAGEN + """</head>"""
+
+
+
+template_dir = os.path.join(os.path.dirname(__file__), 'templates')
+jinja_env = jinja2.Environment(loader = jinja2.FileSystemLoader(template_dir),
+                               autoescape = True)
+
+def render_str(template, **params):
+    t = jinja_env.get_template(template)
+    return t.render(params)
+
+
 
 #==============================================================================
 #==============================================================================
@@ -24,35 +38,9 @@ CSS = """<head><link rel="stylesheet" type="text/css" href="css/style.css">""" +
 # RequestHandler se encarga de procesar las peticiones y contruir respuestas.
 class MainPage(webapp2.RequestHandler):
     def get(self):
-        # Comprobamos que hay una cuenta de Google activa.
-        #user = users.get_current_user()
-
-        # Crea un formulario y lo muestra
-        self.response.write(FormularioNuevoSarao().parseFormulario())
-
-        """
-        # Si esta activo el usuario.
-        if user:
-            #self.response.headers['Content-Type'] = 'text/plain'
-            # Le saludamos con su nombre.
-            self.response.write('<html>'+CSS+'<div id="contenido"><body>')
-            self.response.write('<br></br>')
-            self.response.write('Hello, ' + user.nickname())
-
-            sarao = Sarao(nombre=str(user), fecha=datetime.datetime.now().date(), max_asistentes=10, num_asistentes=10, url='http://www.google.es', nota='sarao_prueba')
-            sarao.put()
-            saraos = db.GqlQuery("SELECT * FROM Sarao")
-            self.response.write("<h1>ULTIMOS VISITANTES</h1>")
-            for i in saraos:
-                self.response.write("<p>" + i.nombre + " a las " + str(i.fecha) + "</p>")
-
-            self.response.write('</div></body></html>')
-
-        # Si no hay una cuenta activa.
-        else:
-            # Le mandamos a la pagina de login.
-            self.redirect(users.create_login_url(self.request.uri))
-        """
+        for i in Sarao.getSaraos():
+            self.response.write("<p>" + i.nombre + " a las " + str(i.fecha) + "</p>")
+        self.response.write('</div></body></html>')
 
     def post(self):
         self.response.write('<html><body><h1>Petición POST</h1></body></html>')
@@ -66,13 +54,42 @@ class MainPage(webapp2.RequestHandler):
 # # Controlador de solicitudes 'Saraos'.
 #==============================================================================
 #==============================================================================
-class WebSarao(webapp2.RequestHandler):
+class NuevoSarao(webapp2.RequestHandler):
+    def post(self):
+        # Obtenemos los parámetros enviados por POST
+        Sarao(nombre = cgi.escape(self.request.get('nombre')),
+              #fecha = datetime.date(cgi.escape(self.request.get('fecha')), '%m/%d/%Y'), #Casting a datetime format
+              #hora = cgi.escape(self.request.get('hora')),
+              max_asistentes = cgi.escape(self.request.get('max_asistentes')),
+              url = cgi.escape(self.request.get('url')),
+              nota = cgi.escape(self.request.get('nota')),
+              descripcion = cgi.escape(self.request.get('descripcion')),
+              organizacion = cgi.escape(self.request.get('organizacion'))
+              #lugar = cgi.escape(self.request.get('lugar'))
+        ).put()
+        self.response.write("Añadido sarao.")
+
     def get(self):
-        self.response.write('Web Sarao')
+        self.render("insertar_sarao.html")
+
+    def render(self, template, **kw):
+        self.response.out.write(render_str(template, **kw))
+
+    def write(self, *a, **kw):
+        self.response.out.write(*a, **kw)
 
     def realizaAlgunaOperacionGuay(self, numero):
         return numero*numero/2
 
+
+
+class NuevoLugar(webapp2.RequestHandler):
+    def post(self):
+        Lugar(nombre = cgi.escape(self.request.get('nombre')),
+              calle = cgi.escape(self.request.get('calle')),
+              cp = cgi.escape(self.request.get('cod_postal'))
+        ).put()
+        self.response.write("Añadido lugar.")
 
 #==============================================================================
 #==============================================================================
@@ -89,5 +106,6 @@ class WebSarao(webapp2.RequestHandler):
 #   navegador.
 application = webapp2.WSGIApplication([
     ('/', MainPage),
-    ('/saraos', WebSarao),
+    ('/nuevosarao', NuevoSarao),
+    ('/nuevolugar', NuevoLugar),
 ], debug=True)
