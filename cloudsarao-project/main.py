@@ -14,6 +14,7 @@ import webapp2
 import cgi
 import jinja2
 import os
+import logging # Para DEBUG
 
 IMAGEN = '<img class="centrado" src="/img/header.jpg" alt="header">'
 CSS = """<head><link rel="stylesheet" type="text/css" href="css/style.css">""" + IMAGEN + """</head>"""
@@ -38,9 +39,9 @@ def render_str(template, **params):
 # RequestHandler se encarga de procesar las peticiones y contruir respuestas.
 class MainPage(webapp2.RequestHandler):
     def get(self):
-        for i in Sarao.getSaraos():
-            self.response.write("<p>" + i.nombre + " a las " + str(i.fecha) + "</p>")
-        self.response.write('</div></body></html>')
+        #for i in Sarao.getSaraos():
+        #    self.response.write("<p>" + i.nombre + " a las " + str(i.fecha) + "</p>")
+        self.response.write(datetime.datetime.strptime('2/13/2015', '%m/%d/%Y').date())
 
     def post(self):
         self.response.write('<html><body><h1>Petición POST</h1></body></html>')
@@ -58,13 +59,13 @@ class NuevoSarao(webapp2.RequestHandler):
     def post(self):
         # Obtenemos los parámetros enviados por POST
         Sarao(nombre = cgi.escape(self.request.get('nombre')),
-              #fecha = datetime.date(cgi.escape(self.request.get('fecha')), '%m/%d/%Y'), #Casting a datetime format
-              #hora = cgi.escape(self.request.get('hora')),
-              max_asistentes = cgi.escape(self.request.get('max_asistentes')),
+              fecha = datetime.datetime.strptime('2/13/2015', '%m/%d/%Y').date(), #Casting a datetime format
+              hora = cgi.escape(self.request.get('hora')),
+              max_asistentes = int(cgi.escape(self.request.get('max_asistentes'))),
               url = cgi.escape(self.request.get('url')),
               nota = cgi.escape(self.request.get('nota')),
-              descripcion = cgi.escape(self.request.get('descripcion')),
-              organizacion = cgi.escape(self.request.get('organizacion'))
+              descripcion = cgi.escape(self.request.get('descripcion'))
+              #organizacion = cgi.escape(self.request.get('organizacion'))
               #lugar = cgi.escape(self.request.get('lugar'))
         ).put()
         self.response.write("Añadido sarao.")
