@@ -19,13 +19,16 @@
 	-moz-border-radius-topleft:0px;
 	-webkit-border-top-left-radius:0px;
 	border-top-left-radius:0px;
-}.CSSTabla table{
+}
+.CSSTabla table{
     border-collapse: collapse;
         border-spacing: 0;
 	width:100%;
 	height:100%;
-	margin:0px;padding:0px;
-}.CSSTabla tr:last-child td:last-child {
+	margin:0px;
+	padding:0px;
+}
+.CSSTabla tr:last-child td:last-child {
 	-moz-border-radius-bottomright:0px;
 	-webkit-border-bottom-right-radius:0px;
 	border-bottom-right-radius:0px;
@@ -39,15 +42,21 @@
 	-moz-border-radius-topright:0px;
 	-webkit-border-top-right-radius:0px;
 	border-top-right-radius:0px;
-}.CSSTabla tr:last-child td:first-child{
+}
+.CSSTabla tr:last-child td:first-child{
 	-moz-border-radius-bottomleft:0px;
 	-webkit-border-bottom-left-radius:0px;
 	border-bottom-left-radius:0px;
-}.CSSTabla tr:hover td{
+}
+.CSSTabla tr:hover td{
 	
 }
-.CSSTabla tr:nth-child(odd){ background-color:#aad4ff; }
-.CSSTabla tr:nth-child(even)    { background-color:#ffffff; }.CSSTabla td{
+.CSSTabla tr:nth-child(odd){ 
+background-color:#aad4ff; 
+}
+.CSSTabla tr:nth-child(even)    { 
+background-color:#ffffff; 
+}.CSSTabla td{
 	vertical-align:middle;
 	
 	
@@ -59,11 +68,14 @@
 	font-family:Arial;
 	font-weight:normal;
 	color:#000000;
-}.CSSTabla tr:last-child td{
+}
+.CSSTabla tr:last-child td{
 	border-width:0px 1px 0px 0px;
-}.CSSTabla tr td:last-child{
+}
+.CSSTabla tr td:last-child{
 	border-width:0px 0px 1px 0px;
-}.CSSTabla tr:last-child td:last-child{
+}
+.CSSTabla tr:last-child td:last-child{
 	border-width:0px 0px 0px 0px;
 }
 .CSSTabla tr:first-child td{
@@ -81,9 +93,11 @@
 	color:#ffffff;
 }
 .CSSTabla tr:first-child:hover td{
-	background:-o-linear-gradient(bottom, #005fbf 5%, #003f7f 100%);	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #005fbf), color-stop(1, #003f7f) );
+	background:-o-linear-gradient(bottom, #005fbf 5%, #003f7f 100%);	
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #005fbf), color-stop(1, #003f7f) );
 	background:-moz-linear-gradient( center top, #005fbf 5%, #003f7f 100% );
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#005fbf", endColorstr="#003f7f");	background: -o-linear-gradient(top,#005fbf,003f7f);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#005fbf", endColorstr="#003f7f");	
+	background: -o-linear-gradient(top,#005fbf,003f7f);
 
 	background-color:#005fbf;
 }
