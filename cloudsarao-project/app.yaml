@@ -20,3 +20,5 @@ handlers:
 libraries:
 - name: webapp2                         # Indicamos que vamos a usar la librería 'webapp2'.
   version: latest
+- name: jinja2
+  version: latest
