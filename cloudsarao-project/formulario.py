@@ -9,7 +9,7 @@ class FormularioNuevoSarao():
     return CABECERA + """
         <form action="" method="post">
             Ingrese su nombre:
-            <input type="text" name="Nombre"><br>
+            <input type="text" name="nombre"><br>
             <input type="submit" value="Enviar"><br>
         </form>
         """ + FIN_CABECERA

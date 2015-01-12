@@ -25,12 +25,12 @@ CSS = """<head><link rel="stylesheet" type="text/css" href="css/style.css">""" +
 class MainPage(webapp2.RequestHandler):
     def get(self):
         # Comprobamos que hay una cuenta de Google activa.
-        #user = users.get_current_user()
+        user = users.get_current_user()
 
         # Crea un formulario y lo muestra
-        self.response.write(FormularioNuevoSarao().parseFormulario())
+        #self.response.write(FormularioNuevoSarao().parseFormulario())
 
-        """
+
         # Si esta activo el usuario.
         if user:
             #self.response.headers['Content-Type'] = 'text/plain'
@@ -39,11 +39,18 @@ class MainPage(webapp2.RequestHandler):
             self.response.write('<br></br>')
             self.response.write('Hello, ' + user.nickname())
 
-            sarao = Sarao(nombre=str(user), fecha=datetime.datetime.now().date(), max_asistentes=10, num_asistentes=10, url='http://www.google.es', nota='sarao_prueba')
+            sarao = Sarao(nombre=str(user),
+                          fecha=datetime.datetime.now().date(),
+                          max_asistentes=10,
+                          num_asistentes=10,
+                          url='http://www.google.es',
+                          nota='sarao_prueba')
             sarao.put()
+            """
             saraos = db.GqlQuery("SELECT * FROM Sarao")
-            self.response.write("<h1>ULTIMOS VISITANTES</h1>")
-            for i in saraos:
+            self.response.write("<h1>SARAOS</h1>")
+            """
+            for i in Sarao.getSaraos():
                 self.response.write("<p>" + i.nombre + " a las " + str(i.fecha) + "</p>")
 
             self.response.write('</div></body></html>')
@@ -52,7 +59,7 @@ class MainPage(webapp2.RequestHandler):
         else:
             # Le mandamos a la pagina de login.
             self.redirect(users.create_login_url(self.request.uri))
-        """
+
 
     def post(self):
         self.response.write('<html><body><h1>Petición POST</h1></body></html>')
@@ -66,7 +73,20 @@ class MainPage(webapp2.RequestHandler):
 # # Controlador de solicitudes 'Saraos'.
 #==============================================================================
 #==============================================================================
-class WebSarao(webapp2.RequestHandler):
+class NuevoSarao(webapp2.RequestHandler):
+    def post(self):
+        # Obtenemos los parámetros enviados por POST
+        Sarao(nombre = cgi.escape(self.request.get('nombre'))
+              fecha = cgi.escape(self.request.get('fecha'))
+              hora = cgi.escape(self.request.get('hora'))
+              max_asistentes = cgi.escape(self.request.get('max_asistentes'))
+              url = cgi.escape(self.request.get('url'))
+              nota = cgi.escape(self.request.get('nota'))
+              descripcion = cgi.escape(self.request.get('descripcion'))
+              organizacion = cgi.escape(self.request.get('organizacion'))
+              #lugar = cgi.escape(self.request.get('lugar'))
+        ).put()
+
     def get(self):
         self.response.write('Web Sarao')
 
@@ -89,5 +109,5 @@ class WebSarao(webapp2.RequestHandler):
 #   navegador.
 application = webapp2.WSGIApplication([
     ('/', MainPage),
-    ('/saraos', WebSarao),
+    ('/saraos', NuevoSarao),
 ], debug=True)

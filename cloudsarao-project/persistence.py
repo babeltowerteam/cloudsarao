@@ -39,8 +39,18 @@ class Sarao(db.Model):
     nota           = db.StringProperty()
     descripcion    = db.TextProperty()
     organizacion   = db.StringProperty()
+    limite_inscripcion = db.DateProperty()
     # Relación uno-a-muchos
-    lugar          = db.ReferenceProperty(Lugar, collection_name='lugares')
+    #lugar          = db.ReferenceProperty(Lugar, collection_name='lugares')
+
+    @property
+    def asistentes(self):
+        return Asistente.gql("WHERE asistencia_saraos = :1", self.key())
+
+    @classmethod
+    def getSaraos(self):
+        return self.all()
+
 
 
 #==============================================================================
