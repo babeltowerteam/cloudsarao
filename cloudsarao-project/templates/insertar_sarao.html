@@ -26,52 +26,52 @@ jQuery('#datetimepicker').datetimepicker({
     <body>
         <h1>Crear nuevo Sarao</h1>
         <p>Introduzca los siguientes campos para la creación del Sarao</p>
-        
+
 			<p class="obligatorio"> *Obligatorio</p>
-									
-			<form role="form" method="post" action="">				
+
+			<form role="form" method="post">
 				<div class="form-group">
-					<label for="nombre">Nombre<span class="obligatorio"> *</span>:</label> <br>	
+					<label for="nombre">Nombre<span class="obligatorio"> *</span>:</label> <br>
 					<input type="text" class="form-control" name="nombre" id="nombre" placeholder="Introduzca su nombre."><br><br>
 				</div>
-				
+
 				<p>Fecha<span class="obligatorio"> *</span>: <input type="text" name="fecha" id="datepicker"></p>
-				
+
 				<p>Hora: <input type="text" name="hora_evento" id="datetimepicker"></p>
-				
+
 				<div class="form-group">
-					<label for="nombre">Número máximo de asistentes<span class="obligatorio"> *</span>:</label> <br>	
+					<label for="nombre">Número máximo de asistentes<span class="obligatorio"> *</span>:</label> <br>
 					<input type="text" class="form-control" name="max_asistentes" id="max_asistentes" placeholder="Introduzca el número máximo de asistentes."><br><br>
 				</div>
 
 				<div class="form-group">
-					<label for="nombre">URL del sarao<span class="obligatorio"> *</span>:</label> <br>	
+					<label for="nombre">URL del sarao<span class="obligatorio"> *</span>:</label> <br>
 					<input type="text" class="form-control" name="url" id="url" placeholder="Introduzca la url."><br><br>
 				</div>
-				
+
 				<div class="form-group">
 					<label for="organizacion">Organización:</label><br>
-					<span class="aclaracion">Encargado de la organización del Sarao</span><br>					
-					<input type="text" class="form-control" name="organizacion" id="organizacion" placeholder="Introduzca el/los organizadores."><br><br>	
+					<span class="aclaracion">Encargado de la organización del Sarao</span><br>
+					<input type="text" class="form-control" name="organizacion" id="organizacion" placeholder="Introduzca el/los organizadores."><br><br>
 				</div>
-				
+
 				<div class="form-group">
 					<label for="nota">Nota:</label><br>
-					<span class="aclaracion">Aclaración sobre el evento.</span><br>					
-					<input type="text" class="form-control" name="nota" id="nota"><br><br>	
+					<span class="aclaracion">Aclaración sobre el evento.</span><br>
+					<input type="text" class="form-control" name="nota" id="nota"><br><br>
 				</div>
-				
+
 				<div class="form-group">
 					<label for="">Descripción:</label><br>
-					<span class="aclaracion">Asunto del evento.</span><br>					
-					<input type="text" class="form-control" name="nota" id="nota"><br><br>	
+					<span class="aclaracion">Asunto del evento.</span><br>
+					<input type="text" class="form-control" name="nota" id="nota"><br><br>
 				</div>
 
 				<p>Fecha límite de inscripción: <input type="text" name="limite_inscripcion" id="datepicker"></p>
-				
+
+        <button type="submit" class="btn btn-primary">Enviar</button>
 			</form>
-			
-			<button type="submit" class="btn btn-primary">Enviar</button>
+
 
     </body>
 </html>

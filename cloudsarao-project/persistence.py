@@ -31,7 +31,7 @@ class Lugar(db.Model):
 class Sarao(db.Model):
   # Atributos del sarao.
     nombre         = db.StringProperty(required=True)
-    fecha          = db.DateProperty(required=True)
+    #fecha          = db.DateProperty(required=True)
     hora           = db.DateProperty()
     max_asistentes = db.IntegerProperty(required=True)
     num_asistentes = db.IntegerProperty()

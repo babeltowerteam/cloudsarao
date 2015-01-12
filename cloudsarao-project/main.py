@@ -28,7 +28,7 @@ def render_str(template, **params):
     t = jinja_env.get_template(template)
     return t.render(params)
 
-  
+
 
 #==============================================================================
 #==============================================================================
@@ -38,42 +38,9 @@ def render_str(template, **params):
 # RequestHandler se encarga de procesar las peticiones y contruir respuestas.
 class MainPage(webapp2.RequestHandler):
     def get(self):
-        # Comprobamos que hay una cuenta de Google activa.
-        user = users.get_current_user()
-
-        # Crea un formulario y lo muestra
-        #self.response.write(FormularioNuevoSarao().parseFormulario())
-
-
-        # Si esta activo el usuario.
-        if user:
-            #self.response.headers['Content-Type'] = 'text/plain'
-            # Le saludamos con su nombre.
-            self.response.write('<html>'+CSS+'<div id="contenido"><body>')
-            self.response.write('<br></br>')
-            self.response.write('Hello, ' + user.nickname())
-
-            sarao = Sarao(nombre=str(user),
-                          fecha=datetime.datetime.now().date(),
-                          max_asistentes=10,
-                          num_asistentes=10,
-                          url='http://www.google.es',
-                          nota='sarao_prueba')
-            sarao.put()
-            """
-            saraos = db.GqlQuery("SELECT * FROM Sarao")
-            self.response.write("<h1>SARAOS</h1>")
-            """
-            for i in Sarao.getSaraos():
-                self.response.write("<p>" + i.nombre + " a las " + str(i.fecha) + "</p>")
-
-            self.response.write('</div></body></html>')
-
-        # Si no hay una cuenta activa.
-        else:
-            # Le mandamos a la pagina de login.
-            self.redirect(users.create_login_url(self.request.uri))
-
+        for i in Sarao.getSaraos():
+            self.response.write("<p>" + i.nombre + " a las " + str(i.fecha) + "</p>")
+        self.response.write('</div></body></html>')
 
     def post(self):
         self.response.write('<html><body><h1>Petición POST</h1></body></html>')
@@ -91,8 +58,8 @@ class NuevoSarao(webapp2.RequestHandler):
     def post(self):
         # Obtenemos los parámetros enviados por POST
         Sarao(nombre = cgi.escape(self.request.get('nombre')),
-              fecha = cgi.escape(self.request.get('fecha')),
-              hora = cgi.escape(self.request.get('hora')),
+              #fecha = datetime.date(cgi.escape(self.request.get('fecha')), '%m/%d/%Y'), #Casting a datetime format
+              #hora = cgi.escape(self.request.get('hora')),
               max_asistentes = cgi.escape(self.request.get('max_asistentes')),
               url = cgi.escape(self.request.get('url')),
               nota = cgi.escape(self.request.get('nota')),
