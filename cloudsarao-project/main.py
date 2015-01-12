@@ -12,9 +12,23 @@ from formulario import *
 # Importamos el marco de trabajo de aplicaciones web.
 import webapp2
 import cgi
+import jinja2
+import os
 
 IMAGEN = '<img class="centrado" src="/img/header.jpg" alt="header">'
 CSS = """<head><link rel="stylesheet" type="text/css" href="css/style.css">""" + IMAGEN + """</head>"""
+
+
+
+template_dir = os.path.join(os.path.dirname(__file__), 'templates')
+jinja_env = jinja2.Environment(loader = jinja2.FileSystemLoader(template_dir),
+                               autoescape = True)
+
+def render_str(template, **params):
+    t = jinja_env.get_template(template)
+    return t.render(params)
+
+  
 
 #==============================================================================
 #==============================================================================
@@ -89,10 +103,17 @@ class NuevoSarao(webapp2.RequestHandler):
         self.response.write("Añadido sarao.")
 
     def get(self):
-        self.response.write('Web Sarao')
+        self.render("insertar_sarao.html")
+
+    def render(self, template, **kw):
+        self.response.out.write(render_str(template, **kw))
+
+    def write(self, *a, **kw):
+        self.response.out.write(*a, **kw)
 
     def realizaAlgunaOperacionGuay(self, numero):
         return numero*numero/2
+
 
 
 class NuevoLugar(webapp2.RequestHandler):
