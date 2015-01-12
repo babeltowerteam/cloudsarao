@@ -12,8 +12,6 @@ threadsafe: true                        # Esto indica que la aplicación es mult
 handlers:
 - url: /img
   static_dir: img
-- url: /templates
-  static_dir: templates
 - url: /css 
   static_dir: css
 - url: /.*                              # Todas las URL deben ser manejadas se manejarán 
