@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Primer Hackaton BTT/CloudSrao!!"
-date:   2015-12-15
+date:   2015-01-15
 author: <a href="https://github.com/sergiogvz">sergiogvz</a>
 categories: General
 ---
