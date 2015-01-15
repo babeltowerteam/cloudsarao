@@ -11,7 +11,7 @@ Hemos conseguido con la ayuda de un formulario hosteado en App Engine y usando J
 
 La euforia nos invade!!!!
 
-![]({{ "/_posts/imagenes/nuevos_saraos.PNG" | prepend: site.baseurl }})
+![]({{ "/images/post/nuevos_saraos.PNG" | prepend: site.baseurl }})
 
 
 Pero no nos conformamos con eso. Estamos felices de notificaros la puesta en marcha de nuestro primer Hackaton nocturno para el desarrollo de [CloudSarao](https://github.com/babeltowerteam/cloudsarao).
