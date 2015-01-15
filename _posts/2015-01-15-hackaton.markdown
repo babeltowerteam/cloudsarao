@@ -1,0 +1,25 @@
+---
+layout: post
+title:  "Primer Hackaton BTT/CloudSrao!!"
+date:   2014-12-15
+author: <a href="https://github.com/sergiogvz">sergiogvz</a>
+categories: General
+---
+Tras las vacaciones navideñas, venimos cargados de energía e ideas para desarrollar en nuestro proyecto.
+Los resultados de este pseudo-descanso* se han podido apreciar durante esta semana, en la cual hemos dado un paso grande en el progreso de [CloudSarao](https://github.com/babeltowerteam/cloudsarao).
+Hemos conseguido con la ayuda de un formulario hosteado en App Engine y usando Jinja2, incluir nuevos saraos en nuestra aplicación.
+
+La euforia nos invade!!!!
+
+![]({{ "/_posts/imagenes/nuevos_saraos.PNG" | prepend: site.baseurl }})
+
+
+Pero no nos conformamos con eso. Estamos felices de notificaros la puesta en marcha de nuestro primer Hackaton nocturno para el desarrollo de [CloudSarao](https://github.com/babeltowerteam/cloudsarao).
+Mañana viernes día 16, los principales desarrolladores nos uniremos a partir de las 17:30 para avanzar nuestro retoño digital.
+Y continuaremos hasta que el cuerpo aguante!!! Prometemos diversión y progresos!!
+
+Seguid nuestros progresos de mañana en twitter [[@BabelTowerTeam](https://twitter.com/BabelTowerTeam)]!!!!
+
+
+
+\*(los estudios no nos dan un respiro)
