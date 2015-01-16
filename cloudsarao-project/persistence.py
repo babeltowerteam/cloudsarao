@@ -17,6 +17,10 @@ class Lugar(db.Model):
     def getLugares(self):
         return self.all()
 
+    @classmethod
+    def getLugar(self, nombre):
+        return Lugar.gql("WHERE nombre = :n", n=nombre).get()
+
 
 #==============================================================================
 #==============================================================================
@@ -39,7 +43,7 @@ class Sarao(db.Model):
     hora           = db.DateProperty()
     max_asistentes = db.IntegerProperty(required=True)
     num_asistentes = db.IntegerProperty()
-    url            = db.StringProperty(required=True)
+    url            = db.StringProperty()
     nota           = db.StringProperty()
     descripcion    = db.TextProperty()
     organizacion   = db.StringProperty()

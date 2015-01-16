@@ -25,29 +25,37 @@ $(function(){
 
 			<p class="obligatorio"> *Obligatorio</p>
 
-			<form role="form" method="post">
-				<div class="form-group">
-					<label for="nombre">Nombre<span class="obligatorio"> *</span>:</label> <br>
-					<input type="text" class="form-control" name="nombre" id="nombre" placeholder="Introduzca su nombre." required><br><br>
-				</div>
+		<form role="form" method="post">
+			
+			<div class="form-group">
+				<label for="nombre">Nombre<span class="obligatorio"> *</span>:</label> <br>
+				<input type="text" class="form-control" name="nombre" id="nombre"placeholder="Introduzca su nombre." required value="Sarao Prueba"><br><br>
+			</div>
 
         <div class="form-group">
-          <label for="Fecha">Fecha</label> <span class="obligatorio"> *</span>:</label> <input type="text" class="datepick" name="fecha" required><br>
+          <label for="Fecha">Fecha</label> <span class="obligatorio"> *</span>:</label> <input type="text" class="datepick" name="fecha" required value="01/12/2015"><br>
         </div>
 
         <div class="form-group">
           <label for="hora">Hora:</label> <input type="number" class="form-control" name="hora" id="hora" min="0" max="23">:<input type="number" class="form-control" name="minutos" id="minutos" min="0" max="59"><br>
 					<span class="aclaracion">Formato 24 horas. Por ejemplo, 20:15</span><br><br>
+
+		<div class="form-group">
+			<label for="lugar">Lugar:</label><br>
+			<span class="aclaracion">Lugar del evento.</span><br>
+			<input type="text" class="form-control" name="lugar" id="lugar" value="Repene"><br><br>
+		</div>
+
         </div>
 
 				<div class="form-group">
 					<label for="max_asistentes">Número máximo de asistentes<span class="obligatorio"> *</span>:</label> <br>
-					<input type="number" class="form-control" name="max_asistentes" id="max_asistentes" placeholder="Introduzca el número máximo de asistentes." min="0" required><br><br>
+					<input type="number" class="form-control" name="max_asistentes" id="max_asistentes" placeholder="Introduzca el número máximo de asistentes." min="0" required value="30"><br><br>
 				</div>
 
 				<div class="form-group">
 					<label for="url">URL del sarao<span class="obligatorio"> *</span>:</label> <br>
-					<input type="url" class="form-control" name="url" id="url" placeholder="Introduzca la url." required><br><br>
+					<input type="url" class="form-control" name="url" id="url" placeholder="Introduzca la url." required value="http://ftp.prueba.com"><br><br>
 				</div>
 
 				<div class="form-group">
@@ -70,7 +78,7 @@ $(function(){
 
         <div class="form-group">
           <label for="fecha_limite">Fecha límite de inscripción:</label>
-				      <input type="text" class="datepick" name="fecha_limite" required></p></p>
+				      <input type="text" class="datepick" name="fecha_limite" required value="01/02/2015"></p></p>
         </div>
 
         <button type="submit" class="btn btn-primary">Enviar</button>

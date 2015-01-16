@@ -44,7 +44,7 @@ class MainPage(webapp2.RequestHandler):
             self.response.write("<p>Nombre: " + i.nombre + "</p>")
             self.response.write("<p>Max_asistentes: " + str(i.max_asistentes) + "</p>")
             self.response.write("<p>Fecha: " + str(i.fecha) + "</p>")
-            self.response.write("<p>Lugar: " + str(i.lugar) + "</p>")
+            self.response.write("<p>Lugar: " + str(i.nombre) + "</p>")
             self.response.write("<br>")
 
     def post(self):
@@ -59,6 +59,9 @@ class MainPage(webapp2.RequestHandler):
 #==============================================================================
 class NuevoSarao(webapp2.RequestHandler):
     def post(self):
+
+        nombre_lugar = cgi.escape(self.request.get('lugar'))
+        l = Lugar.getLugar(nombre_lugar)
         # Obtenemos los parámetros enviados por POST
         Sarao(nombre = cgi.escape(self.request.get('nombre')),
               fecha = (datetime.datetime.strptime(cgi.escape(self.request.get('fecha')), '%m/%d/%Y')).date(), #Casting a datetime format
@@ -66,11 +69,12 @@ class NuevoSarao(webapp2.RequestHandler):
               max_asistentes = int(cgi.escape(self.request.get('max_asistentes'))),
               url = cgi.escape(self.request.get('url')),
               nota = cgi.escape(self.request.get('nota')),
-              descripcion = cgi.escape(self.request.get('descripcion'))
-              #organizacion = cgi.escape(self.request.get('organizacion'))
-              #lugar = cgi.escape(self.request.get('lugar'))
+              descripcion = cgi.escape(self.request.get('descripcion')),
+              organizacion = cgi.escape(self.request.get('organizacion')),
+              lugar = l
         ).put()
         self.response.write("Añadido sarao.")
+
 
     def get(self):
         self.render("insertar_sarao.html")
