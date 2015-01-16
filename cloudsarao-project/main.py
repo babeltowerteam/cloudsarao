@@ -99,6 +99,23 @@ class NuevoLugar(webapp2.RequestHandler):
         self.response.out.write(render_str(template, **kw))
 
 
+class NuevoAsistente(webapp2.RequestHandler):
+  def post(self):
+      Asistente(
+          correo = cgi.escape(self.request.get('correo')),
+          nombre = cgi.escape(self.request.get('nombre')),
+          nick_twitter = cgi.escape(self.request.get('nick_twitter')),
+          
+        )
+      self.response.write("Añadido asistente.")
+
+  def get(self):
+      self.render("insertar_asistente.html")
+
+  def render(self, template, **kw):
+      self.response.out.write(render_str(template, **kw))
+
+
 #==============================================================================
 #==============================================================================
 # # Programa principal.
