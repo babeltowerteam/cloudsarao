@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+			 <meta charset="utf-8">
+<title>Crear nuevo Sarao</title>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script>
+$(function(){
+    $('input').filter('.datepick').datepicker();
+});
+
+</script>
+
+        <style type="text/css">
+        .obligatorio {color:red;}
+        .aclaracion {color:blue;}
+        </style>
+    </head>
+    <body>
+        <h1>Crear nuevo Sarao</h1>
+        <p>Introduzca los siguientes campos para la creación del Sarao</p>
+
+			<p class="obligatorio"> *Obligatorio</p>
+
+			<form role="form" method="post">
+				<div class="form-group">
+					<label for="nombre">Nombre<span class="obligatorio"> *</span>:</label> <br>
+					<input type="text" class="form-control" name="nombre" id="nombre" placeholder="Introduzca su nombre." required><br><br>
+				</div>
+
+        <div class="form-group">
+          <label for="Fecha">Fecha</label> <span class="obligatorio"> *</span>:</label> <input type="text" class="datepick" name="fecha" required><br>
+        </div>
+
+        <div class="form-group">
+          <label for="hora">Hora:</label> <input type="number" class="form-control" name="hora" id="hora" min="0" max="23">:<input type="number" class="form-control" name="minutos" id="minutos" min="0" max="59"><br>
+					<span class="aclaracion">Formato 24 horas. Por ejemplo, 20:15</span><br><br>
+        </div>
+
+				<div class="form-group">
+					<label for="max_asistentes">Número máximo de asistentes<span class="obligatorio"> *</span>:</label> <br>
+					<input type="number" class="form-control" name="max_asistentes" id="max_asistentes" placeholder="Introduzca el número máximo de asistentes." min="0" required><br><br>
+				</div>
+
+				<div class="form-group">
+					<label for="url">URL del sarao<span class="obligatorio"> *</span>:</label> <br>
+					<input type="url" class="form-control" name="url" id="url" placeholder="Introduzca la url." required><br><br>
+				</div>
+
+				<div class="form-group">
+					<label for="organizacion">Organización:</label><br>
+					<span class="aclaracion">Encargado de la organización del Sarao</span><br>
+					<input type="text" class="form-control" name="organizacion" id="organizacion" placeholder="Introduzca el/los organizadores."><br><br>
+				</div>
+
+				<div class="form-group">
+					<label for="nota">Nota:</label><br>
+					<span class="aclaracion">Aclaración sobre el evento.</span><br>
+					<input type="text" class="form-control" name="nota" id="nota"><br><br>
+				</div>
+
+				<div class="form-group">
+					<label for="">Descripción:</label><br>
+					<span class="aclaracion">Asunto del evento.</span><br>
+					<input type="text" class="form-control" name="descripcion" id="descripcion"><br><br>
+				</div>
+
+        <div class="form-group">
+          <label for="fecha_limite">Fecha límite de inscripción:</label>
+				      <input type="text" class="datepick" name="fecha_limite" required></p></p>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Enviar</button>
+			</form>
+
+
+    </body>
+</html>
