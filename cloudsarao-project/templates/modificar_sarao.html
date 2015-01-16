@@ -29,53 +29,53 @@ $(function(){
 			<form role="form" method="post">
 				<div class="form-group">
 					<label for="nombre">Nombre<span class="obligatorio"> *</span>:</label> <br>
-					<input type="text" class="form-control" name="nombre" id="nombre" value={{ nombre }} required><br><br>
+					<input type="text" class="form-control" name="nombre" id="nombre" value="{{ nombre }}" required><br><br>
 				</div>
 
         <div class="form-group">
-          <label for="Fecha">Fecha</label> <span class="obligatorio"> *</span>:</label> <input type="text" class="datepick" name="fecha" value={{ fecha }} required><br>
+          <label for="Fecha">Fecha</label> <span class="obligatorio"> *</span>:</label> <input type="text" class="datepick" name="fecha" value="{{ fecha }}" required><br>
         </div>
 
         <div class="form-group">
-          <label for="hora">Hora:</label> <input type="number" class="form-control" name="hora" id="hora" min="0" max="23" value={{ hora }}>:<input type="number" class="form-control" name="minutos" id="minutos" min="0" max="59" value={{ minutos }}><br>
+          <label for="hora">Hora:</label> <input type="number" class="form-control" name="hora" id="hora" min="0" max="23" value="{{ hora }}">:<input type="number" class="form-control" name="minutos" id="minutos" min="0" max="59" value="{{ minutos }}"><br>
           <span class="aclaracion">Formato 24 horas. Por ejemplo, 20:15</span><br><br>
         </div>
 
 				<div class="form-group">
 					<label for="max_asistentes">Número máximo de asistentes<span class="obligatorio"> *</span>:</label> <br>
-					<input type="number" class="form-control" name="max_asistentes" id="max_asistentes" value={{max_asistentes}} min="0" required><br><br>
+					<input type="number" class="form-control" name="max_asistentes" id="max_asistentes" value="{{max_asistentes}}" min="0" required><br><br>
 				</div>
 
 				<div class="form-group">
 					<label for="url">URL del sarao<span class="obligatorio"> *</span>:</label> <br>
-					<input type="url" class="form-control" name="url" id="url" value={{url}} required><br><br>
+					<input type="url" class="form-control" name="url" id="url" value="{{url}}" required><br><br>
 				</div>
 
 				<div class="form-group">
 					<label for="organizacion">Organización:</label><br>
 					<span class="aclaracion">Encargado de la organización del Sarao</span><br>
-					<input type="text" class="form-control" name="organizacion" id="organizacion" value={{organizacion}}><br><br>
+					<input type="text" class="form-control" name="organizacion" id="organizacion" value="{{organizacion}}"><br><br>
 				</div>
 
 				<div class="form-group">
 					<label for="nota">Nota:</label><br>
 					<span class="aclaracion">Aclaración sobre el evento.</span><br>
-					<input type="text" class="form-control" name="nota" id="nota" value={{nota}}><br><br>
+					<input type="text" class="form-control" name="nota" id="nota" value="{{nota}}"><br><br>
 				</div>
 
 				<div class="form-group">
 					<label for="descripcion">Descripción:</label><br>
 					<span class="aclaracion">Asunto del evento.</span><br>
-					<input type="text" class="form-control" name="descripcion" id="descripcion" value={{descripcion}}><br><br>
+					<input type="text" class="form-control" name="descripcion" id="descripcion" value="{{descripcion}}"><br><br>
 				</div>
 
         <div class="form-group">
           <label for="fecha_limite">Fecha límite de inscripción:</label>
-          <input type="text" class="datepick" name="fecha_limite" required value={{ fecha_limite }}></p></p>
+          <input type="text" class="datepick" name="fecha_limite" required value="{{ fecha_limite }}"></p></p>
         </div>
 
         <div class="form-group">
-          <input type="text" class="form-control" name="id_sarao" id="id_sarao" value={{ id_sarao }} hidden required><br><br>
+          <input type="text" class="form-control" name="id_sarao" id="id_sarao" value="{{ id_sarao }}" hidden required><br><br>
         </div>
 
         <button type="submit" class="btn btn-primary">Enviar</button>
