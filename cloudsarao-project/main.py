@@ -89,9 +89,17 @@ class NuevoLugar(webapp2.RequestHandler):
     def post(self):
         Lugar(nombre = cgi.escape(self.request.get('nombre')),
               calle = cgi.escape(self.request.get('calle')),
-              cp = cgi.escape(self.request.get('cod_postal'))
-        ).put()
+              cp = cgi.escape(self.request.get('cod_postal'))).put()
         self.response.write("Añadido lugar.")
+
+    def get(self):
+        self.render("insertar_lugar.html")
+
+    def render(self, template, **kw):
+        self.response.out.write(render_str(template, **kw))
+
+    def write(self, *a, **kw):
+        self.response.out.write(*a, **kw)
 
 #==============================================================================
 #==============================================================================
