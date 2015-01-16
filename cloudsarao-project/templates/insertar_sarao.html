@@ -12,11 +12,6 @@ $(function() {
 $( "#datepicker" ).datepicker();
 });
 
-jQuery('#datetimepicker').datetimepicker({
-  datepicker:false,
-  format:'H:i'
-});
-
 </script>
         <style type="text/css">
         .obligatorio {color:red;}
@@ -32,21 +27,21 @@ jQuery('#datetimepicker').datetimepicker({
 			<form role="form" method="post">
 				<div class="form-group">
 					<label for="nombre">Nombre<span class="obligatorio"> *</span>:</label> <br>
-					<input type="text" class="form-control" name="nombre" id="nombre" placeholder="Introduzca su nombre." value="SARAOPRUEBA"><br><br>
+					<input type="text" class="form-control" name="nombre" id="nombre" placeholder="Introduzca su nombre." required><br><br>
 				</div>
 
-				<p>Fecha<span class="obligatorio"> *</span>: <input type="text" name="fecha" id="datepicker"></p>
+				<p>Fecha<span class="obligatorio"> *</span>: <input type="text" name="fecha" id="datepicker" required></p>
 
-				<p>Hora: <input type="text" class="form-control" name="hora" id="nombre" placeholder="Hora del evento."></p>
+				<p>Hora: <input type="time" class="form-control" name="hora" id="hora"></p>
 
 				<div class="form-group">
 					<label for="nombre">Número máximo de asistentes<span class="obligatorio"> *</span>:</label> <br>
-					<input type="number" class="form-control" name="max_asistentes" id="max_asistentes" placeholder="Introduzca el número máximo de asistentes." value="5"><br><br>
+					<input type="number" class="form-control" name="max_asistentes" id="max_asistentes" placeholder="Introduzca el número máximo de asistentes." min="0" required><br><br>
 				</div>
 
 				<div class="form-group">
 					<label for="nombre">URL del sarao<span class="obligatorio"> *</span>:</label> <br>
-					<input type="text" class="form-control" name="url" id="url" placeholder="Introduzca la url." value="URLSARAO"><br><br>
+					<input type="text" class="form-control" name="url" id="url" placeholder="Introduzca la url." required><br><br>
 				</div>
 
 				<div class="form-group">
@@ -67,7 +62,10 @@ jQuery('#datetimepicker').datetimepicker({
 					<input type="text" class="form-control" name="nota" id="nota"><br><br>
 				</div>
 
-				<p>Fecha límite de inscripción: <input type="text" name="limite_inscripcion" id="datepicker"></p>
+				<p>Fecha límite de inscripción: <input type="text" name="limite" id="datepicker"></p>
+
+				<p>Fecha<span class="obligatorio"> *</span>: <input type="text" name="fecha" id="datepicker"></p>
+
 
         <button type="submit" class="btn btn-primary">Enviar</button>
 			</form>
