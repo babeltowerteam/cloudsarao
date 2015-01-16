@@ -92,12 +92,12 @@ class NuevoLugar(webapp2.RequestHandler):
               cp = cgi.escape(self.request.get('cod_postal'))).put()
         self.response.write("Añadido lugar.")
 
-  """  def get(self):
+    def get(self):
         self.render("insertar_lugar.html")
 
     def render(self, template, **kw):
         self.response.out.write(render_str(template, **kw))
-  """
+
 
 #==============================================================================
 #==============================================================================
