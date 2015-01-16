@@ -31,10 +31,14 @@ $(function(){
 					<input type="text" class="form-control" name="nombre" id="nombre" placeholder="Introduzca su nombre." required><br><br>
 				</div>
 
-				Fecha<span class="obligatorio"> *</span>: <input type="text" class="datepick" name="fecha" required><br>
+        <div class="form-group">
+          <label for="Fecha">Fecha</label> <span class="obligatorio"> *</span>:</label> <input type="text" class="datepick" name="fecha" required><br>
+        </div>
 
-				Hora: <input type="number" class="form-control" name="hora" id="hora" min="0" max="23">:<input type="number" class="form-control" name="minutos" id="minutos" min="0" max="59"><br>
+        <div class="form-group">
+          <label for="hora">Hora:</label> <input type="number" class="form-control" name="hora" id="hora" min="0" max="23">:<input type="number" class="form-control" name="minutos" id="minutos" min="0" max="59"><br>
 					<span class="aclaracion">Formato 24 horas. Por ejemplo, 20:15</span><br><br>
+        </div>
 
 				<div class="form-group">
 					<label for="max_asistentes">Número máximo de asistentes<span class="obligatorio"> *</span>:</label> <br>
@@ -64,9 +68,10 @@ $(function(){
 					<input type="text" class="form-control" name="descripcion" id="descripcion"><br><br>
 				</div>
 
-				<p>Fecha límite de inscripción: 
-				<input type="text" class="datepick" name="fecha_limite" required></p></p>
-
+        <div class="form-group">
+          <label for="fecha_limite">Fecha límite de inscripción:</label>
+				      <input type="text" class="datepick" name="fecha_limite" required></p></p>
+        </div>
 
         <button type="submit" class="btn btn-primary">Enviar</button>
 			</form>
@@ -74,4 +79,3 @@ $(function(){
 
     </body>
 </html>
-

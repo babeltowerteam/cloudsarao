@@ -44,6 +44,7 @@ class MainPage(webapp2.RequestHandler):
             self.response.write("<p>Nombre: " + i.nombre + "</p>")
             self.response.write("<p>Max_asistentes: " + str(i.max_asistentes) + "</p>")
             self.response.write("<p>Fecha: " + str(i.fecha) + "</p>")
+            self.response.write("<p>Lugar: " + str(i.lugar) + "</p>")
             self.response.write("<br>")
 
     def post(self):
@@ -89,7 +90,8 @@ class NuevoLugar(webapp2.RequestHandler):
     def post(self):
         Lugar(nombre = cgi.escape(self.request.get('nombre')),
               calle = cgi.escape(self.request.get('calle')),
-              cp = cgi.escape(self.request.get('cod_postal'))).put()
+              cod_postal = int(cgi.escape(self.request.get('cod_postal')))
+        ).put()
         self.response.write("Añadido lugar.")
 
     def get(self):
@@ -101,12 +103,15 @@ class NuevoLugar(webapp2.RequestHandler):
 
 class NuevoAsistente(webapp2.RequestHandler):
   def post(self):
-      Asistente(
+      key_sarao = cgi.escape(self.request.get('id_sarao'))
+      a = Asistente(
           correo = cgi.escape(self.request.get('correo')),
           nombre = cgi.escape(self.request.get('nombre')),
           nick_twitter = cgi.escape(self.request.get('nick_twitter')),
-          
-        )
+          colectivo = cgi.escape(self.request.get('colectivo')),
+          procedencia = cgi.escape(self.request.get('procedencia'))
+      )
+      a.asistencia_sarao.add(key_sarao)
       self.response.write("Añadido asistente.")
 
   def get(self):
