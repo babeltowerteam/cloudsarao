@@ -22,15 +22,15 @@ $(function(){
         </style>
     </head>
     <body>
-        <h1>Crear nuevo Sarao</h1>
-        <p>Introduzca los siguientes campos para la creación del Sarao</p>
+        <h1>Modificar el sarao: {{nombre}}</h1>
+        <p>Modifique los campos necesarios, no toque aquellos que desee mantener:</p>
 
 			<p class="obligatorio"> *Obligatorio</p>
 
 			<form role="form" method="post">
 				<div class="form-group">
 					<label for="nombre">Nombre<span class="obligatorio"> *</span>:</label> <br>
-					<input type="text" class="form-control" name="nombre" id="nombre" placeholder="Introduzca su nombre." required><br><br>
+					<input type="text" class="form-control" name="nombre" id="nombre" value={{nombre}} required><br><br>
 				</div>
 
 				<p>Fecha<span class="obligatorio"> *</span>: <input type="text" class="datepick" name="fecha" required></p>
@@ -38,35 +38,39 @@ $(function(){
 				<p>Hora: <input type="text" class="timepicker" name="hora" ></p>
 
 				<div class="form-group">
-					<label for="nombre">Número máximo de asistentes<span class="obligatorio"> *</span>:</label> <br>
-					<input type="number" class="form-control" name="max_asistentes" id="max_asistentes" placeholder="Introduzca el número máximo de asistentes." min="0" required><br><br>
+					<label for="max_asistentes">Número máximo de asistentes<span class="obligatorio"> *</span>:</label> <br>
+					<input type="number" class="form-control" name="max_asistentes" id="max_asistentes" value={{max_asistentes}} min="0" required><br><br>
 				</div>
 
 				<div class="form-group">
-					<label for="nombre">URL del sarao<span class="obligatorio"> *</span>:</label> <br>
-					<input type="text" class="form-control" name="url" id="url" placeholder="Introduzca la url." required><br><br>
+					<label for="url">URL del sarao<span class="obligatorio"> *</span>:</label> <br>
+					<input type="url" class="form-control" name="url" id="url" value={{url}} required><br><br>
 				</div>
 
 				<div class="form-group">
 					<label for="organizacion">Organización:</label><br>
 					<span class="aclaracion">Encargado de la organización del Sarao</span><br>
-					<input type="text" class="form-control" name="organizacion" id="organizacion" placeholder="Introduzca el/los organizadores."><br><br>
+					<input type="text" class="form-control" name="organizacion" id="organizacion" value={{organizacion}}><br><br>
 				</div>
 
 				<div class="form-group">
 					<label for="nota">Nota:</label><br>
 					<span class="aclaracion">Aclaración sobre el evento.</span><br>
-					<input type="text" class="form-control" name="nota" id="nota"><br><br>
+					<input type="text" class="form-control" name="nota" id="nota" value={{nota}}><br><br>
 				</div>
 
 				<div class="form-group">
-					<label for="">Descripción:</label><br>
+					<label for="descripcion">Descripción:</label><br>
 					<span class="aclaracion">Asunto del evento.</span><br>
-					<input type="text" class="form-control" name="nota" id="nota"><br><br>
+					<input type="text" class="form-control" name="descripcion" id="descripcion" value={{descripcion}}><br><br>
 				</div>
 
-				<p>Fecha límite de inscripción: 
+				<p><label for="fecha_limite">Fecha límite de inscripción:</label>
 				<input type="text" class="datepick" name="fecha_limite" required></p></p>
+
+        <div class="form-group">
+          <input type="text" class="form-control" name="id_sarao" id="id_sarao" value={{id_sarao}} hidden required><br><br>
+        </div>
 
 
         <button type="submit" class="btn btn-primary">Enviar</button>
@@ -75,4 +79,3 @@ $(function(){
 
     </body>
 </html>
-
