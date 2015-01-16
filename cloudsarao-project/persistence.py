@@ -18,8 +18,8 @@ class Lugar(db.Model):
         return self.all()
 
     @classmethod
-    def getLugar(self, nombre):
-        return Lugar.gql("WHERE nombre = :n", n=nombre).get()
+    def getLugar(self, key):
+        return Lugar.gql("WHERE __key__ = :n", n=db.Key(key)).get()
 
 
 #==============================================================================

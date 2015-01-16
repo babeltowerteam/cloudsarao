@@ -65,7 +65,8 @@ class MainPage(Handler):
 #==============================================================================
 class NuevoSarao(Handler):
     def post(self):
-        nombre_lugar = cgi.escape(self.request.get('lugar'))
+        key_lugar = cgi.escape(self.request.get('lugar'))
+        self.response.write(key_lugar)
         cgi.escape(self.request.get('hora'))
         # Obtenemos los parámetros enviados por POST
         Sarao(nombre = cgi.escape(self.request.get('nombre')),
@@ -76,7 +77,7 @@ class NuevoSarao(Handler):
               nota = cgi.escape(self.request.get('nota')),
               descripcion = cgi.escape(self.request.get('descripcion')),
               organizacion = cgi.escape(self.request.get('organizacion')),
-              lugar = Lugar.getLugar(nombre_lugar)
+              lugar = Lugar.getLugar(key_lugar)
         ).put()
         self.response.write("Añadido sarao.")
 
