@@ -98,8 +98,6 @@ class NuevoLugar(webapp2.RequestHandler):
     def render(self, template, **kw):
         self.response.out.write(render_str(template, **kw))
 
-    def write(self, *a, **kw):
-        self.response.out.write(*a, **kw)
 
 #==============================================================================
 #==============================================================================
