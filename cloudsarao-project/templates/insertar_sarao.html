@@ -10,7 +10,10 @@
 <script>
 $(function(){
     $('input').filter('.datepick').datepicker();
+    $('input').filter('.timepicker').timepicker({ 'scrollDefault': 'now' });
 });
+
+
 </script>
 
         <style type="text/css">
@@ -32,7 +35,7 @@ $(function(){
 
 				<p>Fecha<span class="obligatorio"> *</span>: <input type="text" class="datepick" name="fecha" required></p>
 
-				<p>Hora: <input type="time" class="form-control" name="hora" id="hora"></p>
+				<p>Hora: <input type="text" class="timepicker" name="hora" ></p>
 
 				<div class="form-group">
 					<label for="nombre">Número máximo de asistentes<span class="obligatorio"> *</span>:</label> <br>
