@@ -5,11 +5,10 @@
 </head>
 <body>
 	<h1>CloudSarao</h1>
-	<p>Apuntate a los saraos!</p>
+	<p>Administración de los saraos existentes</p>
 
 		
 	{% for item in saraos %}
-
 		<div class="sarao">
 			<h1> {{ item.nombre }} </h1><br>
 			<div class="fecha_hora">Fecha del evento: {{ item.fecha }} - {{ item.hora }}</div><br>
@@ -17,10 +16,15 @@
 			<div class="nombre_lugar">Lugar del transcurso del evento:{{ item.lugar.nombre }}</div><br>
 			<a href="{{ item.url }}" > +info </a>
 		</div>
-
 		<form role="form" method="post">
           		<input type="text" class="form-control" name="key" id="key" value="{{ item.key() }}" hidden required><br>
-	       		<button type="submit" class="btn btn-primary">Apuntarse</button>
+          		<input type="text" class="form-control" name="metodo" value="modificar" hidden required><br>
+	       		<button type="submit" class="btn btn-primary">Modificar</button>
+		</form>
+		<form role="form" method="post">
+          		<input type="text" class="form-control" name="key" id="key" value="{{ item.key() }}" hidden required><br>
+          		<input type="text" class="form-control" name="metodo" value="eliminar" hidden required><br>
+	       		<button type="submit" class="btn btn-primary">Eliminar</button>
 		</form>
 		<br><br>
 	{% endfor %}
