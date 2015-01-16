@@ -41,13 +41,22 @@ $(function(){
         </div>
 
 				<div class="form-group">
+					<label for="lugar">Lugar del evento<span class="obligatorio"> *</span>:</label> <br>
+					<select name="lugar" required>
+						{% for item in lugares %}
+	   					<option value="{{ item.Key }}"> {{ item.nombre }}</option>
+						{% endfor %}
+					</select>
+				</div>	
+
+				<div class="form-group">
 					<label for="max_asistentes">Número máximo de asistentes<span class="obligatorio"> *</span>:</label> <br>
 					<input type="number" class="form-control" name="max_asistentes" id="max_asistentes" placeholder="Introduzca el número máximo de asistentes." min="0" required><br><br>
 				</div>
 
 				<div class="form-group">
-					<label for="url">URL del sarao<span class="obligatorio"> *</span>:</label> <br>
-					<input type="url" class="form-control" name="url" id="url" placeholder="Introduzca la url." required><br><br>
+					<label for="url">URL del sarao:</label> <br>
+					<input type="url" class="form-control" name="url" id="url" placeholder="Introduzca la url."><br><br>
 				</div>
 
 				<div class="form-group">
