@@ -33,7 +33,11 @@ $(function(){
 			</div>
 
         <div class="form-group">
+<<<<<<< HEAD
           <label for="Fecha">Fecha</label> <span class="obligatorio"> *</span>:</label> <input type="text" class="datepick" name="fecha" required value="01/12/2015"><br>
+=======
+          <label for="fecha">Fecha</label> <span class="obligatorio"> *</span>:</label> <input type="text" class="datepick" name="fecha" required><br>
+>>>>>>> a8de5673592b52a386ad033e1f66585fa38cae54
         </div>
 
         <div class="form-group">
@@ -49,13 +53,27 @@ $(function(){
         </div>
 
 				<div class="form-group">
+					<label for="lugar">Lugar del evento<span class="obligatorio"> *</span>:</label> <br>
+					<select name="lugar" required>
+						{% for item in lugares %}
+	   					<option value="{{ item.Key }}"> {{ item.nombre }}</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div class="form-group">
 					<label for="max_asistentes">Número máximo de asistentes<span class="obligatorio"> *</span>:</label> <br>
 					<input type="number" class="form-control" name="max_asistentes" id="max_asistentes" placeholder="Introduzca el número máximo de asistentes." min="0" required value="30"><br><br>
 				</div>
 
 				<div class="form-group">
+<<<<<<< HEAD
 					<label for="url">URL del sarao<span class="obligatorio"> *</span>:</label> <br>
 					<input type="url" class="form-control" name="url" id="url" placeholder="Introduzca la url." required value="http://ftp.prueba.com"><br><br>
+=======
+					<label for="url">URL del sarao:</label> <br>
+					<input type="url" class="form-control" name="url" id="url" placeholder="Introduzca la url."><br><br>
+>>>>>>> a8de5673592b52a386ad033e1f66585fa38cae54
 				</div>
 
 				<div class="form-group">

@@ -7,7 +7,7 @@
     + hora
     + max_asistentes *
     + num_asistentes
-    + url *
+    + url
     + nota
     + descripcion
     + organizacion
