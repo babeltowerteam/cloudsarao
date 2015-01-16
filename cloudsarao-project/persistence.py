@@ -10,7 +10,7 @@ from google.appengine.ext import db
 #==============================================================================
 class Lugar(db.Model):
     nombre = db.StringProperty(required=True)
-    calle = db.IntegerProperty(required=True)
+    calle = db.StringProperty(required=True)
     cod_postal = db.IntegerProperty()
 
     @classmethod
