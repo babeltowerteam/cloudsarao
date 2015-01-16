@@ -30,6 +30,12 @@ def render_str(template, **params):
     return t.render(params)
 
 
+class Handler(webapp2.RequestHandler):
+    def render(self, template, **kw):
+        self.response.out.write(render_str(template, **kw))
+
+    def write(self, *a, **kw):
+        self.response.out.write(*a, **kw)
 
 #==============================================================================
 #==============================================================================
@@ -37,7 +43,7 @@ def render_str(template, **params):
 #==============================================================================
 #==============================================================================
 # RequestHandler se encarga de procesar las peticiones y contruir respuestas.
-class MainPage(webapp2.RequestHandler):
+class MainPage(Handler):
     def get(self):
         self.response.write('<h1>SARAOS AÑADIDOS</h1>')
         for i in Sarao.getSaraos():
@@ -57,40 +63,34 @@ class MainPage(webapp2.RequestHandler):
 # # Controlador de solicitudes 'Saraos'.
 #==============================================================================
 #==============================================================================
-class NuevoSarao(webapp2.RequestHandler):
+class NuevoSarao(Handler):
     def post(self):
-
         nombre_lugar = cgi.escape(self.request.get('lugar'))
-        l = Lugar.getLugar(nombre_lugar)
+        cgi.escape(self.request.get('hora'))
         # Obtenemos los parámetros enviados por POST
         Sarao(nombre = cgi.escape(self.request.get('nombre')),
               fecha = (datetime.datetime.strptime(cgi.escape(self.request.get('fecha')), '%m/%d/%Y')).date(), #Casting a datetime format
-              #hora = cgi.escape(self.request.get('hora')),
+              #hora = horas+":"+minutos,
               max_asistentes = int(cgi.escape(self.request.get('max_asistentes'))),
               url = cgi.escape(self.request.get('url')),
               nota = cgi.escape(self.request.get('nota')),
               descripcion = cgi.escape(self.request.get('descripcion')),
               organizacion = cgi.escape(self.request.get('organizacion')),
-              lugar = l
+              lugar = Lugar.getLugar(nombre_lugar)
         ).put()
         self.response.write("Añadido sarao.")
 
 
     def get(self):
-        self.render("insertar_sarao.html")
-
-    def render(self, template, **kw):
-        self.response.out.write(render_str(template, **kw))
-
-    def write(self, *a, **kw):
-        self.response.out.write(*a, **kw)
+        l = Lugar.getLugares()
+        self.render("insertar_sarao.html", lugares=l)
 
     def realizaAlgunaOperacionGuay(self, numero):
         return numero*numero/2
 
 
 
-class NuevoLugar(webapp2.RequestHandler):
+class NuevoLugar(Handler):
     def post(self):
         Lugar(nombre = cgi.escape(self.request.get('nombre')),
               calle = cgi.escape(self.request.get('calle')),
@@ -101,11 +101,8 @@ class NuevoLugar(webapp2.RequestHandler):
     def get(self):
         self.render("insertar_lugar.html")
 
-    def render(self, template, **kw):
-        self.response.out.write(render_str(template, **kw))
 
-
-class NuevoAsistente(webapp2.RequestHandler):
+class NuevoAsistente(Handler):
   def post(self):
       key_sarao = cgi.escape(self.request.get('id_sarao'))
       a = Asistente(
@@ -121,8 +118,6 @@ class NuevoAsistente(webapp2.RequestHandler):
   def get(self):
       self.render("insertar_asistente.html")
 
-  def render(self, template, **kw):
-      self.response.out.write(render_str(template, **kw))
 
 
 #==============================================================================

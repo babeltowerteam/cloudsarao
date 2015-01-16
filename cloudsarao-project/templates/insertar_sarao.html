@@ -53,8 +53,8 @@ $(function(){
 				<div class="form-group">
 					<label for="lugar">Lugar del evento<span class="obligatorio"> *</span>:</label> <br>
 					<select name="lugar" required>
-						{% for item in lugares %}
-	   					<option value="{{ item.Key }}"> {{ item.nombre }}</option>
+						{% for l in lugares %}
+	   					<option value="{{ l.key() }}"> {{ l.nombre }} </option>
 						{% endfor %}
 					</select>
 				</div>
