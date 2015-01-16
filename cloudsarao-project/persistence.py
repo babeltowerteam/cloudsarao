@@ -13,6 +13,10 @@ class Lugar(db.Model):
     calle = db.IntegerProperty(required=True)
     cod_postal = db.IntegerProperty()
 
+    @classmethod
+    def getLugares(self):
+        return self.all()
+
 
 #==============================================================================
 #==============================================================================
@@ -41,7 +45,7 @@ class Sarao(db.Model):
     organizacion   = db.StringProperty()
     limite_inscripcion = db.DateProperty()
     # Relación uno-a-muchos
-    #lugar          = db.ReferenceProperty(Lugar, collection_name='lugares')
+    lugar          = db.ReferenceProperty(Lugar, collection_name='lugares')
 
     @property
     def asistentes(self):
