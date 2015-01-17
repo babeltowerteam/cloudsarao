@@ -8,14 +8,14 @@
         </style>
     </head>
     <body>
-        <h1>{{ titulo }}</h1>
-        <p>Con fecha de {{ fecha }} - {{ hora }} - en {{ lugar }}</p>
+        <h1>{{ sarao.titulo }}</h1>
+        <p>Con fecha de {{ sarao.fecha }} - {{ sarao.hora }} - en {{ sarao.lugar.nombre }}</p>
         <p>{{ descripcion }}</p>
 
 
 			<p class="obligatorio"> *Obligatorio</p>
 
-			<form role="form" method="post">
+			<form role="form" method="post" action="nuevoasistente">
 
 				<div class="form-group">
 					<label for="nombre">Nombre<span class="obligatorio"> *</span>:</label> <br>
@@ -70,7 +70,7 @@
 				</div>
 
         <div class="form-group">
-          <input type="text" class="form-control" name="id_sarao" id="id_sarao" value="{{ id_sarao }}" hidden required><br><br>
+          <input type="text" class="form-control" name="id_sarao" id="id_sarao" value="{{ sarao.id_sarao }}" hidden required><br><br>
         </div>
 
         <button type="submit" class="btn btn-primary">Enviar</button>
