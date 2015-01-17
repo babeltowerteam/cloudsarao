@@ -14,6 +14,16 @@ handlers:
   static_dir: img
 - url: /css 
   static_dir: css
+- url: /font-awesome
+  static_dir: font-awesome
+- url: /fonts 
+  static_dir: fonts
+- url: /js 
+  static_dir: js
+- url: /less 
+  static_dir: less
+- url: /mail 
+  static_dir: mail
 - url: /.*                              # Todas las URL deben ser manejadas se manejarán 
   script: main.application              #   por la aplicación que hay en el módulo 'main'. 
 
