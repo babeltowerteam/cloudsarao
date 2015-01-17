@@ -1,13 +1,74 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>CloudSarao</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<title>CloudSarao</title>
+	<!-- Bootstrap Core CSS - Uses Bootswatch Flatly Theme: http://bootswatch.com/flatly/ -->
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<!-- Custom CSS -->
+	<link href="css/freelancer.css" rel="stylesheet">
+	<!-- Custom Fonts -->
+	<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet"
+	type="text/css">
+	<link href="http://fonts.googleapis.com/css?family=Montserrat:400,700"
+	rel="stylesheet" type="text/css">
+	<link
+	href="http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic"
+	rel="stylesheet" type="text/css">
+	<style type="text/css">
+	.obligatorio {
+		color: red;
+	}
+	.aclaracion {
+		color: blue;
+		font-weight: lighter;
+		font-style: italic;
+		font-size: small;
+	}
+	</style>
 </head>
 <body>
-	<h1>CloudSarao</h1>
-	<p>Administración de los saraos existentes</p>
+	<!-- ---------------------------------------- -->
+	<!-- Barra del de navegación -->
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header page-scroll">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+				data-target="#bs-example-navbar-collapse-1">
+				<span class="sr-only">Toggle navigation</span> <span
+				class="icon-bar"></span> <span class="icon-bar"></span> <span
+				class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="http://cloud-sarao.appspot.com/">CloudSarao</a>
+		</div>
 
-		
+		<!-- Colección de links de navegación, forms, y otros contenidos conmutables -->
+		<div class="collapse navbar-collapse"
+		id="bs-example-navbar-collapse-1">
+		<ul class="nav navbar-nav navbar-right">
+			<li class="page-scroll"><a href="http://cloud-sarao.appspot.com/adminsaraos">Saraos</a></li>
+			<li class="page-scroll"><a href="http://cloud-sarao.appspot.com/adminlugares">Lugares</a></li>
+			<li class="page-scroll"><a href="http://cloud-sarao.appspot.com/administracion">Cerrar sesión</a></li>
+		</ul>
+	</div>
+	<!-- /.navbar-collapse -->
+</div>
+<!-- /.container-fluid -->
+</nav>
+<!-- Fin de barra de navegación. -->
+<!-- ---------------------------------------- -->
+
+<br><br><br><br><br><br>
+<div class="container">
+	<h1>CloudSarao</h1>
+	<p>Administración de los saraos existentes:</p>
+	<br><br>
+
 	{% for item in saraos %}
 		<div class="sarao">
 			<h1> {{ item.nombre }} </h1><br>
@@ -16,17 +77,18 @@
 			<div class="nombre_lugar">Lugar del transcurso del evento:{{ item.lugar.nombre }}</div><br>
 			<a href="{{ item.url }}" > +info </a>
 		</div>
-		<form role="form" method="post">
-          		<input type="text" class="form-control" name="key" id="key" value="{{ item.key() }}" hidden required><br>
-          		<input type="text" class="form-control" name="metodo" value="modificar" hidden required><br>
+		<form role="form" method="post" style="display:inline">
+          		<input type="text" class="hidden" name="key" id="key" value="{{ item.key() }}" hidden required>
+          		<input type="text" class="hidden" name="metodo" value="modificar" hidden required>
 	       		<button type="submit" class="btn btn-primary">Modificar</button>
 		</form>
-		<form role="form" method="post">
-          		<input type="text" class="form-control" name="key" id="key" value="{{ item.key() }}" hidden required><br>
-          		<input type="text" class="form-control" name="metodo" value="eliminar" hidden required><br>
+		<form role="form" method="post" style="display:inline">
+          		<input type="text" class="hidden" name="key" id="key" value="{{ item.key() }}" hidden required>
+          		<input type="text" class="hidden" name="metodo" value="eliminar" hidden required>
 	       		<button type="submit" class="btn btn-primary">Eliminar</button>
 		</form>
 		<br><br>
 	{% endfor %}
+</div>
 </body>
 </html>
