@@ -63,8 +63,7 @@
 
 
 <br><br><br><br><br><br>
-<div class="container">
-<img src="img/alistate_pinguino.png" align="right">
+<p><img src="img/alistate_pinguino.png" align="right">
 
 
 	{% for item in saraos %}
@@ -76,12 +75,12 @@
 			<div class="nombre_lugar">Lugar del transcurso del evento:{{ item.lugar.nombre }}</div><br>
 			<a href="{{ item.url }}" > +info </a>
 		</div>
-		<form action="/nuevoasistente?s={{item.key()}}">
-			<button type="submit" class="btn btn-primary"> Apúntate </button>
-		</form>		
+
+		<a href="/nuevoasistente?s={{item.key()}}">APÚNTATE</a>
+
 		<br><br>
 	{% endfor %}
-<div class="container">
+</p>
 </body>
 </html>
 
