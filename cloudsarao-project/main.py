@@ -51,7 +51,16 @@ class MainPage(Handler):
     def post(self):
         pass
 
+#==============================================================================
+#==============================================================================
+# # Controlador de solicitudes 'Main Administracion'.
+#==============================================================================
+#==============================================================================
 
+class Administracion(Handler):
+  def get(self):
+    s = Sarao.getSaraos()
+    self.render('pagina_administracion.html', saraos=s)
 
 #==============================================================================
 #==============================================================================
@@ -71,7 +80,9 @@ class NuevoSarao(Handler):
               nota = cgi.escape(self.request.get('nota')),
               descripcion = cgi.escape(self.request.get('descripcion')),
               organizacion = cgi.escape(self.request.get('organizacion')),
-              lugar = Lugar.getLugar(key_lugar)
+              lugar = Lugar.getLugar(key_lugar),
+              num_asistentes = int(0),
+              plazas_disponibles = int(cgi.escape(self.request.get('max_asistentes')))
         ).put()
         self.response.write("Añadido sarao.")
 
@@ -115,6 +126,11 @@ class NuevoAsistente(Handler):
       else:
           asis.asistencia_saraos.append(db.Key(key_sarao))
           asis.put()
+
+      sarao = Sarao.getSarao(key_sarao)
+      sarao.num_asistentes += 1
+      sarao.plazas_disponibles -= 1
+      sarao.put()
       self.response.write("Añadido asistente.")
 
   def get(self):
@@ -141,6 +157,7 @@ class ModificarSarao(Handler):
     l = Lugar.getLugares()
     self.render("modificar_sarao.html")
 
+
 #==============================================================================
 #==============================================================================
 # # Programa principal.
@@ -160,4 +177,5 @@ application = webapp2.WSGIApplication([
     ('/nuevolugar', NuevoLugar),
     ('/modificarsarao', ModificarSarao),
     ('/nuevoasistente', NuevoAsistente),
+    ('/administracion', Administracion),
 ], debug=True)
