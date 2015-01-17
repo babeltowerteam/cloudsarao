@@ -75,9 +75,9 @@
 			<div class="nombre_lugar">Lugar del transcurso del evento:{{ item.lugar.nombre }}</div><br>
 			<a href="{{ item.url }}" > +info </a>
 		</div>
-
-		<a href="/nuevoasistente?s={{item.key()}}">APÚNTATE</a>
-
+		<form action="/nuevoasistente?s={{item.key()}}">
+			<button type="submit"> Apúntate </button>
+		</form>		
 		<br><br>
 	{% endfor %}
 </p>
