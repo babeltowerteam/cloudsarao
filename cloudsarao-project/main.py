@@ -44,7 +44,7 @@ class Handler(webapp2.RequestHandler):
 # RequestHandler se encarga de procesar las peticiones y contruir respuestas.
 class MainPage(Handler):
     def get(self):
-        s = Sarao.getSaraos()
+        s = Sarao.getSaraosActivos()
         self.render('pagina_principal.html', saraos=s)
 
     def post(self):
@@ -76,7 +76,7 @@ class NuevoSarao(Handler):
         # Obtenemos los parámetros enviados por POST
         Sarao(nombre = cgi.escape(self.request.get('nombre')),
               fecha = (datetime.datetime.strptime(cgi.escape(self.request.get('fecha')), '%m/%d/%Y')).date(), #Casting a datetime format
-              hora = datetime.datetime.strptime(h+":"+m, "%H:%M"),
+              hora = (datetime.datetime.strptime(h+":"+m, "%H:%M")).time(),
               max_asistentes = ma,
               url = cgi.escape(self.request.get('url')),
               nota = cgi.escape(self.request.get('nota')),
@@ -84,7 +84,8 @@ class NuevoSarao(Handler):
               organizacion = cgi.escape(self.request.get('organizacion')),
               lugar = Lugar.getLugar(key_lugar),
               num_asistentes = 0,
-              plazas_disponibles = ma
+              plazas_disponibles = ma,
+              limite_inscripcion = (datetime.datetime.strptime(cgi.escape(self.request.get('fecha_limite')), '%m/%d/%Y')).date(), #Casting a datetime format
         ).put()
         self.response.write("Añadido sarao.")
 
@@ -174,9 +175,9 @@ class ModificarSarao(Handler):
 #   navegador.
 application = webapp2.WSGIApplication([
     ('/', MainPage),
+    ('/nuevoasistente', NuevoAsistente),
+    ('/administracion', Administracion),
     ('/nuevosarao', NuevoSarao),
     ('/nuevolugar', NuevoLugar),
     ('/modificarsarao', ModificarSarao),
-    ('/nuevoasistente', NuevoAsistente),
-    ('/administracion', Administracion),
 ], debug=True)

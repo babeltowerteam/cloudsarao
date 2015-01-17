@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from google.appengine.ext import db
+import datetime
 
 #==============================================================================
 #==============================================================================
@@ -40,7 +41,7 @@ class Sarao(db.Model):
   # Atributos del sarao.
     nombre         = db.StringProperty(required=True)
     fecha          = db.DateProperty(required=True)
-    hora           = db.DateProperty()
+    hora           = db.TimeProperty()
     max_asistentes = db.IntegerProperty(required=True)
     url            = db.StringProperty()
     nota           = db.StringProperty()
@@ -55,6 +56,11 @@ class Sarao(db.Model):
     @property
     def asistentes(self):
         return Sarao.gql("WHERE asistencia_saraos = :1", self.key()).run()
+
+    @classmethod
+    def getSaraosActivos(self):
+        fecha_actual = datetime.datetime.now()
+        return Sarao.gql("WHERE limite_inscripcion > :1", fecha_actual).run()
 
     @classmethod
     def getSaraos(self):
