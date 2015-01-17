@@ -63,23 +63,20 @@
 
 
 <br><br><br><br><br><br>
-<p><img src="img/alistate_pinguino.png" align="right">
-
-
+<div class="container">
+	<img src="img/alistate_pinguino.png" align="right">
 	{% for item in saraos %}
 
 		<div class="sarao">
 			<h1> {{ item.nombre }} </h1><br>
-			<div class="fecha_hora">Fecha del evento: {{ item.fecha }} {% if item.hora != None %} - {{ item.hora }} {% endif %}</div><br>
-			<div class="plazas_libres">Plazas disponibles: {{ item.plazas_disponibles }}</div><br>
-			<div class="nombre_lugar">Lugar del transcurso del evento:{{ item.lugar.nombre }}</div><br>
+			<label>Fecha del evento:</label> {{ item.fecha }} {% if item.hora != None %} - {{ item.hora }} {% endif %}<br>
+			<label>Plazas disponibles:</label> {{ item.plazas_disponibles }}<br>
+			<label>Lugar del transcurso del evento:</label> {{ item.lugar.nombre }}<br>
 			<a href="{{ item.url }}" > +info </a>
 		</div>
-
-		<a href="/nuevoasistente?s={{item.key()}}">APÚNTATE</a>
-
-		<br><br>
+		<button onClick="location.href='/nuevoasistente?s={{ item.key() }}'" class="btn btn-primary"> Apúntate </button>
+		<br><hr class="alert-success"><br>
 	{% endfor %}
-</p>
+<div class="container">
 </body>
 </html>
