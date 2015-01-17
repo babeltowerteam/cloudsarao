@@ -65,7 +65,7 @@
 		<div class="container">
 		<h1>{{ sarao.nombre }}</h1>
 		<p>Registrate en el sarao con fecha de {{ sarao.fecha }} {% if sarao.hora != None %}a las {{ sarao.hora }} {% endif %} {% if sarao.lugar.nombre != None %}en {{ sarao.lugar.nombre }} {% endif %}.</p>
-		<p>{% if sarao.descripcion != None %}{{ sarao.descripcion }} {% endif %} <a href="{{ item.url }}" > +info </a></p>
+		<p>{% if sarao.descripcion != None %}{{ sarao.descripcion }} {% endif %}{% if sarao.url != None %}<a href="{{ sarao.url }}" > +info </a> {% endif %}</p>
 
 
 		<p class="obligatorio"> *Obligatorio</p>
