@@ -59,6 +59,10 @@ class Sarao(db.Model):
     def getSaraos(self):
         return self.all()
 
+    @classmethod
+    def getSarao(self, key):
+        return Sarao.gql("WHERE __key__ = :n", n=db.Key(key)).get()
+
 
 
 #==============================================================================

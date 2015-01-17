@@ -56,7 +56,8 @@ class MainPage(Handler):
         #     self.response.write("<br>")
 
     def post(self):
-        self.response.write('<html><body><h1>Petición POST</h1></body></html>')
+        key_sarao = cgi.escape(self.request.get('key'))
+        self.render('insertar_asistente.html', sarao = Sarao.getSarao(key_sarao))
 
 
 
@@ -160,4 +161,5 @@ application = webapp2.WSGIApplication([
     ('/nuevosarao', NuevoSarao),
     ('/nuevolugar', NuevoLugar),
     ('/modificarsarao', ModificarSarao),
+    ('/nuevoasistente', NuevoAsistente),
 ], debug=True)
