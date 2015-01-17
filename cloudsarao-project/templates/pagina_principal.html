@@ -12,7 +12,7 @@
 
 		<div class="sarao">
 			<h1> {{ item.nombre }} </h1><br>
-			<div class="fecha_hora">Fecha del evento: {{ item.fecha }} {% if undefined(item.hora) %} - {{ item.hora }} {% endif %}</div><br>
+			<div class="fecha_hora">Fecha del evento: {{ item.fecha }} {% if defined(item.hora) %} - {{ item.hora }} {% endif %}</div><br>
 			<div class="plazas_libres">Plazas disponibles: {{ item.plazas_libres }}</div><br>
 			<div class="nombre_lugar">Lugar del transcurso del evento:{{ item.lugar.nombre }}</div><br>
 			<a href="{{ item.url }}" > +info </a>
