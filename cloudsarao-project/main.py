@@ -186,7 +186,7 @@ application = webapp2.WSGIApplication([
     ('/', MainPage),
     ('/nuevoasistente', NuevoAsistente),
     ('/administracion', Administracion),
-    ('/nuevosarao', NuevoSarao),
-    ('/nuevolugar', NuevoLugar),
-    ('/modificarsarao', ModificarSarao),
+    ('/administracion/nuevosarao', NuevoSarao),
+    ('/administracion/nuevolugar', NuevoLugar),
+    ('/administracion/modificarsarao', ModificarSarao),
 ], debug=True)
