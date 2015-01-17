@@ -106,8 +106,15 @@ class NuevoAsistente(Handler):
           colectivo = cgi.escape(self.request.get('colectivo')),
           procedencia = cgi.escape(self.request.get('procedencia'))
       )
-      a.asistencia_saraos.append(db.Key(key_sarao))
-      a.put()
+      asis = Asistente.getAsistente(a.correo)
+      # No existe
+      if asis==None:
+          a.asistencia_saraos.append(db.Key(key_sarao))
+          a.put()
+      # Ya existía
+      else:
+          asis.asistencia_saraos.append(db.Key(key_sarao))
+          asis.put()
       self.response.write("Añadido asistente.")
 
   def get(self):

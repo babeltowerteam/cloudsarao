@@ -78,3 +78,16 @@ class Asistente(db.Model):
     procedencia = db.StringProperty()
     #Relacion muchos-muchos de saraos y asistentes
     asistencia_saraos = db.ListProperty(db.Key)
+
+    @classmethod
+    def getAsistente(self, correo):
+        return Asistente.gql("WHERE correo = :c", c=correo).get()
+
+
+
+
+
+
+
+
+
