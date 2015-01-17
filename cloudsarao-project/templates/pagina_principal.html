@@ -69,14 +69,12 @@
 
 		<div class="sarao">
 			<h1> {{ item.nombre }} </h1><br>
-			<div class="fecha_hora">Fecha del evento: {{ item.fecha }} {% if item.hora != None %} - {{ item.hora }} {% endif %}</div><br>
-			<div class="plazas_libres">Plazas disponibles: {{ item.plazas_disponibles }}</div><br>
-			<div class="nombre_lugar">Lugar del transcurso del evento: {{ item.lugar.nombre }}</div><br>
+			<div class="fecha_hora"><h3>Fecha del evento:</h3> {{ item.fecha }} {% if item.hora != None %} - {{ item.hora }} {% endif %}</div><br>
+			<div class="plazas_libres"><label>Plazas disponibles:</label> {{ item.plazas_disponibles }}</div><br>
+			<div class="label">Lugar del transcurso del evento: {{ item.lugar.nombre }}</div><br>
 			<a href="{{ item.url }}" > +info </a>
 		</div>
-		<form action="/nuevoasistente?s={{item.key()}}">
-			<button type="submit" class="btn btn-primary"> Apúntate </button>
-		</form>		
+		<button onClick="location.href='/nuevoasistente?s={{ item.key() }}'" class="btn btn-primary"> Apúntate </button>
 		<br><hr><br>
 	{% endfor %}
 <div class="container">
