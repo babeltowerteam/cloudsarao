@@ -44,7 +44,7 @@ $(function(){
         <div class="form-group">
           <label for="lugar">Lugar del evento<span class="obligatorio"> *</span>:</label> <br>
           <select name="lugar" required>
-            <option value="{{ lugar.Key }}" selected> {{ lugar.nombre }}</option>
+            <option value="{{ lugar }}" selected> {{ lugar }}</option>
             {% for item in lugares %}
             {% if lugar.Key != item.Key %}<option value="{{ item.Key }}"> {{ item.nombre }}</option> {% endif %}
             {% endfor %}

@@ -45,13 +45,15 @@ class Handler(webapp2.RequestHandler):
 # RequestHandler se encarga de procesar las peticiones y contruir respuestas.
 class MainPage(Handler):
     def get(self):
-        self.response.write('<h1>SARAOS AÑADIDOS</h1>')
-        for i in Sarao.getSaraos():
-            self.response.write("<p>Nombre: " + i.nombre + "</p>")
-            self.response.write("<p>Max_asistentes: " + str(i.max_asistentes) + "</p>")
-            self.response.write("<p>Fecha: " + str(i.fecha) + "</p>")
-            self.response.write("<p>Lugar: " + str(i.nombre) + "</p>")
-            self.response.write("<br>")
+        s = Sarao.getSaraos()
+        self.render('pagina_principal.html', saraos=s)
+        # self.response.write('<h1>SARAOS AÑADIDOS</h1>')
+        # for i in Sarao.getSaraos():
+        #     self.response.write("<p>Nombre: " + i.nombre + "</p>")
+        #     self.response.write("<p>Max_asistentes: " + str(i.max_asistentes) + "</p>")
+        #     self.response.write("<p>Fecha: " + str(i.fecha) + "</p>")
+        #     self.response.write("<p>Lugar: " + str(i.nombre) + "</p>")
+        #     self.response.write("<br>")
 
     def post(self):
         self.response.write('<html><body><h1>Petición POST</h1></body></html>')
@@ -66,7 +68,6 @@ class MainPage(Handler):
 class NuevoSarao(Handler):
     def post(self):
         key_lugar = cgi.escape(self.request.get('lugar'))
-        self.response.write(key_lugar)
         cgi.escape(self.request.get('hora'))
         # Obtenemos los parámetros enviados por POST
         Sarao(nombre = cgi.escape(self.request.get('nombre')),
@@ -120,6 +121,26 @@ class NuevoAsistente(Handler):
       self.render("insertar_asistente.html")
 
 
+class ModificarSarao(Handler):
+  def post(self):
+      key_lugar = cgi.escape(self.request.get('lugar'))
+      cgi.escape(self.request.get('hora'))
+      # Obtenemos los parámetros enviados por POST
+      # Sarao(nombre = cgi.escape(self.request.get('nombre')),
+      #       fecha = (datetime.datetime.strptime(cgi.escape(self.request.get('fecha')), '%m/%d/%Y')).date(), #Casting a datetime format
+      #       #hora = horas+":"+minutos,
+      #       max_asistentes = int(cgi.escape(self.request.get('max_asistentes'))),
+      #       url = cgi.escape(self.request.get('url')),
+      #       nota = cgi.escape(self.request.get('nota')),
+      #       descripcion = cgi.escape(self.request.get('descripcion')),
+      #       organizacion = cgi.escape(self.request.get('organizacion')),
+      #       lugar = Lugar.getLugar(key_lugar)
+      # )
+      
+
+  def get(self):
+    l = Lugar.getLugares()
+    self.render("modificar_sarao.html")
 
 #==============================================================================
 #==============================================================================
@@ -138,4 +159,5 @@ application = webapp2.WSGIApplication([
     ('/', MainPage),
     ('/nuevosarao', NuevoSarao),
     ('/nuevolugar', NuevoLugar),
+    ('/modificarsarao', ModificarSarao),
 ], debug=True)
