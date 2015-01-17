@@ -48,7 +48,7 @@
 			</div>
 
 			<!-- Colección de links de navegación, forms, y otros contenidos conmutables -->
-			<div class="navbar-header page-scroll"
+			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right">
 					<li class="page-scroll"><a href="http://cloud-sarao.appspot.com/administracion"><img src="img/settings.png"></a></li>
@@ -62,7 +62,7 @@
 	<!-- ---------------------------------------- -->
 
 
-<br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br>
 <p><img src="img/alistate_pinguino.png" align="right">
 
 
@@ -77,7 +77,7 @@
 		</div>
 
 		<form role="form" method="post" >
-          		<input type="text" class="form-control" name="key" id="key" value="{{ item.key() }}" hidden required><br>
+          		<input type="text" class="hidden" name="key" id="key" value="{{ item.key() }}" hidden required><br>
 	       		<button type="submit" class="btn btn-primary">Apuntarse</button>
 		</form>
 		<br><br>
