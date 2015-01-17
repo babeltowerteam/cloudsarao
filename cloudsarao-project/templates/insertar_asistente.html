@@ -9,7 +9,7 @@
     </head>
     <body>
         <h1>{{ sarao.titulo }}</h1>
-        <p>Con fecha de {{ sarao.fecha }} - {{ sarao.hora }} - en {{ sarao.lugar.nombre }}</p>
+        <p>Con fecha de {{ sarao.fecha }} {% if sarao.hora != None %}- {{ sarao.hora }} {% endif %} - en {{ sarao.lugar.nombre }}</p>
         <p>{{ descripcion }}</p>
 
 
