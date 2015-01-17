@@ -73,7 +73,7 @@
 		<label>Fecha del evento:</label> {{ item.fecha }} {% if item.hora != None %} - {{ item.hora }} {% endif %}<br>
 		<label>Plazas disponibles:</label> {{ item.plazas_disponibles }}<br>
 		<label>Lugar del transcurso del evento:</label> {{ item.lugar.nombre }}<br>
-		<a href="{{ item.url }}" > +info </a>
+		{% if item.url != None %}<a href="{{ item.url }}" > +info </a>{% endif %}
 	</div>
 		<form role="form" method="post" style="display:inline">
           		<input type="text" class="hidden" name="key" id="key" value="{{ item.key() }}" hidden required>
