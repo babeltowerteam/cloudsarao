@@ -25,7 +25,7 @@ handlers:
 - url: /mail 
   static_dir: mail
 - url: /administracion/.*
-  script: admin.app
+  script: main.application
   login: admin
 - url: /.*                              # Todas las URL deben ser manejadas se manejarán 
   script: main.application              #   por la aplicación que hay en el módulo 'main'. 
