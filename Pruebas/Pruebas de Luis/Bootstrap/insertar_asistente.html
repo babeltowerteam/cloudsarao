@@ -73,65 +73,72 @@
 <!-- Comienza el formulario -->
 <form role="form" method="post">
 	<div class="container">
+		<!-- Para el texto inicial. -->
 		<br><br><br><br><br>
 		<h1>{{ titulo }}</h1>
 		<h5>Con fecha de {{ fecha }} - {{ hora }} - en {{ lugar }}</h5>
 		<p>{{ descripcion }}</p>
-
 		<p class="obligatorio">*Obligatorio</p>
+
+		<!-- Campo del nombre. -->
 		<div class="form-group">
-			<label for="nombre">Nombre<span class="obligatorio">
-				*</span>:
-			</label> <br> <input type="text" class="form-control" name="nombre"
-			id="nombre" placeholder="Introduzca su nombre."><br>
-
-
-
-			<label for="correo">Correo electrónico<span
-				class="obligatorio"> *</span>:
-			</label><br> <span class="aclaracion">Email para notificaciones
-			relacionadas con el curso exclusivamente</span><br> <input
-			type="text" class="form-control" name="correo" id="correo"
-			placeholder="Introduzca su correo."><br>
-
-			<label for="correo">Colectivo<span
-				class="obligatorio"> *</span>: 
-				<div>
-					<label class="checkbox-inline"> <input type="radio"
-						name="colectivo" id="opcion1" value="alumno"
-						checked> Alumno
-					</label> 
-					<label class="checkbox-inline"> <input type="radio"
-						name="colectivo" id="opcion2" value="PDI">
-						PDI
-					</label>
-					<label class="checkbox-inline"> <input type="radio"
-						name="colectivo" id="opcion3" value="PAS">
-						PAS
-					</label>
-					<label class="checkbox-inline"> <input type="radio"
-						name="colectivo" id="opcion4" value="Otro">
-						Otro
-					</label>
-				</div> <br>
-			</label>
-			<div class="form-group">
-				<label for="procedencia">Procedencia:</label><br> <span
-				class="aclaracion">Alumno: Carrera y curso. PDI:
-				Departamento y Facultad/Escuela. PAS: destino. Otro: estudios o
-				empleo actual.</span><br> <input type="text" class="form-control"
-				name="procedencia" id="procedencia"><br>
-			</div>
-
-			<div class="form-group">
-				<label for="twitter">Cuenta de Twitter:</label><br> <span
-				class="aclaracion">Nombre de la cuenta sin @.</span><br> <input
-				type="text" class="form-control" name="twitter" id="twitter"
-				placeholder="Introduzca su Twitter"><br>
-			</div>
+			<label for="nombre">Nombre<span class="obligatorio"> *</span>:</label> <br>
+			<input type="text" class="form-control" name="nombre" id="nombre" placeholder="Introduzca su nombre." required>
 		</div>
-		<button type="submit" class="btn btn-primary">Enviar</button>
-	</form>
-</body>
 
+		<!-- Campo del correo. -->
+		<div class="form-group">
+			<label for="correo">Correo electrónico<span class="obligatorio"> *</span>:</label><br>
+			<span class="aclaracion">Email para notificaciones relacionadas con el curso exclusivamente</span><br>
+			<input type="email" class="form-control" name="correo" id="correo" placeholder="Introduzca su correo." required>
+		</div>
+
+		<!-- Para la opción de colectivo -->
+		<label for="correo">Colectivo<span
+			class="obligatorio"> *</span>: 
+			<div>
+				<label class="checkbox-inline"> <input type="radio"
+					name="colectivo" id="opcion1" value="alumno"
+					checked> Alumno
+				</label> 
+				<label class="checkbox-inline"> <input type="radio"
+					name="colectivo" id="opcion2" value="PDI">
+					PDI
+				</label>
+				<label class="checkbox-inline"> <input type="radio"
+					name="colectivo" id="opcion3" value="PAS">
+					PAS
+				</label>
+				<label class="checkbox-inline"> <input type="radio"
+					name="colectivo" id="opcion4" value="Otro">
+					Otro
+				</label>
+			</div> <br>
+		</label>
+
+		<!-- Para el campo de la procedencia -->
+		<div class="form-group">
+			<label for="procedencia">Procedencia:</label><br>
+			<span class="aclaracion">Alumno: Carrera y curso. PDI: Departamento y Facultad/Escuela. PAS: destino. Otro: estudios o empleo actual.</span><br>
+			<input type="text" class="form-control" name="procedencia" id="procedencia" placeholder="Introduzca su procedencia">
+		</div>
+
+		<!-- Para el campo de la cuenta de Twitter -->
+		<div class="form-group">
+			<label for="nick_twitter">Cuenta de Twitter:</label><br>
+			<span class="aclaracion">Nombre de la cuenta sin @.</span><br>
+			<input type="text" class="form-control" name="nick_twitter" id="nick_twitter" placeholder="Introduzca su Twitter"><br><br>
+		</div>
+
+		<!-- Campo para el identificador del Sarao -->
+		<div class="form-group">
+			<input type="text" class="form-control" name="id_sarao" id="id_sarao" value="{{ id_sarao }}" hidden required><br><br>
+		</div>
+
+		<!-- Botón de enviar -->
+		<button type="submit" class="btn btn-primary">Enviar</button>
+	</div>
+</form>
+
+</body>
 </html>
