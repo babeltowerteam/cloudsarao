@@ -1,95 +1,143 @@
 <!DOCTYPE html>
 <html>
-    <head>
-			 <meta charset="utf-8">
-<title>Crear nuevo Sarao</title>
-<link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
-<script src="//code.jquery.com/jquery-1.10.2.js"></script>
-<script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
-<link rel="stylesheet" href="/resources/demos/style.css">
-<script>
-$(function(){
-    $('input').filter('.datepick').datepicker();
-});
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<title>Crear nuevo Sarao</title>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+	<script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+	<link rel="stylesheet" href="/resources/demos/style.css">
+	<script>
+	$(function(){
+	    $('input').filter('.datepick').datepicker();
+	});
 
-</script>
-
-        <style type="text/css">
-        .obligatorio {color:red;}
-        .aclaracion {color:blue;}
-        </style>
-    </head>
+	</script>
+	<!-- Bootstrap Core CSS - Uses Bootswatch Flatly Theme: http://bootswatch.com/flatly/ -->
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<!-- Custom CSS -->
+	<link href="css/freelancer.css" rel="stylesheet">
+	<!-- Custom Fonts -->
+	<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet"
+	type="text/css">
+	<link href="http://fonts.googleapis.com/css?family=Montserrat:400,700"
+	rel="stylesheet" type="text/css">
+	<link
+	href="http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic"
+	rel="stylesheet" type="text/css">
+	<style type="text/css">
+		.obligatorio {
+			color: red;
+		}
+		.aclaracion {
+			color: blue;
+			font-weight: lighter;
+			font-style: italic;
+			font-size: small;
+		}
+	</style>
+</head>
     <body>
+	<!-- ---------------------------------------- -->
+	<!-- Barra del de navegación -->
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header page-scroll">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target="#bs-example-navbar-collapse-1">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="http://cloud-sarao.appspot.com/">CloudSarao</a>
+			</div>
+
+			<!-- Colección de links de navegación, forms, y otros contenidos conmutables -->
+			<div class="collapse navbar-collapse"
+				id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav navbar-right">
+					<li class="page-scroll"><a href="http://cloud-sarao.appspot.com/administracion">Saraos</a></li>
+					<li class="page-scroll"><a href="http://cloud-sarao.appspot.com/adminlugares">Lugares</a></li>
+					<li class="page-scroll"><a href="http://cloud-sarao.appspot.com/administracion">Cerrar sesión</a></li>
+				</ul>
+			</div>
+			<!-- /.navbar-collapse -->
+		</div>
+		<!-- /.container-fluid -->
+	</nav>
+	<!-- Fin de barra de navegación. -->
+	<!-- ---------------------------------------- -->
+
+	<br><br><br><br><br><br>
+	<div class="container">
         <h1>Crear nuevo Sarao</h1>
         <p>Introduzca los siguientes campos para la creación del Sarao</p>
 
-			<p class="obligatorio"> *Obligatorio</p>
-
+		<p class="obligatorio"> *Obligatorio</p>
 		<form role="form" method="post">
-			
 			<div class="form-group">
 				<label for="nombre">Nombre<span class="obligatorio"> *</span>:</label> <br>
-				<input type="text" class="form-control" name="nombre" id="nombre"placeholder="Introduzca su nombre." required value="Sarao Prueba"><br><br>
+				<input type="text" class="form-control" name="nombre" id="nombre"placeholder="Introduzca su nombre." required><br><br>
+			</div>
+	        	<div class="form-group">
+          			<label for="fecha">Fecha</label> <span class="obligatorio"> *</span>:</label> <input type="text" class="form-control" class="datepick" name="fecha" required><br>
+        		</div>
+
+        		<div class="form-group">
+          			<label for="hora">Hora:</label> <input type="number" class="form-control" name="hora" id="hora" min="0" max="23">:<input type="number" class="form-control" name="minutos" id="minutos" min="0" max="59"><br>
+				<span class="aclaracion">Formato 24 horas. Por ejemplo, 20:15</span><br><br>
+        		</div>
+
+			<div class="form-group">
+				<label for="lugar">Lugar del evento<span class="obligatorio"> *</span>:</label> <br>
+				<select class="form-control" name="lugar" required>
+					{% for l in lugares %}
+   					<option value="{{ l.key() }}"> {{ l.nombre }} </option>
+					{% endfor %}
+				</select>
 			</div>
 
-        <div class="form-group">
+			<div class="form-group">
+				<label for="max_asistentes">Número máximo de asistentes<span class="obligatorio"> *</span>:</label> <br>
+				<input type="number" class="form-control" name="max_asistentes" id="max_asistentes" placeholder="Introduzca el número máximo de asistentes." min="0" required value="30"><br><br>
+			</div>
 
-          <label for="fecha">Fecha</label> <span class="obligatorio"> *</span>:</label> <input type="text" class="datepick" name="fecha" required><br>
+			<div class="form-group">
+				<label for="url">URL del sarao:</label> <br>
+				<input type="url" class="form-control" name="url" id="url" placeholder="Introduzca la url."><br><br>
+			</div>
 
-        </div>
+			<div class="form-group">
+				<label for="organizacion">Organización:</label><br>
+				<span class="aclaracion">Encargado de la organización del Sarao</span><br>
+				<input type="text" class="form-control" name="organizacion" id="organizacion" placeholder="Introduzca el/los organizadores."><br><br>
+			</div>
 
-        <div class="form-group">
-          <label for="hora">Hora:</label> <input type="number" class="form-control" name="hora" id="hora" min="0" max="23">:<input type="number" class="form-control" name="minutos" id="minutos" min="0" max="59"><br>
-					<span class="aclaracion">Formato 24 horas. Por ejemplo, 20:15</span><br><br>
+			<div class="form-group">
+				<label for="nota">Nota:</label><br>
+				<span class="aclaracion">Aclaración sobre el evento.</span><br>
+				<input type="text" class="form-control" name="nota" id="nota"><br><br>
+			</div>
 
-        </div>
+			<div class="form-group">
+				<label for="">Descripción:</label><br>
+				<span class="aclaracion">Asunto del evento.</span><br>
+				<input type="text" class="form-control" name="descripcion" id="descripcion"><br><br>
+			</div>
 
-				<div class="form-group">
-					<label for="lugar">Lugar del evento<span class="obligatorio"> *</span>:</label> <br>
-					<select name="lugar" required>
-						{% for l in lugares %}
-	   					<option value="{{ l.key() }}"> {{ l.nombre }} </option>
-						{% endfor %}
-					</select>
-				</div>
-
-				<div class="form-group">
-					<label for="max_asistentes">Número máximo de asistentes<span class="obligatorio"> *</span>:</label> <br>
-					<input type="number" class="form-control" name="max_asistentes" id="max_asistentes" placeholder="Introduzca el número máximo de asistentes." min="0" required value="30"><br><br>
-				</div>
-
-				<div class="form-group">
-
-					<label for="url">URL del sarao:</label> <br>
-					<input type="url" class="form-control" name="url" id="url" placeholder="Introduzca la url."><br><br>
-				</div>
-
-				<div class="form-group">
-					<label for="organizacion">Organización:</label><br>
-					<span class="aclaracion">Encargado de la organización del Sarao</span><br>
-					<input type="text" class="form-control" name="organizacion" id="organizacion" placeholder="Introduzca el/los organizadores."><br><br>
-				</div>
-
-				<div class="form-group">
-					<label for="nota">Nota:</label><br>
-					<span class="aclaracion">Aclaración sobre el evento.</span><br>
-					<input type="text" class="form-control" name="nota" id="nota"><br><br>
-				</div>
-
-				<div class="form-group">
-					<label for="">Descripción:</label><br>
-					<span class="aclaracion">Asunto del evento.</span><br>
-					<input type="text" class="form-control" name="descripcion" id="descripcion"><br><br>
-				</div>
-
-        <div class="form-group">
-          <label for="fecha_limite">Fecha límite de inscripción:</label>
-				      <input type="text" class="datepick" name="fecha_limite" required value="01/02/2015"></p></p>
+		<div class="form-group">
+  		<label for="fecha_limite">Fecha límite de inscripción:</label>
+	      	<input type="text" class="form-control" class="datepick" name="fecha_limite" required></p></p>
         </div>
 
         <button type="submit" class="btn btn-primary">Enviar</button>
 			</form>
 
-
+<br><br>
     </body>
 </html>
