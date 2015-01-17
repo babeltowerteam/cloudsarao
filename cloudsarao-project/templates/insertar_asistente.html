@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="">
 	<meta name="author" content="">
-        <title>{{ titulo }}</title>
+        <title>Apuntarse al Sarao</title>
 
 	<!-- Bootstrap Core CSS - Uses Bootswatch Flatly Theme: http://bootswatch.com/flatly/ -->
 	<link href="css/bootstrap.min.css" rel="stylesheet">
@@ -64,7 +64,7 @@
 		<br><br><br><br><br><br>
 		<div class="container">
 		<h1>{{ sarao.nombre }}</h1>
-		<p>Registrate en el sarao con fecha de {{ sarao.fecha }} {% if sarao.hora != None %}a las {{ sarao.hora }} {% endif %} {% if sarao.lugar.nombre != None %}en {{ sarao.lugar.nombre }} {% endif %}.</p>
+		<p>Registrate en el sarao con fecha de {{ sarao.fecha }} {% if sarao.hora != None %}a las {{ sarao.hora }} {% endif %} en {{ sarao.lugar.nombre }}.</p>
 		<p>{% if sarao.descripcion != None %}{{ sarao.descripcion }} {% endif %}{% if sarao.url != None %}<a href="{{ sarao.url }}" > +info </a> {% endif %}</p>
 
 
