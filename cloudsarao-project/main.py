@@ -20,7 +20,6 @@ IMAGEN = '<img class="centrado" src="/img/header.jpg" alt="header">'
 CSS = """<head><link rel="stylesheet" type="text/css" href="css/style.css">""" + IMAGEN + """</head>"""
 
 
-
 template_dir = os.path.join(os.path.dirname(__file__), 'templates')
 jinja_env = jinja2.Environment(loader = jinja2.FileSystemLoader(template_dir),
                                autoescape = True)
@@ -30,6 +29,12 @@ def render_str(template, **params):
     return t.render(params)
 
 
+class Handler(webapp2.RequestHandler):
+    def render(self, template, **kw):
+        self.response.out.write(render_str(template, **kw))
+
+    def write(self, *a, **kw):
+        self.response.out.write(*a, **kw)
 
 #==============================================================================
 #==============================================================================
@@ -37,56 +42,72 @@ def render_str(template, **params):
 #==============================================================================
 #==============================================================================
 # RequestHandler se encarga de procesar las peticiones y contruir respuestas.
-class MainPage(webapp2.RequestHandler):
+class MainPage(Handler):
     def get(self):
-        self.response.write('<h1>SARAOS AÑADIDOS</h1>')
-        for i in Sarao.getSaraos():
-            self.response.write("<p>Nombre: " + i.nombre + "</p>")
-            self.response.write("<p>Max_asistentes: " + str(i.max_asistentes) + "</p>")
-            self.response.write("<p>Fecha: " + str(i.fecha) + "</p>")
-            self.response.write("<p>Lugar: " + str(i.lugar) + "</p>")
-            self.response.write("<br>")
+        s = Sarao.getSaraosActivos()
+        self.render('pagina_principal.html', saraos=s)
 
     def post(self):
-        self.response.write('<html><body><h1>Petición POST</h1></body></html>')
+        pass
 
+#==============================================================================
+#==============================================================================
+# # Controlador de solicitudes 'Main Administracion'.
+#==============================================================================
+#==============================================================================
 
+class Administracion(Handler):
+  def get(self):
+      user = users.get_current_user()
+      if not users.is_current_user_admin():
+          self.redirect(users.create_login_url(self.request.uri))
+      else:
+          s = Sarao.getSaraos()
+          self.render('pagina_administracion.html', saraos=s)
 
 #==============================================================================
 #==============================================================================
 # # Controlador de solicitudes 'Saraos'.
 #==============================================================================
 #==============================================================================
-class NuevoSarao(webapp2.RequestHandler):
+class NuevoSarao(Handler):
     def post(self):
+        key_lugar = cgi.escape(self.request.get('lugar'))
+        ma = int(cgi.escape(self.request.get('max_asistentes')))
+        h = str(cgi.escape(self.request.get('hora')))
+        m = str(cgi.escape(self.request.get('minutos')))
+
         # Obtenemos los parámetros enviados por POST
-        Sarao(nombre = cgi.escape(self.request.get('nombre')),
+        s = Sarao(nombre = cgi.escape(self.request.get('nombre')),
               fecha = (datetime.datetime.strptime(cgi.escape(self.request.get('fecha')), '%m/%d/%Y')).date(), #Casting a datetime format
-              #hora = cgi.escape(self.request.get('hora')),
-              max_asistentes = int(cgi.escape(self.request.get('max_asistentes'))),
+              max_asistentes = ma,
               url = cgi.escape(self.request.get('url')),
               nota = cgi.escape(self.request.get('nota')),
-              descripcion = cgi.escape(self.request.get('descripcion'))
-              #organizacion = cgi.escape(self.request.get('organizacion'))
-              #lugar = cgi.escape(self.request.get('lugar'))
-        ).put()
+              descripcion = cgi.escape(self.request.get('descripcion')),
+              organizacion = cgi.escape(self.request.get('organizacion')),
+              lugar = Lugar.getLugar(key_lugar),
+              num_asistentes = 0,
+              plazas_disponibles = ma,
+              limite_inscripcion = (datetime.datetime.strptime(cgi.escape(self.request.get('fecha_limite')), '%m/%d/%Y')).date(), #Casting a datetime format
+        )
+
+        if h != "" and m != "":
+          s.hora = (datetime.datetime.strptime(h+":"+m, "%H:%M")).time()
+
+        s.put()
         self.response.write("Añadido sarao.")
+      
 
     def get(self):
-        self.render("insertar_sarao.html")
-
-    def render(self, template, **kw):
-        self.response.out.write(render_str(template, **kw))
-
-    def write(self, *a, **kw):
-        self.response.out.write(*a, **kw)
+        l = Lugar.getLugares()
+        self.render("insertar_sarao.html", lugares=l)
 
     def realizaAlgunaOperacionGuay(self, numero):
         return numero*numero/2
 
 
 
-class NuevoLugar(webapp2.RequestHandler):
+class NuevoLugar(Handler):
     def post(self):
         Lugar(nombre = cgi.escape(self.request.get('nombre')),
               calle = cgi.escape(self.request.get('calle')),
@@ -97,11 +118,8 @@ class NuevoLugar(webapp2.RequestHandler):
     def get(self):
         self.render("insertar_lugar.html")
 
-    def render(self, template, **kw):
-        self.response.out.write(render_str(template, **kw))
 
-
-class NuevoAsistente(webapp2.RequestHandler):
+class NuevoAsistente(Handler):
   def post(self):
       key_sarao = cgi.escape(self.request.get('id_sarao'))
       a = Asistente(
@@ -111,14 +129,44 @@ class NuevoAsistente(webapp2.RequestHandler):
           colectivo = cgi.escape(self.request.get('colectivo')),
           procedencia = cgi.escape(self.request.get('procedencia'))
       )
-      a.asistencia_sarao.add(key_sarao)
+      asis = Asistente.getAsistente(a.correo)
+      # No existe
+      if asis==None:
+          a.asistencia_saraos.append(db.Key(key_sarao))
+          a.put()
+      # Ya existía
+      else:
+          asis.asistencia_saraos.append(db.Key(key_sarao))
+          asis.put()
+      sarao = Sarao.getSarao(key_sarao)
+      sarao.num_asistentes += 1
+      sarao.plazas_disponibles -= 1
+      sarao.put()
       self.response.write("Añadido asistente.")
 
   def get(self):
-      self.render("insertar_asistente.html")
+      key_sarao = self.request.get('s')
+      self.render("insertar_asistente.html",sarao=Sarao.getSarao(key_sarao))
 
-  def render(self, template, **kw):
-      self.response.out.write(render_str(template, **kw))
+
+class ModificarSarao(Handler):
+  def post(self):
+      key_lugar = cgi.escape(self.request.get('lugar'))
+      cgi.escape(self.request.get('hora'))
+      # Obtenemos los parámetros enviados por POST
+      # Sarao(nombre = cgi.escape(self.request.get('nombre')),
+      #       fecha = (datetime.datetime.strptime(cgi.escape(self.request.get('fecha')), '%m/%d/%Y')).date(), #Casting a datetime format
+      #       #hora = horas+":"+minutos,
+      #       max_asistentes = int(cgi.escape(self.request.get('max_asistentes'))),
+      #       url = cgi.escape(self.request.get('url')),
+      #       nota = cgi.escape(self.request.get('nota')),
+      #       descripcion = cgi.escape(self.request.get('descripcion')),
+      #       organizacion = cgi.escape(self.request.get('organizacion')),
+      #       lugar = Lugar.getLugar(key_lugar)
+      # )
+  def get(self):
+    l = Lugar.getLugares()
+    self.render("modificar_sarao.html")
 
 
 #==============================================================================
@@ -136,6 +184,9 @@ class NuevoAsistente(webapp2.RequestHandler):
 #   navegador.
 application = webapp2.WSGIApplication([
     ('/', MainPage),
-    ('/nuevosarao', NuevoSarao),
-    ('/nuevolugar', NuevoLugar),
+    ('/nuevoasistente', NuevoAsistente),
+    ('/administracion', Administracion),
+    ('/administracion/nuevosarao', NuevoSarao),
+    ('/administracion/nuevolugar', NuevoLugar),
+    ('/administracion/modificarsarao', ModificarSarao),
 ], debug=True)

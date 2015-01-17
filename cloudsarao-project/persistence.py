@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from google.appengine.ext import db
+import datetime
 
 #==============================================================================
 #==============================================================================
@@ -16,6 +17,10 @@ class Lugar(db.Model):
     @classmethod
     def getLugares(self):
         return self.all()
+
+    @classmethod
+    def getLugar(self, key):
+        return Lugar.gql("WHERE __key__ = :n", n=db.Key(key)).get()
 
 
 #==============================================================================
@@ -36,24 +41,36 @@ class Sarao(db.Model):
   # Atributos del sarao.
     nombre         = db.StringProperty(required=True)
     fecha          = db.DateProperty(required=True)
-    hora           = db.DateProperty()
+    hora           = db.TimeProperty()
     max_asistentes = db.IntegerProperty(required=True)
-    num_asistentes = db.IntegerProperty()
-    url            = db.StringProperty(required=True)
+    url            = db.StringProperty()
     nota           = db.StringProperty()
     descripcion    = db.TextProperty()
     organizacion   = db.StringProperty()
+    num_asistentes = db.IntegerProperty()
+    plazas_disponibles = db.IntegerProperty()
     limite_inscripcion = db.DateProperty()
     # Relación uno-a-muchos
     lugar          = db.ReferenceProperty(Lugar, collection_name='lugares')
 
     @property
     def asistentes(self):
-        return Asistente.gql("WHERE asistencia_saraos = :1", self.key())
+        return Sarao.gql("WHERE asistencia_saraos = :1", self.key()).run()
+
+    @classmethod
+    def getSaraosActivos(self):
+        fecha_actual = datetime.datetime.now()
+        return Sarao.gql("WHERE limite_inscripcion > :1", fecha_actual).run()
 
     @classmethod
     def getSaraos(self):
         return self.all()
+
+    @classmethod
+    def getSarao(self, key):
+        return Sarao.gql("WHERE __key__ = :n", n=db.Key(key)).get()
+
+
 
 
 
@@ -70,3 +87,16 @@ class Asistente(db.Model):
     procedencia = db.StringProperty()
     #Relacion muchos-muchos de saraos y asistentes
     asistencia_saraos = db.ListProperty(db.Key)
+
+    @classmethod
+    def getAsistente(self, correo):
+        return Asistente.gql("WHERE correo = :c", c=correo).get()
+
+
+
+
+
+
+
+
+

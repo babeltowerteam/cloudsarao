@@ -1,81 +1,124 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>{{ titulo }}</title>
-        <style type="text/css">
-        .obligatorio {color:red;}
-        .aclaracion {color:blue;}
-        </style>
-    </head>
-    <body>
-        <h1>{{ titulo }}</h1>
-        <p>Con fecha de {{ fecha }} - {{ hora }} - en {{ lugar }}</p>
-        <p>{{ descripcion }}</p>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="">
+        <title>Apuntarse al Sarao</title>
+
+	<!-- Bootstrap Core CSS - Uses Bootswatch Flatly Theme: http://bootswatch.com/flatly/ -->
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+
+	<!-- Custom CSS -->
+	<link href="css/freelancer.css" rel="stylesheet">
+
+	<!-- Custom Fonts -->
+	<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+	<link href="http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+
+	<style type="text/css">
+	.obligatorio {
+		color: red;
+	}
+
+	.aclaracion {
+		color: blue;
+		font-weight: lighter;
+		font-style: italic;
+		font-size: small;
+	}
+	</style>
+</head>
+<body>
+	<!-- ---------------------------------------- -->
+	<!-- Barra del de navegación -->
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header page-scroll">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target="#bs-example-navbar-collapse-1">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#page-top">CloudSarao</a>
+			</div>
+
+			<!-- Colección de links de navegación, forms, y otros contenidos conmutables -->
+			<div class="collapse navbar-collapse"
+				id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav navbar-right">
+					<li class="page-scroll"><a href="http://cloud-sarao.appspot.com/administracion"><img src="img/settings.png"></a></li>
+				</ul>
+			</div>
+			<!-- /.navbar-collapse -->
+		</div>
+		<!-- /.container-fluid -->
+	</nav>
+	<!-- Fin de barra de navegación. -->
+	<!-- ---------------------------------------- -->
+		<br><br><br><br><br><br>
+		<div class="container">
+		<h1>{{ sarao.nombre }}</h1>
+		<p>Registrate en el sarao con fecha de {{ sarao.fecha }} {% if sarao.hora != None %}a las {{ sarao.hora }} {% endif %} en {{ sarao.lugar.nombre }}.</p>
+		<p>{% if sarao.descripcion != None %}{{ sarao.descripcion }} {% endif %}{% if sarao.url != None %}<a href="{{ sarao.url }}" > +info </a> {% endif %}</p>
 
 
-			<p class="obligatorio"> *Obligatorio</p>
+		<p class="obligatorio"> *Obligatorio</p>
 
-			<form role="form" method="post">
+		<form role="form" method="post">
 
-				<div class="form-group">
-					<label for="nombre">Nombre<span class="obligatorio"> *</span>:</label> <br>
-					<input type="text" class="form-control" name="nombre" id="nombre" placeholder="Introduzca su nombre." required><br><br>
-				</div>
+		<div class="form-group">
+			<label for="nombre">Nombre<span class="obligatorio"> *</span>:</label> <br>
+			<input type="text" class="form-control" name="nombre" id="nombre" placeholder="Introduzca su nombre." required><br><br>
+		</div>
 
-				<div class="form-group">
-					<label for="correo">Correo electrónico<span class="obligatorio"> *</span>:</label><br>
-					<span class="aclaracion">Email para notificaciones relacionadas con el curso exclusivamente</span><br>
-					<input type="email" class="form-control" name="correo" id="correo" placeholder="Introduzca su correo." required><br><br>
-				</div>
+		<div class="form-group">
+			<label for="correo">Correo electrónico<span class="obligatorio"> *</span>:</label><br>
+			<span class="aclaracion">Email para notificaciones relacionadas con el curso exclusivamente</span><br>
+			<input type="email" class="form-control" name="correo" id="correo" placeholder="Introduzca su correo." required><br><br>
+		</div>
 
 
-				<div class="radio">
-					Colectivo<span class="obligatorio"> *</span><br>
-						<label>
-							<input type="radio" name="colectivo" id="opcion1" value="alumno" checked>
-								Alumno
-						</label>
-    			</div>
-				<div class="radio">
-						<label>
-							<input type="radio" name="colectivo" id="opcion2" value="PDI" checked>
-								PDI
-						</label>
-    			</div>
-				<div class="radio">
-						<label>
-							<input type="radio" name="colectivo" id="opcion3" value="PAS" checked>
-								PAS
-						</label>
-    			</div>
-				<div class="radio">
-						<label>
-							<input type="radio" name="colectivo" id="opcion4" value="Otro" checked>
-								Otro
-						</label>
-    			</div>
+			<div class="radio">
+			Colectivo<span class="obligatorio"> *</span><br>
+				<label><input type="radio" name="colectivo" id="opcion1" value="alumno" checked> Alumno</label>
+			</div>
+			<div class="radio">
+				<label><input type="radio" name="colectivo" id="opcion2" value="PDI" checked> PDI</label>
+			</div>
+			<div class="radio">
+				<label><input type="radio" name="colectivo" id="opcion3" value="PAS" checked>PAS</label>
+			</div>
+			<div class="radio">
+				<label><input type="radio" name="colectivo" id="opcion4" value="otro" checked>Otro</label>
+			</div>
 
-				<br>
+			<br>
 
-				<div class="form-group">
-					<label for="procedencia">Procedencia:</label><br>
-					<span class="aclaracion">Alumno: Carrera y curso. PDI: Departamento y Facultad/Escuela. PAS: destino. Otro: estudios o empleo actual.</span><br>
-					<input type="text" class="form-control" name="procedencia" id="procedencia"><br><br>
-				</div>
+			<div class="form-group">
+				<label for="procedencia">Procedencia:</label><br>
+				<span class="aclaracion">Alumno: Carrera y curso. PDI: Departamento y Facultad/Escuela. PAS: destino. Otro: estudios o empleo actual.</span><br>
+				<input type="text" class="form-control" name="procedencia" id="procedencia"><br><br>
+			</div>
 
-				<div class="form-group">
-					<label for="nick_twitter">Cuenta de Twitter:</label><br>
-					<span class="aclaracion">Nombre de la cuenta sin @.</span><br>
-					<input type="text" class="form-control" name="nick_twitter" id="nick_twitter" placeholder="Introduzca su Twitter"><br><br>
-				</div>
+			<div class="form-group">
+				<label for="nick_twitter">Cuenta de Twitter:</label><br>
+				<span class="aclaracion">Nombre de la cuenta sin @.</span><br>
+				<input type="text" class="form-control" name="nick_twitter" id="nick_twitter" placeholder="Introduzca su Twitter"><br><br>
+			</div>
 
-        <div class="form-group">
-          <input type="text" class="form-control" name="id_sarao" id="id_sarao" value="{{ id_sarao }}" hidden required><br><br>
-        </div>
+			<div class="form-group">
+			  <input type="text" class="hidden" name="id_sarao" id="id_sarao" value="{{ sarao.key() }}" hidden required>
+			</div>
 
-        <button type="submit" class="btn btn-primary">Enviar</button>
-
-			</form>
-
+			<button type="submit" class="btn btn-primary">Enviar</button>
+			<br><br><br>
+		</form>
+	</div>
     </body>
 </html>

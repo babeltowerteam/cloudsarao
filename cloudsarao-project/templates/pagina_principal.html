@@ -6,13 +6,13 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="">
 	<meta name="author" content="">
-  	<title>Nuevo lugar</title>
+	<title>CloudSarao</title>
 	<!-- Bootstrap Core CSS - Uses Bootswatch Flatly Theme: http://bootswatch.com/flatly/ -->
-	<link href="../css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<!-- Custom CSS -->
-	<link href="../css/freelancer.css" rel="stylesheet">
+	<link href="css/freelancer.css" rel="stylesheet">
 	<!-- Custom Fonts -->
-	<link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet"
+	<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet"
 	type="text/css">
 	<link href="http://fonts.googleapis.com/css?family=Montserrat:400,700"
 	rel="stylesheet" type="text/css">
@@ -51,9 +51,7 @@
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right">
-					<li class="page-scroll"><a href="http://cloud-sarao.appspot.com/administracion">Saraos</a></li>
-					<li class="page-scroll"><a href="http://cloud-sarao.appspot.com/adminlugares">Lugares</a></li>
-					<li class="page-scroll"><a href="http://cloud-sarao.appspot.com/administracion">Cerrar sesión</a></li>
+					<li class="page-scroll"><a href="http://cloud-sarao.appspot.com/administracion"><img src="img/settings.png"></a></li>
 				</ul>
 			</div>
 			<!-- /.navbar-collapse -->
@@ -64,34 +62,21 @@
 	<!-- ---------------------------------------- -->
 
 
-	<br><br><br><br><br><br>
-	<div class="container">
-		  <h1>Crear un nuevo lugar</h1>
-		  <p>Introduzca los siguientes campos para la creación de un nuevo lugar</p>
-
-		  <p class="obligatorio"> *Obligatorio</p>
-
-		  <form role="form" method="post">
-
-		    <div class="form-group">
-		      <label for="nombre">Nombre del lugar<span class="obligatorio"> *</span>:</label> <br>
-		      <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre" required><br><br>
-		    </div>
-
-
-		    <div class="form-group">
-		      <label for="calle">Calle<span class="obligatorio"> *</span>:</label> <br>
-		      <input type="text" class="form-control" name="calle" id="calle" placeholder="Nombre de la calle" required><br><br>
-		    </div>
-
-		    <div class="form-group">
-		      <label for="cod_postal">Código postal<span class="obligatorio"> *</span>:</label> <br>
-		      <input type="text" class="form-control" name="cod_postal" id="cod_postal" placeholder="Código postal" required><br><br>
-		    </div>
-
-		  <button type="submit" class="btn btn-primary">Enviar</button>
-		</form>
-	</div>
-
+<br><br><br><br><br><br>
+<div class="container">
+	<img src="img/alistate_pinguino.png" align="right">
+	{% for item in saraos %}
+		<div class="sarao">
+			<h1> {{ item.nombre }} </h1><br>
+			<label>Fecha del evento:</label> {{ item.fecha }} {% if item.hora != None %} - {{ item.hora }} {% endif %}<br>
+			<label>Plazas disponibles:</label> {{ item.plazas_disponibles }}<br>
+			<label>Lugar del transcurso del evento:</label> {{ item.lugar.nombre }}<br>
+			<a href="{{ item.url }}" > +info </a>
+		</div>
+		<button onClick="location.href='/nuevoasistente?s={{ item.key() }}'" class="btn btn-primary"> Apúntate </button>
+		<br><hr class="alert-success">
+	{% endfor %}
+<div class="container">
+<br><br>
 </body>
 </html>
