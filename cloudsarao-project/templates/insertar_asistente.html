@@ -15,7 +15,7 @@
 
 			<p class="obligatorio"> *Obligatorio</p>
 
-			<form role="form" method="post" action="nuevoasistente">
+			<form role="form" method="post">
 
 				<div class="form-group">
 					<label for="nombre">Nombre<span class="obligatorio"> *</span>:</label> <br>
@@ -50,7 +50,7 @@
     			</div>
 				<div class="radio">
 						<label>
-							<input type="radio" name="colectivo" id="opcion4" value="Otro" checked>
+							<input type="radio" name="colectivo" id="opcion4" value="otro" checked>
 								Otro
 						</label>
     			</div>
@@ -70,7 +70,7 @@
 				</div>
 
         <div class="form-group">
-          <input type="text" class="form-control" name="id_sarao" id="id_sarao" value="{{ sarao.id_sarao }}" hidden required><br><br>
+          <input type="text" class="form-control" name="id_sarao" id="id_sarao" value="{{ sarao.key() }}" hidden required><br><br>
         </div>
 
         <button type="submit" class="btn btn-primary">Enviar</button>

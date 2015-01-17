@@ -47,17 +47,9 @@ class MainPage(Handler):
     def get(self):
         s = Sarao.getSaraos()
         self.render('pagina_principal.html', saraos=s)
-        # self.response.write('<h1>SARAOS AÑADIDOS</h1>')
-        # for i in Sarao.getSaraos():
-        #     self.response.write("<p>Nombre: " + i.nombre + "</p>")
-        #     self.response.write("<p>Max_asistentes: " + str(i.max_asistentes) + "</p>")
-        #     self.response.write("<p>Fecha: " + str(i.fecha) + "</p>")
-        #     self.response.write("<p>Lugar: " + str(i.nombre) + "</p>")
-        #     self.response.write("<br>")
 
     def post(self):
-        key_sarao = cgi.escape(self.request.get('key'))
-        self.render('insertar_asistente.html', sarao = Sarao.getSarao(key_sarao))
+        pass
 
 
 
@@ -82,7 +74,6 @@ class NuevoSarao(Handler):
               lugar = Lugar.getLugar(key_lugar)
         ).put()
         self.response.write("Añadido sarao.")
-
 
     def get(self):
         l = Lugar.getLugares()
@@ -115,11 +106,13 @@ class NuevoAsistente(Handler):
           colectivo = cgi.escape(self.request.get('colectivo')),
           procedencia = cgi.escape(self.request.get('procedencia'))
       )
-      a.asistencia_sarao.add(key_sarao)
+      a.asistencia_saraos.append(db.Key(key_sarao))
+      a.put()
       self.response.write("Añadido asistente.")
 
   def get(self):
-      self.render("insertar_asistente.html")
+      key_sarao = self.request.get('s')
+      self.render("insertar_asistente.html",sarao=Sarao.getSarao(key_sarao))
 
 
 class ModificarSarao(Handler):
@@ -137,8 +130,6 @@ class ModificarSarao(Handler):
       #       organizacion = cgi.escape(self.request.get('organizacion')),
       #       lugar = Lugar.getLugar(key_lugar)
       # )
-      
-
   def get(self):
     l = Lugar.getLugares()
     self.render("modificar_sarao.html")

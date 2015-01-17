@@ -42,18 +42,18 @@ class Sarao(db.Model):
     fecha          = db.DateProperty(required=True)
     hora           = db.DateProperty()
     max_asistentes = db.IntegerProperty(required=True)
-    num_asistentes = db.IntegerProperty()
     url            = db.StringProperty()
     nota           = db.StringProperty()
     descripcion    = db.TextProperty()
     organizacion   = db.StringProperty()
     limite_inscripcion = db.DateProperty()
+    plazas_disponibles = db.IntegerProperty()
     # Relación uno-a-muchos
     lugar          = db.ReferenceProperty(Lugar, collection_name='lugares')
 
     @property
     def asistentes(self):
-        return Asistente.gql("WHERE asistencia_saraos = :1", self.key())
+        return Asistente.gql("WHERE asistencia_saraos = :1", self.key()).run()
 
     @classmethod
     def getSaraos(self):
