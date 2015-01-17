@@ -51,7 +51,7 @@
 		<div class="collapse navbar-collapse"
 		id="bs-example-navbar-collapse-1">
 		<ul class="nav navbar-nav navbar-right">
-			<li class="page-scroll"><a href="http://cloud-sarao.appspot.com/adminsaraos">Saraos</a></li>
+			<li class="page-scroll"><a href="http://cloud-sarao.appspot.com/administracion">Saraos</a></li>
 			<li class="page-scroll"><a href="http://cloud-sarao.appspot.com/adminlugares">Lugares</a></li>
 			<li class="page-scroll"><a href="http://cloud-sarao.appspot.com/administracion">Cerrar sesión</a></li>
 		</ul>
@@ -67,16 +67,15 @@
 <div class="container">
 	<h1>CloudSarao</h1>
 	<p>Administración de los saraos existentes:</p>
-	<br><br>
 
 	{% for item in saraos %}
-		<div class="sarao">
-			<h1> {{ item.nombre }} </h1><br>
-			<div class="fecha_hora">Fecha del evento: {{ item.fecha }} - {{ item.hora }}</div><br>
-			<div class="plazas_libres">Plazas disponibles: {{ item.plazas_libres }}</div><br>
-			<div class="nombre_lugar">Lugar del transcurso del evento:{{ item.lugar.nombre }}</div><br>
-			<a href="{{ item.url }}" > +info </a>
-		</div>
+	<div class="sarao">
+		<h1> {{ item.nombre }} </h1><br>
+		<label>Fecha del evento:</label> {{ item.fecha }} {% if item.hora != None %} - {{ item.hora }} {% endif %}<br>
+		<label>Plazas disponibles:</label> {{ item.plazas_disponibles }}<br>
+		<label>Lugar del transcurso del evento:</label> {{ item.lugar.nombre }}<br>
+		<a href="{{ item.url }}" > +info </a>
+	</div>
 		<form role="form" method="post" style="display:inline">
           		<input type="text" class="hidden" name="key" id="key" value="{{ item.key() }}" hidden required>
           		<input type="text" class="hidden" name="metodo" value="modificar" hidden required>
@@ -87,7 +86,7 @@
           		<input type="text" class="hidden" name="metodo" value="eliminar" hidden required>
 	       		<button type="submit" class="btn btn-primary">Eliminar</button>
 		</form>
-		<br><br>
+		<br><hr class="alert-success">
 	{% endfor %}
 </div>
 </body>
