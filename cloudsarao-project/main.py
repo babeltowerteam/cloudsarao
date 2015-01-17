@@ -74,9 +74,8 @@ class NuevoSarao(Handler):
         m = str(cgi.escape(self.request.get('minutos')))
 
         # Obtenemos los parámetros enviados por POST
-        Sarao(nombre = cgi.escape(self.request.get('nombre')),
+        s = Sarao(nombre = cgi.escape(self.request.get('nombre')),
               fecha = (datetime.datetime.strptime(cgi.escape(self.request.get('fecha')), '%m/%d/%Y')).date(), #Casting a datetime format
-              hora = (datetime.datetime.strptime(h+":"+m, "%H:%M")).time(),
               max_asistentes = ma,
               url = cgi.escape(self.request.get('url')),
               nota = cgi.escape(self.request.get('nota')),
@@ -86,8 +85,14 @@ class NuevoSarao(Handler):
               num_asistentes = 0,
               plazas_disponibles = ma,
               limite_inscripcion = (datetime.datetime.strptime(cgi.escape(self.request.get('fecha_limite')), '%m/%d/%Y')).date(), #Casting a datetime format
-        ).put()
+        )
+
+        if h != "" and m != "":
+          s.hora = (datetime.datetime.strptime(h+":"+m, "%H:%M")).time()
+
+        s.put()
         self.response.write("Añadido sarao.")
+      
 
     def get(self):
         l = Lugar.getLugares()
