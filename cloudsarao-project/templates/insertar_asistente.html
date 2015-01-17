@@ -64,8 +64,8 @@
 		<br><br><br><br><br><br>
 		<div class="container">
 		<h1>{{ sarao.nombre }}</h1>
-		<p>Con fecha de {{ sarao.fecha }} {% if sarao.hora != None %}- {{ sarao.hora }} {% endif %} - en {{ sarao.lugar.nombre }}</p>
-		<p>{{ sarao.descripcion }}</p>
+		<p>Registrate en el sarao con fecha de {{ sarao.fecha }} {% if sarao.hora != None %}a las {{ sarao.hora }} {% endif %} {% if sarao.lugar.nombre != None %}en {{ sarao.lugar.nombre }} {% endif %}.</p>
+		<p>{% if sarao.descripcion != None %}{{ sarao.descripcion }} {% endif %}{% if sarao.url != None %}<a href="{{ sarao.url }}" > +info </a> {% endif %}</p>
 
 
 		<p class="obligatorio"> *Obligatorio</p>
