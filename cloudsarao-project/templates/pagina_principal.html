@@ -66,7 +66,6 @@
 <div class="container">
 	<img src="img/alistate_pinguino.png" align="right">
 	{% for item in saraos %}
-
 		<div class="sarao">
 			<h1> {{ item.nombre }} </h1><br>
 			<label>Fecha del evento:</label> {{ item.fecha }} {% if item.hora != None %} - {{ item.hora }} {% endif %}<br>
@@ -75,8 +74,9 @@
 			<a href="{{ item.url }}" > +info </a>
 		</div>
 		<button onClick="location.href='/nuevoasistente?s={{ item.key() }}'" class="btn btn-primary"> Apúntate </button>
-		<br><hr class="alert-success"><br>
+		<br><hr class="alert-success">
 	{% endfor %}
 <div class="container">
+<br><br>
 </body>
 </html>
