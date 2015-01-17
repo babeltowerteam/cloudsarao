@@ -65,13 +65,14 @@
 
 <br><br><br><br><br><br>
 <div class="container">
-	<p>Administración de los lugares existentes:</p>
+	<p>Administración de los lugares existentes ó
+		<button onClick="location.href='/nuevolugar'" class="btn btn-primary"> Cree nuevo lugar </button> :</p>
 
 	{% for item in lugares %}
 		<div class="lugar">
 			<h1> {{ item.nombre }} </h1><br>
-			<label>Calle: {{ item.calle }}</label></div><br>
-			<label>Código postal: {{ item.cod_postal }}</label></div><br>
+			<label>Calle: {{ item.calle }}</label><br>
+			<label>Código postal: {{ item.cod_postal }}</label><br>
 		</div>
 		<form role="form" method="post" style="display:inline">
           		<input type="text" class="hidden" name="key" id="key" value="{{ item.key() }}" hidden required>
