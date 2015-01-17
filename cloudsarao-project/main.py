@@ -70,12 +70,13 @@ class NuevoSarao(Handler):
     def post(self):
         key_lugar = cgi.escape(self.request.get('lugar'))
         ma = int(cgi.escape(self.request.get('max_asistentes')))
-        cgi.escape(self.request.get('hora'))
+        h = str(cgi.escape(self.request.get('hora')))
+        m = str(cgi.escape(self.request.get('minutos')))
 
         # Obtenemos los parámetros enviados por POST
         Sarao(nombre = cgi.escape(self.request.get('nombre')),
               fecha = (datetime.datetime.strptime(cgi.escape(self.request.get('fecha')), '%m/%d/%Y')).date(), #Casting a datetime format
-              #hora = horas+":"+minutos,
+              hora = datetime.datetime.strptime(h+":"+m, "%H:%M"),
               max_asistentes = ma,
               url = cgi.escape(self.request.get('url')),
               nota = cgi.escape(self.request.get('nota')),
