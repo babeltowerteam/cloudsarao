@@ -20,7 +20,6 @@ IMAGEN = '<img class="centrado" src="/img/header.jpg" alt="header">'
 CSS = """<head><link rel="stylesheet" type="text/css" href="css/style.css">""" + IMAGEN + """</head>"""
 
 
-
 template_dir = os.path.join(os.path.dirname(__file__), 'templates')
 jinja_env = jinja2.Environment(loader = jinja2.FileSystemLoader(template_dir),
                                autoescape = True)
@@ -70,19 +69,21 @@ class Administracion(Handler):
 class NuevoSarao(Handler):
     def post(self):
         key_lugar = cgi.escape(self.request.get('lugar'))
+        ma = int(cgi.escape(self.request.get('max_asistentes')))
         cgi.escape(self.request.get('hora'))
+
         # Obtenemos los parámetros enviados por POST
         Sarao(nombre = cgi.escape(self.request.get('nombre')),
               fecha = (datetime.datetime.strptime(cgi.escape(self.request.get('fecha')), '%m/%d/%Y')).date(), #Casting a datetime format
               #hora = horas+":"+minutos,
-              max_asistentes = int(cgi.escape(self.request.get('max_asistentes'))),
+              max_asistentes = ma,
               url = cgi.escape(self.request.get('url')),
               nota = cgi.escape(self.request.get('nota')),
               descripcion = cgi.escape(self.request.get('descripcion')),
               organizacion = cgi.escape(self.request.get('organizacion')),
               lugar = Lugar.getLugar(key_lugar),
-              num_asistentes = int(0),
-              plazas_disponibles = int(cgi.escape(self.request.get('max_asistentes')))
+              num_asistentes = 0,
+              plazas_disponibles = ma
         ).put()
         self.response.write("Añadido sarao.")
 
