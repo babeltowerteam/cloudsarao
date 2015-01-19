@@ -14,10 +14,6 @@ import webapp2
 import cgi
 import jinja2
 import os
-import logging # Para DEBUG
-
-IMAGEN = '<img class="centrado" src="/img/header.jpg" alt="header">'
-CSS = """<head><link rel="stylesheet" type="text/css" href="css/style.css">""" + IMAGEN + """</head>"""
 
 
 template_dir = os.path.join(os.path.dirname(__file__), 'templates')
@@ -79,7 +75,7 @@ class NuevoSarao(Handler):
 
         # Obtenemos los parámetros enviados por POST
         s = Sarao(nombre = cgi.escape(self.request.get('nombre')),
-              fecha = (datetime.datetime.strptime(cgi.escape(self.request.get('fecha')), '%m/%d/%Y')).date(), #Casting a datetime format
+              fecha = (datetime.datetime.strptime(cgi.escape(self.request.get('fecha')), '%d/%m/%Y')).date(), #Casting a datetime format
               max_asistentes = ma,
               url = cgi.escape(self.request.get('url')),
               nota = cgi.escape(self.request.get('nota')),
@@ -88,7 +84,7 @@ class NuevoSarao(Handler):
               lugar = Lugar.getLugar(key_lugar),
               num_asistentes = 0,
               plazas_disponibles = ma,
-              limite_inscripcion = (datetime.datetime.strptime(cgi.escape(self.request.get('fecha_limite')), '%m/%d/%Y')).date(), #Casting a datetime format
+              limite_inscripcion = (datetime.datetime.strptime(cgi.escape(self.request.get('fecha_limite')), '%d/%m/%Y')).date(), #Casting a datetime format
         )
 
         if h != "" and m != "":
@@ -114,6 +110,7 @@ class NuevoLugar(Handler):
               cod_postal = int(cgi.escape(self.request.get('cod_postal')))
         ).put()
         self.response.write("Añadido lugar.")
+        self.redirect('/administracion')
 
     def get(self):
         self.render("insertar_lugar.html")
@@ -143,6 +140,8 @@ class NuevoAsistente(Handler):
       sarao.plazas_disponibles -= 1
       sarao.put()
       self.response.write("Añadido asistente.")
+      # Reenderizar la plantilla con la confirmación de la asitencia y enivar un e-mail
+      self.redirect('/')
 
   def get(self):
       key_sarao = self.request.get('s')
@@ -151,17 +150,18 @@ class NuevoAsistente(Handler):
 
 class ModificarSarao(Handler):
   def post(self):
+      sarao = Sarao.getSarao(cgi.escape(self.request.get('id_sarao')))
       sarao.nombre = cgi.escape(self.request.get('nombre'))
-      sarao.fecha = (datetime.datetime.strptime(cgi.escape(self.request.get('fecha')), '%m/%d/%Y')).date() #Casting a datetime format
+      sarao.fecha = (datetime.datetime.strptime(cgi.escape(self.request.get('fecha')), '%d/%m/%Y')).date() #Casting a datetime format
       #hora = horas+":"+minutos,
       sarao.max_asistentes = int(cgi.escape(self.request.get('max_asistentes')))
       sarao.url = cgi.escape(self.request.get('url'))
       sarao.nota = cgi.escape(self.request.get('nota'))
       sarao.descripcion = cgi.escape(self.request.get('descripcion'))
       sarao.organizacion = cgi.escape(self.request.get('organizacion'))
-      sarao.lugar = Lugar.getLugar(key_lugar)
-
+      sarao.lugar = Lugar.getLugar(cgi.escape(self.request.get('lugar')))
       sarao.put()
+      #<meta http-equiv="refresh" content="0.5;URL='/administracion'">
       self.redirect('/administracion')
 
   def get(self):
@@ -171,6 +171,13 @@ class ModificarSarao(Handler):
       self.render("modificar_sarao.html",sarao=Sarao.getSarao(id_sarao), lugares = l, id_sarao=id_sarao)
       
 
+
+class EliminarSarao(Handler):
+  def post(self):
+      sarao = Sarao.getSarao(cgi.escape(self.request.get('key')))
+      sarao.delete()
+      self.redirect('/administracion')
+      
 
 #==============================================================================
 #==============================================================================
@@ -190,6 +197,7 @@ application = webapp2.WSGIApplication([
     ('/nuevoasistente', NuevoAsistente),
     ('/administracion', Administracion),
     ('/administracion/nuevosarao', NuevoSarao),
+    ('/administracion/eliminarsarao', EliminarSarao),
     ('/administracion/nuevolugar', NuevoLugar),
     ('/administracion/modificarsarao', ModificarSarao),
 ], debug=True)

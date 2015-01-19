@@ -46,7 +46,7 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="http://cloud-sarao.appspot.com/">CloudSarao</a>
+				<a class="navbar-brand" href="/">CloudSarao</a>
 			</div>
 
 			<!-- Colección de links de navegación, forms, y otros contenidos conmutables -->
@@ -69,7 +69,7 @@
 	{% for item in saraos %}
 		<div class="sarao">
 			<h1> {{ item.nombre }} </h1><br>
-			<label>Fecha del evento:</label> {{ item.fecha }} {% if item.hora != None %} - {{ item.hora }} {% endif %}<br>
+			<label>Fecha del evento:</label> {{item.fecha.day}}/{{item.fecha.month}}/{{item.fecha.year}} {% if item.hora != None %} a las {{ item.hora.hour}}:{{item.hora.minute}} {% endif %}<br>
 			<label>Plazas disponibles:</label> {{ item.plazas_disponibles }}<br>
 			<label>Lugar del transcurso del evento:</label> {{ item.lugar.nombre }}<br>
 			<a href="{{ item.url }}" > +info </a>

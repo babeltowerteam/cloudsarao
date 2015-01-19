@@ -44,16 +44,16 @@
 				class="icon-bar"></span> <span class="icon-bar"></span> <span
 				class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="http://cloud-sarao.appspot.com/">CloudSarao</a>
+			<a class="navbar-brand" href="/">CloudSarao</a>
 		</div>
 
 		<!-- Colección de links de navegación, forms, y otros contenidos conmutables -->
 		<div class="collapse navbar-collapse"
 		id="bs-example-navbar-collapse-1">
 		<ul class="nav navbar-nav navbar-right">
-			<li class="page-scroll"><a href="http://cloud-sarao.appspot.com/administracion">Saraos</a></li>
-			<li class="page-scroll"><a href="http://cloud-sarao.appspot.com/adminlugares">Lugares</a></li>
-			<li class="page-scroll"><a href="http://cloud-sarao.appspot.com/administracion/">Cerrar sesión</a></li>
+			<li class="page-scroll"><a href="/administracion">Saraos</a></li>
+			<li class="page-scroll"><a href="/adminlugares">Lugares</a></li>
+			<li class="page-scroll"><a href="/administracion">Cerrar sesión</a></li>
 		</ul>
 	</div>
 	<!-- /.navbar-collapse -->
@@ -72,16 +72,15 @@
 	{% for item in saraos %}
 	<div class="sarao">
 		<h1> {{ item.nombre }} </h1><br>
-		<label>Fecha del evento:</label> {{ item.fecha }} {% if item.hora != None %} - {{ item.hora }} {% endif %}<br>
+		<label>Fecha del evento:</label> {{item.fecha.day}}/{{item.fecha.month}}/{{item.fecha.year}} {% if item.hora != None %} a las {{ item.hora.hour}}:{{item.hora.minute}} {% endif %}<br>
 		<label>Plazas disponibles:</label> {{ item.plazas_disponibles }}<br>
 		<label>Lugar del transcurso del evento:</label> {{ item.lugar.nombre }}<br>
 		{% if item.url != None %}<a href="{{ item.url }}" > +info </a>{% endif %}
 	</div>
 
-	     <button onClick="location.href='/administracion/modificarsarao?s={{ item.key() }}'" class="btn btn-primary">Modificar</button>
+	    <button onClick="location.href='/administracion/modificarsarao?s={{ item.key() }}'" class="btn btn-primary">Modificar</button>
 		<form role="form" method="post" style="display:inline" action="/administracion/eliminarsarao">
           		<input type="text" class="hidden" name="key" id="key" value="{{ item.key() }}" hidden required>
-          		<input type="text" class="hidden" name="metodo" value="eliminar" hidden required>
 	       		<button type="submit" class="btn btn-primary">Eliminar</button>
 		</form>
 		<br><hr class="alert-success">
