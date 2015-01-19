@@ -151,22 +151,25 @@ class NuevoAsistente(Handler):
 
 class ModificarSarao(Handler):
   def post(self):
-      key_lugar = cgi.escape(self.request.get('lugar'))
-      cgi.escape(self.request.get('hora'))
-      # Obtenemos los parámetros enviados por POST
-      # Sarao(nombre = cgi.escape(self.request.get('nombre')),
-      #       fecha = (datetime.datetime.strptime(cgi.escape(self.request.get('fecha')), '%m/%d/%Y')).date(), #Casting a datetime format
-      #       #hora = horas+":"+minutos,
-      #       max_asistentes = int(cgi.escape(self.request.get('max_asistentes'))),
-      #       url = cgi.escape(self.request.get('url')),
-      #       nota = cgi.escape(self.request.get('nota')),
-      #       descripcion = cgi.escape(self.request.get('descripcion')),
-      #       organizacion = cgi.escape(self.request.get('organizacion')),
-      #       lugar = Lugar.getLugar(key_lugar)
-      # )
+      sarao.nombre = cgi.escape(self.request.get('nombre'))
+      sarao.fecha = (datetime.datetime.strptime(cgi.escape(self.request.get('fecha')), '%m/%d/%Y')).date() #Casting a datetime format
+      #hora = horas+":"+minutos,
+      sarao.max_asistentes = int(cgi.escape(self.request.get('max_asistentes')))
+      sarao.url = cgi.escape(self.request.get('url'))
+      sarao.nota = cgi.escape(self.request.get('nota'))
+      sarao.descripcion = cgi.escape(self.request.get('descripcion'))
+      sarao.organizacion = cgi.escape(self.request.get('organizacion'))
+      sarao.lugar = Lugar.getLugar(key_lugar)
+
+      sarao.put()
+      self.redirect('/administracion')
+
   def get(self):
-    l = Lugar.getLugares()
-    self.render("modificar_sarao.html")
+      id_sarao = cgi.escape(self.request.get('s'))
+      l = Lugar.getLugares()
+      sarao = Sarao.getSarao(id_sarao)
+      self.render("modificar_sarao.html",sarao=Sarao.getSarao(id_sarao), lugares = l)
+      
 
 
 #==============================================================================

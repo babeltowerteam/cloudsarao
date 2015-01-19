@@ -77,12 +77,9 @@
 		<label>Lugar del transcurso del evento:</label> {{ item.lugar.nombre }}<br>
 		{% if item.url != None %}<a href="{{ item.url }}" > +info </a>{% endif %}
 	</div>
-		<form role="form" method="post" style="display:inline">
-          		<input type="text" class="hidden" name="key" id="key" value="{{ item.key() }}" hidden required>
-          		<input type="text" class="hidden" name="metodo" value="modificar" hidden required>
-	       		<button type="submit" class="btn btn-primary">Modificar</button>
-		</form>
-		<form role="form" method="post" style="display:inline">
+
+	     <button onClick="location.href='/administracion/modificarsarao?s={{ item.key() }}'" class="btn btn-primary">Modificar<button>
+		<form role="form" method="post" style="display:inline" action="/administracion/eliminarsarao">
           		<input type="text" class="hidden" name="key" id="key" value="{{ item.key() }}" hidden required>
           		<input type="text" class="hidden" name="metodo" value="eliminar" hidden required>
 	       		<button type="submit" class="btn btn-primary">Eliminar</button>
