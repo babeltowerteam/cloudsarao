@@ -72,65 +72,64 @@
 	<form role="form" method="post">
 		<div class="form-group">
 			<label for="nombre">Nombre<span class="obligatorio"> *</span>:</label> <br>
-			<input type="text" class="form-control" name="nombre" id="nombre" value="{{ nombre }}" required><br>
+			<input type="text" class="form-control" name="nombre" id="nombre" value="{{ sarao.nombre }}" required><br>
 		</div>
 
 		<div class="form-group">
-			<label for="fecha">Fecha</label> <span class="obligatorio"> *</span>:</label> <input type="text" class="form-control datepick" name="fecha" value="{{ fecha }}" required>
+			<label for="fecha">Fecha</label> <span class="obligatorio"> *</span>:</label> <input type="text" class="form-control datepick" name="fecha" value="{{ sarao.fecha }}" required>
 		</div>
 
 		<div class="form-group">
 			<label for="hora">Hora:</label> <br>
-			<span class="aclaracion">Formato 24 horas. Por ejemplo, 10:35</span><br>
-			<input type="number" class="form-control-number" name="hora" id="hora" min="0" max="23" value="{{ hora }}">:<input type="number" class="form-control-number" name="minutos" id="minutos" min="0" max="59" value="{{ minutos }}"><br> <br>
+			<span class="aclaracion">Formato 24 horas. Por ejemplo, 20:15</span><br>
+			<input type="number" class="form-control-number" name="hora" id="hora" min="0" max="23" value="{{ sarao.hora }}">:<input type="number" class="form-control-number" name="minutos" id="minutos" min="0" max="59" value="{{ sarao.minutos }}"><br> <br>
 			
 		</div>
 
-		<div class="form-group">
-			<label for="lugar">Lugar del evento<span class="obligatorio"> *</span>:</label> <br>
-			<select class="form-control" name="lugar" required>
-				<option value="{{ lugar }}" selected> {{ lugar }}</option>
-				{% for item in lugares %}
-				{% if lugar.Key != item.Key %}<option value="{{ item.Key }}"> {{ item.nombre }}</option> {% endif %}
-				{% endfor %}
-			</select>
-		</div>
+			<div class="form-group">
+				<label for="lugar">Lugar del evento<span class="obligatorio"> *</span>:</label> <br>
+				<select class="form-control" name="lugar" required>
+					{% for l in lugares %}
+   					<option value="{{ l.key() }}"> {{ l.nombre }} </option>
+					{% endfor %}
+				</select>
+			</div>
 
 		<div class="form-group">
 			<label for="max_asistentes">Número máximo de asistentes<span class="obligatorio"> *</span>:</label> <br>
-			<input type="number" class="form-control" name="max_asistentes" id="max_asistentes" value="{{max_asistentes}}" min="0" required><br>
+			<input type="number" class="form-control" name="max_asistentes" id="max_asistentes" value="{{sarao.max_asistentes}}" min="0" required><br>
 		</div>
 
 		<div class="form-group">
 			<label for="url">URL del sarao<span class="obligatorio"> *</span>:</label> <br>
-			<input type="url" class="form-control" name="url" id="url" value="{{url}}"><br>
+			<input type="url" class="form-control" name="url" id="url" value="{{sarao.url}}"><br>
 		</div>
 
 		<div class="form-group">
 			<label for="organizacion">Organización:</label><br>
 			<span class="aclaracion">Encargado de la organización del Sarao</span><br>
-			<input type="text" class="form-control" name="organizacion" id="organizacion" value="{{organizacion}}"><br>
+			<input type="text" class="form-control" name="organizacion" id="organizacion" value="{{sarao.organizacion}}"><br>
 		</div>
 
 		<div class="form-group">
 			<label for="nota">Nota:</label><br>
 			<span class="aclaracion">Aclaración sobre el evento.</span><br>
-			<input type="text" class="form-control" name="nota" id="nota" value="{{nota}}"><br>
+			<input type="text" class="form-control" name="nota" id="nota" value="{{sarao.nota}}"><br>
 		</div>
 
 		<div class="form-group">
 			<label for="descripcion">Descripción:</label><br>
 			<span class="aclaracion">Asunto del evento.</span><br>
-			<input type="text" class="form-control" name="descripcion" id="descripcion" value="{{descripcion}}"><br>
+			<input type="text" class="form-control" name="descripcion" id="descripcion" value="{{sarao.descripcion}}"><br>
 		</div>
 
 		<div class="form-group">
 			<label for="fecha_limite">Fecha límite de inscripción:</label>
-			<input type="text" class="form-control datepick" name="fecha_limite" required value="{{ fecha_limite }}"></p></p>
+			<input type="text" class="form-control datepick" name="fecha_limite" required value="{{ sarao.fecha_limite }}"></p></p>
 		</div>
 
 		<div class="form-group">
-			<input type="text" class="hidden" name="id_sarao" id="id_sarao" value="{{ id_sarao }}" hidden required>
+			<input type="text" class="hidden" name="id_sarao" id="id_sarao" value="{{ sarao.id_sarao }}" hidden required><br>
 		</div>
 
 		<button type="submit" class="btn btn-primary">Enviar</button>
