@@ -53,7 +53,7 @@
 		<ul class="nav navbar-nav navbar-right">
 			<li class="page-scroll"><a href="http://cloud-sarao.appspot.com/administracion">Saraos</a></li>
 			<li class="page-scroll"><a href="http://cloud-sarao.appspot.com/adminlugares">Lugares</a></li>
-			<li class="page-scroll"><a href="http://cloud-sarao.appspot.com/administracion">Cerrar sesión</a></li>
+			<li class="page-scroll"><a href="http://cloud-sarao.appspot.com/administracion/">Cerrar sesión</a></li>
 		</ul>
 	</div>
 	<!-- /.navbar-collapse -->
@@ -67,7 +67,7 @@
 <div class="container">
 
 	<p>Administración de los saraos existentes ó
-		<button onClick="location.href='/nuevosarao'" class="btn btn-primary"> Cree nuevo sarao </button> :</p>
+		<button onClick="location.href='/administracion/nuevosarao'" class="btn btn-primary"> Cree nuevo sarao </button> :</p>
 
 	{% for item in saraos %}
 	<div class="sarao">

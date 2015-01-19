@@ -95,7 +95,7 @@ class NuevoSarao(Handler):
           s.hora = (datetime.datetime.strptime(h+":"+m, "%H:%M")).time()
 
         s.put()
-        self.response.write("Añadido sarao.")
+        self.redirect('/administracion')
       
 
     def get(self):
