@@ -168,7 +168,7 @@ class ModificarSarao(Handler):
       id_sarao = cgi.escape(self.request.get('s'))
       l = Lugar.getLugares()
       sarao = Sarao.getSarao(id_sarao)
-      self.render("modificar_sarao.html",sarao=Sarao.getSarao(id_sarao), lugares = l)
+      self.render("modificar_sarao.html",sarao=Sarao.getSarao(id_sarao), lugares = l, id_sarao=id_sarao)
       
 
 
