@@ -56,7 +56,7 @@ class Administracion(Handler):
   def get(self):
       user = users.get_current_user()
       if not users.is_current_user_admin():
-          self.redirect(users.create_login_url(self.request.uri))
+          self.redirect(users.create_login_url('/'))
       else:
           s = Sarao.getSaraos()
           self.render('pagina_administracion.html', saraos=s)
