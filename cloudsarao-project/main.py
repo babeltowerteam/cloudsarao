@@ -61,6 +61,15 @@ class Administracion(Handler):
           s = Sarao.getSaraos()
           self.render('pagina_administracion.html', saraos=s)
 
+
+
+class LogoutPage(Handler):
+  def get(self):
+      user = users.get_current_user()
+      if user:
+          self.redirect(users.create_logout_url('/'))
+
+
 #==============================================================================
 #==============================================================================
 # # Controlador de solicitudes 'Saraos'.
@@ -179,6 +188,7 @@ class EliminarSarao(Handler):
       self.redirect('/administracion')
       
 
+
 #==============================================================================
 #==============================================================================
 # # Programa principal.
@@ -200,4 +210,5 @@ application = webapp2.WSGIApplication([
     ('/administracion/eliminarsarao', EliminarSarao),
     ('/administracion/nuevolugar', NuevoLugar),
     ('/administracion/modificarsarao', ModificarSarao),
+    ('/logout', LogoutPage),
 ], debug=True)
