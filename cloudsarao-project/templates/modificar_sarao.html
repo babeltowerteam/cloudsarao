@@ -88,9 +88,9 @@
 		<div class="form-group">
 			<label for="lugar">Lugar del evento<span class="obligatorio"> *</span>:</label> <br>
 			<select class="form-control" name="lugar" required>
-				<option value="{{ lugar }}" selected> {{ lugar }}</option>
+				<option value="{{ sarao.lugar.key() }}" selected> {{ sarao.lugar.nombre }}</option>
 				{% for item in lugares %}
-				{% if lugar.Key != item.Key %}<option value="{{ item.Key }}"> {{ item.nombre }}</option> {% endif %}
+				{% if sarao.lugar.key() != item.key() %}<option value="{{ item.Key }}"> {{ item.nombre }}</option> {% endif %}
 				{% endfor %}
 			</select>
 		</div>
