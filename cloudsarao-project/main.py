@@ -55,13 +55,14 @@ class MainPage(Handler):
 class Administracion(Handler):
   def get(self):
       user = users.get_current_user()
-      if not users.is_current_user_admin():
+      if users.is_current_user_admin():
+          s = Sarao.getSaraos()
+          self.render('pagina_administracion.html', saraos=s)
+          
+      else:
           self.redirect(users.create_logout_url('/'))
           self.redirect(users.create_login_url(self.request.uri))
 
-      else:
-          s = Sarao.getSaraos()
-          self.render('pagina_administracion.html', saraos=s)
 
 
 
