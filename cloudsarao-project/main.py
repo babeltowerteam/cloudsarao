@@ -197,6 +197,21 @@ class GestionLugares(Handler):
       l = Lugar.getLugares()
       self.render("gestionar_lugares.html", lugares = l)
 
+class ModificarLugar(Handler):
+  def get(self):
+      id_lugar = cgi.escape(self.request.get('l'))
+      self.render("modificar_lugar.html", lugar=Lugar.getLugar(id_lugar), id_lugar=id_lugar)
+
+  def post(self):
+      lugar = Lugar.getLugar(cgi.escape(self.request.get('id_lugar')))
+
+      lugar.nombre = cgi.escape(self.request.get('nombre'))
+      lugar.calle = cgi.escape(self.request.get('calle'))
+      lugar.cod_postal = int(cgi.escape(self.request.get('cod_postal')))
+
+      lugar.put()
+      self.redirect('/administracion/gestionlugares')
+
 
 #==============================================================================
 #==============================================================================
@@ -220,5 +235,6 @@ application = webapp2.WSGIApplication([
     ('/administracion/nuevolugar', NuevoLugar),
     ('/administracion/modificarsarao', ModificarSarao),
     ('/administracion/gestionlugares', GestionLugares),
+    ('/administracion/modificarlugar', ModificarLugar),
     ('/logout', LogoutPage),
 ], debug=True)
