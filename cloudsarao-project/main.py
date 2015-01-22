@@ -197,6 +197,7 @@ class GestionLugares(Handler):
       l = Lugar.getLugares()
       self.render("gestionar_lugares.html", lugares = l)
 
+
 #==============================================================================
 #==============================================================================
 # # Programa principal.

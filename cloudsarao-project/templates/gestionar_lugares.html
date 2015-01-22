@@ -53,7 +53,7 @@
 		<ul class="nav navbar-nav navbar-right">
 			<li class="page-scroll"><a href="/administracion">Saraos</a></li>
 			<li class="page-scroll"><a href="/administracion/gestionlugares">Lugares</a></li>
-			<li class="page-scroll"><a href="/">Cerrar sesión</a></li>
+			<li class="page-scroll"><a href="/logout">Cerrar sesión</a></li>
 		</ul>
 	</div>
 	<!-- /.navbar-collapse -->
@@ -66,7 +66,7 @@
 <br><br><br><br><br><br>
 <div class="container">
 	<p>Administración de los lugares existentes ó
-		<button onClick="location.href='/nuevolugar'" class="btn btn-primary"> Cree nuevo lugar </button> :</p>
+		<button onClick="location.href='/administracion/nuevolugar'" class="btn btn-primary"> Cree nuevo lugar </button> :</p>
 
 	{% for item in lugares %}
 		<div class="lugar">
