@@ -192,6 +192,10 @@ class EliminarSarao(Handler):
       self.redirect('/administracion')
       
 
+class GestionLugares(Handler):
+  def get(self):
+      l = Lugar.getLugares()
+      self.render("gestionar_lugares.html", lugares = l)
 
 #==============================================================================
 #==============================================================================
@@ -214,5 +218,6 @@ application = webapp2.WSGIApplication([
     ('/administracion/eliminarsarao', EliminarSarao),
     ('/administracion/nuevolugar', NuevoLugar),
     ('/administracion/modificarsarao', ModificarSarao),
+    ('/administracion/gestionlugares', GestionLugares),
     ('/logout', LogoutPage),
 ], debug=True)
