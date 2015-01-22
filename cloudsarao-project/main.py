@@ -123,7 +123,7 @@ class NuevoLugar(Handler):
               cod_postal = int(cgi.escape(self.request.get('cod_postal')))
         ).put()
         self.response.write("Añadido lugar.")
-        self.redirect('/administracion')
+        self.redirect('/administracion/gestionlugares')
 
     def get(self):
         self.render("insertar_lugar.html")
@@ -212,6 +212,11 @@ class ModificarLugar(Handler):
       lugar.put()
       self.redirect('/administracion/gestionlugares')
 
+class EliminarLugar(Handler):
+  def post(self):
+      lugar = Lugar.getLugar(cgi.escape(self.request.get('key')))
+      lugar.delete()
+      self.redirect('/administracion/gestionlugares')
 
 #==============================================================================
 #==============================================================================
@@ -236,5 +241,6 @@ application = webapp2.WSGIApplication([
     ('/administracion/modificarsarao', ModificarSarao),
     ('/administracion/gestionlugares', GestionLugares),
     ('/administracion/modificarlugar', ModificarLugar),
+    ('/administracion/eliminarlugar', EliminarLugar),
     ('/logout', LogoutPage),
 ], debug=True)
