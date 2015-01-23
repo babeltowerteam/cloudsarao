@@ -82,7 +82,7 @@
 		</div>
 
 		<div class="form-group">
-			<label for="fecha">Fecha</label> <span class="obligatorio"> *</span>:</label> <input type="text" class="form-control datepick" name="fecha" value="{{ sarao.fecha }}" required>
+			<label for="fecha">Fecha</label> <span class="obligatorio"> *</span>:</label> <input type="text" class="form-control datepick" name="fecha" value="{{sarao.fecha.day}}/{{sarao.fecha.month}}/{{sarao.fecha.year}}" required>
 		</div>
 
 		<div class="form-group">
@@ -133,7 +133,7 @@
 
 		<div class="form-group">
 			<label for="fecha_limite">Fecha límite de inscripción:</label>
-			<input type="text" class="form-control datepick" name="fecha_limite" required value="{{ sarao.fecha_limite }}">
+			<input type="text" class="form-control datepick" name="fecha_limite" required value="{{sarao.fecha_limite.day}}/{{sarao.fecha_limite.month}}/{{sarao.fecha_limite.year}}">
 		</div>
 
 		<div class="form-group">
