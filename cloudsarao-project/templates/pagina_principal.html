@@ -8,7 +8,7 @@
 	<meta name="author" content="">
 	<title>CloudSarao</title>
 	<!-- Bootstrap Core CSS - Uses Bootswatch Flatly Theme: http://bootswatch.com/flatly/ -->
-	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/bootstrap.css" rel="stylesheet">
 	<!-- Custom CSS -->
 	<link href="css/freelancer.css" rel="stylesheet">
 	<!-- Custom Fonts -->
@@ -30,6 +30,18 @@
 			font-style: italic;
 			font-size: small;
 		}
+		.fondo {
+			width:45%;
+			height:65%;
+			position: abslute;
+			top: 10%;
+			left:60%;
+		}
+	    @media (max-width: 600px) {
+		.fondo{
+			display:none;
+		}
+	    } 
 	</style>
 </head>
 
@@ -65,7 +77,7 @@
 
 <br><br><br><br><br><br>
 <div class="container">
-	<img src="img/alistate_pinguino.png" align="right">
+	<img src="img/alistate_pinguino.png" class="fondo" align="right">
 	{% for item in saraos %}
 		<div class="sarao">
 			<h1> {{ item.nombre }} </h1><br>
