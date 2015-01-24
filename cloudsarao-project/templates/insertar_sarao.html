@@ -74,6 +74,13 @@
 <!-- Fin de barra de navegación. -->
 <!-- ---------------------------------------- -->
 
+<script>
+function actualizaFechaLimite(){
+	var fecha = document.getElementById("fecha").value;
+	document.getElementById("fecha_limite").value = fecha;
+}
+</script>
+
 <br><br><br><br><br><br>
 <div class="container">
 	<h1>Crear nuevo Sarao</h1>
@@ -86,7 +93,7 @@
 			<input type="text" class="form-control" name="nombre" id="nombre"placeholder="Introduzca su nombre." required><br>
 		</div>
 		<div class="form-group">
-			<label for="fecha">Fecha</label> <span class="obligatorio"> *</span>:</label> <input type="text" class="form-control datepick" name="fecha" required>
+			<label for="fecha">Fecha</label> <span class="obligatorio"> *</span>:</label> <input type="text" class="form-control datepick" name="fecha" id="fecha" required onchange='actualizaFechaLimite()'>
 		</div>
 
 		<div class="form-group">
@@ -134,7 +141,7 @@
 
 		<div class="form-group">
 			<label for="fecha_limite">Fecha límite de inscripción:</label>
-			<input type="text" class="form-control datepick" name="fecha_limite" required></p></p>
+			<input type="text" id="fecha_limite" class="form-control datepick" name="fecha_limite" required></p></p>
 		</div>
 
 		<button type="submit" class="btn btn-primary">Enviar</button>
