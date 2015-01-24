@@ -1,0 +1,13 @@
+.centrado
+{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#contenido{
+    text-align: left;
+    width: 800px;
+    margin: 0 auto;
+    background-image: url("/img/texture.png");
+}

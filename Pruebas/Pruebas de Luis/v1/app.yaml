@@ -1,0 +1,22 @@
+# Fichero de configuración
+# ------------------------
+# En este fichero se describe entre otras cosas cuál es 
+#  el script encargado de manejar cada URL.
+
+application: cloud-sarao                 # El identificador, único para cada aplicación. 
+version: 1                              # Versión del código. Varía según las modificaciones de la aplicación.
+runtime: python27                       # El código se ejecutará en pyton 2.7., 
+api_version: 1                          #   en la versión de la API 1.
+threadsafe: true                        # Esto indica que la aplicación es multi-hilo.
+
+handlers:
+- url: /img
+  static_dir: img
+- url: /css 
+  static_dir: css
+- url: /.*                              # Todas las URL deben ser manejadas se manejarán 
+  script: main.application              #   por la aplicación que hay en el módulo 'main'. 
+
+libraries:
+- name: webapp2                         # Indicamos que vamos a usar la librería 'webapp2'.
+  version: latest

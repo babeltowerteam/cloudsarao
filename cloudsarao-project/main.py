@@ -173,7 +173,6 @@ class ModificarSarao(Handler):
       sarao.descripcion = cgi.escape(self.request.get('descripcion'))
       sarao.organizacion = cgi.escape(self.request.get('organizacion'))
       sarao.lugar = Lugar.getLugar(cgi.escape(self.request.get('lugar')))
-      sarao.limite_inscripcion = (datetime.datetime.strptime(cgi.escape(self.request.get('fecha_limite')), '%d/%m/%Y')).date()
       sarao.put()
       #<meta http-equiv="refresh" content="0.5;URL='/administracion'">
       self.redirect('/administracion')
