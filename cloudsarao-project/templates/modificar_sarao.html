@@ -57,9 +57,9 @@
 		<div class="collapse navbar-collapse"
 		id="bs-example-navbar-collapse-1">
 		<ul class="nav navbar-nav navbar-right">
-			<li class="page-scroll"><a href="http://cloud-sarao.appspot.com/administracion">Saraos</a></li>
-			<li class="page-scroll"><a href="http://cloud-sarao.appspot.com/adminlugares">Lugares</a></li>
-			<li class="page-scroll"><a href="http://cloud-sarao.appspot.com/administracion">Cerrar sesión</a></li>
+      <li class="page-scroll"><a href="/administracion">Saraos</a></li>
+      <li class="page-scroll"><a href="/administracion/gestionlugares">Lugares</a></li>
+      <li class="page-scroll"><a href="/logout">Cerrar sesión</a></li>
 		</ul>
 	</div>
 	<!-- /.navbar-collapse -->
@@ -82,16 +82,16 @@
 		</div>
 
 		<div class="form-group">
-			<label for="fecha">Fecha</label> <span class="obligatorio"> *</span>:</label> <input type="text" class="form-control datepick" name="fecha" value="{{ sarao.fecha }}" required>
+			<label for="fecha">Fecha</label> <span class="obligatorio"> *</span>:</label> <input type="text" class="form-control datepick" name="fecha" value="{{sarao.fecha.day}}/{{sarao.fecha.month}}/{{sarao.fecha.year}}" required>
 		</div>
 
 		<div class="form-group">
 			<label for="hora">Hora:</label> <br>
 			<span class="aclaracion">Formato 24 horas. Por ejemplo, 20:15</span><br>
 			<input type="number" class="form-control-number" name="hora" id="hora" min="0" max="23" value="{{ sarao.hora }}">:<input type="number" class="form-control-number" name="minutos" id="minutos" min="0" max="59" value="{{ sarao.minutos }}">
-			<br> 
 			<br>
-			
+			<br>
+
 		</div>
 
 			<div class="form-group">
@@ -133,7 +133,7 @@
 
 		<div class="form-group">
 			<label for="fecha_limite">Fecha límite de inscripción:</label>
-			<input type="text" class="form-control datepick" name="fecha_limite" required value="{{ sarao.fecha_limite }}">
+			<input type="text" class="form-control datepick" name="fecha_limite" required value="{{sarao.limite_inscripcion.day}}/{{sarao.limite_inscripcion.month}}/{{sarao.limite_inscripcion.year}}">
 		</div>
 
 		<div class="form-group">

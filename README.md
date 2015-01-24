@@ -2,27 +2,25 @@ Este proyecto se ha presentado al [Certamen de Proyectos libres de la ugr 2014-2
 
 Componentes del equipo  
 ----------------------
-- [Jes˙s **Maillo Hidalgo**](https://github.com/JMailloH) (jesusmh@correo.ugr.es)
-- [Sergio **Gonz·lez V·zquez**](https://github.com/sergiogvz) (sergiogvz@correo.ugr.es)
+- [Jes√∫s **Maillo Hidalgo**](https://github.com/JMailloH) (jesusmh@correo.ugr.es)
+- [Sergio **Gonz√°lez V√°zquez**](https://github.com/sergiogvz) (sergiogvz@correo.ugr.es)
 - [Luis **Baca Ruiz**](https://github.com/eleion) (eleion@correo.ugr.es)
-- [Daniel **¡lvarez Gonz·lez**](https://github.com/Crixo24) (dany24@correo.ugr.es)
-- [¡lvaro **MuÒoz Molina**](https://github.com/alvaromm) (alvaromm@correo.ugr.es)
+- [Daniel **√Ålvarez Gonz√°lez**](https://github.com/Crixo24) (dany24@correo.ugr.es)
+- [√Ålvaro **Mu√±oz Molina**](https://github.com/alvaromm) (alvaromm@correo.ugr.es)
 
 - - -
 - Grupo de Git: [**BabelTowerTeam**](https://github.com/babeltowerteam)
-- Blog del proyecto: [AquÌ](http://babeltowerteam.github.io/cloudsarao/)
+- Blog del proyecto: [Aqu√≠](http://babeltowerteam.github.io/cloudsarao/)
 
 
 
-DescripciÛn del problema
+Descripci√≥n del problema
 ------------------------
 
-Es una aplicaciÛn para la OSL (Oficina de Software Libre) con el objetivo de gestionar los eventos (*saraos*) de la misma. La idea es proveer de una interfaz amigable que permita crear y modificar f·cilmente nuevos *saraos*, asÌ como la generaciÛn autom·tica de informes y diplomas.
+Es una aplicaci√≥n para la OSL (Oficina de Software Libre) con el objetivo de gestionar los eventos (*saraos*) de la misma. La idea es proveer de una interfaz amigable que permita crear y modificar f√°cilmente nuevos *saraos*, as√≠ como la generaci√≥n autom√°tica de informes y diplomas.
 
-### Primera entrevista
+### Enlace de la web
 
-Puede verse la entrevista realizada el dÌa 5 de noviembre de 2014 [aquÌ](Entrevista.md).
+[http://cloud-sarao.appspot.com/](http://cloud-sarao.appspot.com/)
 
-### Tareas.
 
-La relaciÛn de tareas se encuentra descrita [aquÌ](Tareas.md).
