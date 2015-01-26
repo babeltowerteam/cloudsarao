@@ -4,6 +4,7 @@ sys.path.append('/tmp/gae/google_appengine/google/appengine')
 
 from api import *
 from ext import *
+from runtime import *
 from persistence import *
 
 class SaraoTestCase(unittest.TestCase):
