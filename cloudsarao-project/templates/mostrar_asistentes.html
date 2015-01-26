@@ -73,6 +73,7 @@
 			<table class="table">
 				<tr>
 					<td><b>Nombre</b></td>
+					<td><b>Apellidos</b></td>
 					<td><b>Colectivo</b></td>
 					<td><b>E-mail</b></td>
 					<td><b>Twitter</b></td>
@@ -80,6 +81,7 @@
 				{% for item in asistentes %}
 				<tr>
 					<td>{{ item.nombre }}</td>
+					<td>{{ item.apellidos }}</td>
 					<td>{{ item.colectivo }}</td>
 					<td>{{ item.correo }}</td>
 					<td>{{ item.nick_twitter }}</td>
