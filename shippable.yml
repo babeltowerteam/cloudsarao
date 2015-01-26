@@ -31,11 +31,12 @@ before_script:
    - sudo dpkg-reconfigure --frontend noninteractive tzdata
    - mkdir -p shippable/testresults
    - mkdir -p shippable/codecoverage
+   - export PYTHONPATH="$PYTHONPATH:/tmp/gae/google_appengine/:/tmp/gae/google_appengine/lib/:/tmp/gae/google_appengine/lib/yaml/:/tmp/gae/google_appengine/lib/yaml-3.10/"
 
 #Script que se va a ejecutar, pero solo si se está en la rama master.
 #De momento solo ejecuta un programita de testeo tonto.
 script:
   - >
-    python test.py
+    python cloudsarao-project/test.py
 after_success:
    - echo $GAE_PASSWORD | $GAE_DIR/google_appengine/appcfg.py -e "$EMAIL" --passin --no_cookies update ./cloudsarao-project/
