@@ -79,14 +79,18 @@
 <div class="container">
 	<img src="img/alistate_pinguino.png" class="fondo" align="right">
 	{% for item in saraos %}
-		<div class="sarao">
-			<h1> {{ item.nombre }} </h1><br>
-			<label>Fecha del evento:</label> {{item.fecha.day}}/{{item.fecha.month}}/{{item.fecha.year}} {% if item.hora != None %} a las {{ item.hora.hour}}:{{item.hora.minute}} {% endif %}<br>
-			<label>Plazas disponibles:</label> {{ item.plazas_disponibles }}<br>
-			<label>Lugar del transcurso del evento:</label> {{ item.lugar.nombre }}<br>
-			<a href="{{ item.url }}" > +info </a>
-		</div>
-		<button onClick="location.href='/nuevoasistente?s={{ item.key() }}'" class="btn btn-primary"> Apúntate </button>
+		<h1> {{ item.nombre }} </h1><br>
+		<label>Fecha del evento:</label> {{item.fecha.day}}/{{item.fecha.month}}/{{item.fecha.year}} {% if item.hora != None %} a las {{ item.hora.hour}}:{{item.hora.minute}} {% endif %}<br>
+		<label>Plazas disponibles:</label> {{ item.plazas_disponibles }}<br>
+		<label>Lugar del transcurso del evento:</label> {{ item.lugar.nombre }}<br>
+		{% if item.url != '' %}
+		<button title="Más información en: '{{ item.url }}'" class="btn btn-default" onclick="location.href='{{ item.url }}'" > 
+		<span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+		</button>&nbsp
+		{% endif %}
+		<button title="Apuntarse al sarao" onClick="location.href='/nuevoasistente?s={{ item.key() }}'" class="btn btn-primary">
+		<span class="glyphicon glyphicon-tag" aria-hidden="true"></span>
+		</button>
 		<br><hr class="alert-success">
 	{% endfor %}
 <div class="container">
