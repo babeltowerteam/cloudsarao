@@ -67,27 +67,26 @@
 <br><br><br><br><br><br>
 <div class="container">
 
-	<p>Asistentes al sarao <b>{{sarao.nombre}}</b> del <b>{{sarao.fecha.day}}/{{sarao.fecha.month}}/{{sarao.fecha.year}}</b></p>
-	
 	<div class="asistente">
-		<table class="table">
-			<tr>
-				<td><b>Nombre</b></td>
-				<td><b>Apellidos</b></td>
-				<td><b>Colectivo</b></td>
-				<td><b>E-mail</b></td>
-				<td><b>Twitter</b></td>
-			</tr>
-			{% for item in asistentes %}
-			<tr>
-				<td>{{ item.nombre }}</td>
-				<td>{{ item.apellidos }}</td>
-				<td>{{ item.colectivo }}</td>
-				<td>{{ item.correo }}</td>
-				<td>{{ item.nick_twitter }}</td>
-			</tr>
-			{% endfor %}
-		</table>
+		<div class="panel panel-info">
+			<div class="panel-heading">Asistentes al sarao <b>{{sarao.nombre}}</b> del <b>{{sarao.fecha.day}}/{{sarao.fecha.month}}/{{sarao.fecha.year}}</b></div>
+			<table class="table">
+				<tr>
+					<td><b>Nombre</b></td>
+					<td><b>Colectivo</b></td>
+					<td><b>E-mail</b></td>
+					<td><b>Twitter</b></td>
+				</tr>
+				{% for item in asistentes %}
+				<tr>
+					<td>{{ item.nombre }}</td>
+					<td>{{ item.colectivo }}</td>
+					<td>{{ item.correo }}</td>
+					<td>{{ item.nick_twitter }}</td>
+				</tr>
+				{% endfor %}
+			</table>
+		</div>
 	</div>
 
 </div>
