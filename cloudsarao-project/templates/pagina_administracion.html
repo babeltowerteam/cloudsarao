@@ -79,12 +79,13 @@
 		{% if item.url != None %}<a href="{{ item.url }}" > +info </a>{% endif %}
 	</div>
 
-	    <button onClick="location.href='/administracion/modificarsarao?s={{ item.key() }}'" class="btn btn-primary">Modificar</button>
-		<form role="form" method="post" style="display:inline" action="/administracion/eliminarsarao">
-          		<input type="text" class="hidden" name="key" id="key" value="{{ item.key() }}" hidden required>
-	       		<button type="submit" class="btn btn-danger">Eliminar</button>
-		</form>
-		<br><hr class="alert-success">
+	<button onClick="" class="btn btn-primary">Mostrar asistentes</button>&nbsp
+	<button onClick="location.href='/administracion/modificarsarao?s={{ item.key() }}'" class="btn btn-primary">Modificar</button>&nbsp
+	<form role="form" method="post" style="display:inline" action="/administracion/eliminarsarao">
+		<input type="text" class="hidden" name="key" id="key" value="{{ item.key() }}" hidden required>
+		<button type="submit" class="btn btn-danger">Eliminar</button>
+	</form>
+	<br><hr class="alert-success">
 	{% endfor %}
 </div>
 </body>
