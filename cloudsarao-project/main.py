@@ -249,5 +249,6 @@ application = webapp2.WSGIApplication([
     ('/administracion/gestionlugares', GestionLugares),
     ('/administracion/modificarlugar', ModificarLugar),
     ('/administracion/eliminarlugar', EliminarLugar),
+    ('/administracion/mostrarasistentes', MostrarAsistentes),
     ('/logout', LogoutPage),
 ], debug=True)
