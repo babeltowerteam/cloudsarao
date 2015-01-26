@@ -76,7 +76,7 @@
 			<label>Calle: {{ item.calle }}</label><br>
 			<label>Código postal: {{ item.cod_postal }}</label><br>
 		</div>
-	      <button onClick="location.href='/administracion/modificarlugar?l={{ item.key() }}'" class="btn btn-primary">Modificar</button>
+	      <button onClick="location.href='/administracion/modificarlugar?l={{ item.key() }}'" class="btn btn-primary">Modificar</button>&nbsp
 
 		<form role="form" method="post" style="display:inline" action="/administracion/eliminarlugar">
           		<input type="text" class="hidden" name="key" id="key" value="{{ item.key() }}" hidden required>
