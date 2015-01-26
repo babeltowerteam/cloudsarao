@@ -1,6 +1,10 @@
 import unittest
-from tmp.gae.google.appengine.api import users
-from tmp.gae.google.appengine.ext import testbed
+import sys
+sys.path.append('/tmp/gae/google/appengine/api')
+sys.path.append('/tmp/gae/google/appengine/ext')
+
+from api import users
+from ext import testbed
 from main import persistence
 
 class SaraoTestCase(unittest.TestCase):
