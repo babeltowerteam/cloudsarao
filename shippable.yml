@@ -35,8 +35,7 @@ before_script:
 #Script que se va a ejecutar, pero solo si se está en la rama master.
 #De momento solo ejecuta un programita de testeo tonto.
 script:
-script:
   - >
-    nosetests 
+    nosetests test.py
 after_success:
    - echo $GAE_PASSWORD | $GAE_DIR/google_appengine/appcfg.py -e "$EMAIL" --passin --no_cookies update ./cloudsarao-project/
