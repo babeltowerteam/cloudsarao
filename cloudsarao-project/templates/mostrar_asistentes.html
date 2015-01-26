@@ -8,9 +8,9 @@
 	<meta name="author" content="">
 	<title>Gestionar saraos</title>
 	<!-- Bootstrap Core CSS - Uses Bootswatch Flatly Theme: http://bootswatch.com/flatly/ -->
-	<link href="css/bootstrap.css" rel="stylesheet">
+	<link href="../css/bootstrap.css" rel="stylesheet">
 	<!-- Custom CSS -->
-	<link href="css/freelancer.css" rel="stylesheet">
+	<link href="../css/freelancer.css" rel="stylesheet">
 	<!-- Custom Fonts -->
 	<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet"
 	type="text/css">
@@ -18,8 +18,8 @@
 	rel="stylesheet" type="text/css">
 	<link href="http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic"
 	rel="stylesheet" type="text/css">
-	<script src="js/jquery.js"></script>
-	<script src="js/bootstrap.min.js"></script>
+	<script src="../js/jquery.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
 	<style type="text/css">
 		.obligatorio {
 			color: red;
@@ -70,7 +70,7 @@
 	<p>Asistentes al sarao <b>{{sarao.nombre}}</b> del <b>{{sarao.fecha.day}}/{{sarao.fecha.month}}/{{sarao.fecha.year}}</b></p>
 	
 	<div class="asistente">
-		<table>
+		<table class="table">
 			<tr>
 				<td><b>Nombre</b></td>
 				<td><b>Apellidos</b></td>
@@ -80,11 +80,11 @@
 			</tr>
 			{% for item in asistentes %}
 			<tr>
-				<td>item.nombre</td>
-				<td>item.apellidos</td>
-				<td>item.colectivo</td>
-				<td>item.correo</td>
-				<td>item.twitter</td>
+				<td>{{ item.nombre }}</td>
+				<td>{{ item.apellidos }}</td>
+				<td>{{ item.colectivo }}</td>
+				<td>{{ item.correo }}</td>
+				<td>{{ item.nick_twitter }}</td>
 			</tr>
 			{% endfor %}
 		</table>

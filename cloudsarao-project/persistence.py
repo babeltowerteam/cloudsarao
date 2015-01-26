@@ -55,7 +55,7 @@ class Sarao(db.Model):
 
     @property
     def asistentes(self):
-        return Sarao.gql("WHERE asistencia_saraos = :1", self.key()).run()
+        return Asistente.gql("WHERE asistencia_saraos = :1", self.key()).run()
 
     @classmethod
     def getSaraosActivos(self):
