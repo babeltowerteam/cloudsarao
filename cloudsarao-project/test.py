@@ -1,7 +1,7 @@
 import unittest
 import sys
-sys.path.append('/tmp/gae/google/appengine/api')
-sys.path.append('/tmp/gae/google/appengine/ext')
+sys.path.append('/tmp/gae/google_appengine/google/appengine/api')
+sys.path.append('/tmp/gae/google_appengine/google/appengine/ext')
 
 from api import users
 from ext import testbed
