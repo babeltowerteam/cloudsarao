@@ -77,8 +77,8 @@
 		<label>Fecha del evento:</label> {{item.fecha.day}}/{{item.fecha.month}}/{{item.fecha.year}} {% if item.hora != None %} a las {{ item.hora.hour}}:{{item.hora.minute}} {% endif %}<br>
 		<label>Plazas disponibles:</label> {{ item.plazas_disponibles }}<br>
 		<label>Lugar del transcurso del evento:</label> {{ item.lugar.nombre }}<br>
-		{% if item.url != None %}
-		<button title="Más información" class="btn btn-default" href="{{ item.url }}" > 
+		{% if item.url != '' %}
+		<button title="Más información en: '{{ item.url }}'" class="btn btn-default" onclick="location.href='{{ item.url }}'" > 
 		<span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
 		</button>&nbsp
 		{% endif %}
