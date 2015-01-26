@@ -68,7 +68,9 @@
 <br><br><br><br><br><br>
 <div class="container">
 	<p>Administración de los lugares existentes ó
-		<button onClick="location.href='/administracion/nuevolugar'" class="btn btn-primary"> Cree nuevo lugar </button> :</p>
+		<button title="Crear nuevo lugar" onClick="location.href='/administracion/nuevolugar'" class="btn btn-primary">
+		<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+		</button> :</p>
 
 	{% for item in lugares %}
 		<div class="lugar">
