@@ -41,11 +41,6 @@ class Handler(webapp2.RequestHandler):
 class MainPage(Handler):
     def get(self):
         s = Sarao.getSaraosActivos()
-        # Para arreglar el fallo de eliminar lugares.
-        s = Sarao.getSaraos()
-        for sa in s:
-            sa.delete()
-        # Para arreglar el fallo.
         self.render('pagina_principal.html', saraos=s)
 
     def post(self):
