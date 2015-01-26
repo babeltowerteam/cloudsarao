@@ -219,6 +219,12 @@ class EliminarLugar(Handler):
       lugar.delete()
       self.redirect('/administracion/gestionlugares')
 
+
+class MostrarAsistentes(Handler):
+  def get(self):
+      sarao = Sarao.getSarao(cgi.escape(self.request.get('s')))
+      self.render("mostrar_asistentes.html", asistentes=sarao.asistentes)
+
 #==============================================================================
 #==============================================================================
 # # Programa principal.
