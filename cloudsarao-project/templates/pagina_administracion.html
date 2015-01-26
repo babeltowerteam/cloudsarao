@@ -73,13 +73,15 @@
 		</button> :</p>
 
 	{% for item in saraos %}
-	<div class="sarao">
-		<h1> {{ item.nombre }} </h1><br>
+		<h1> {{ item.nombre }} </h1>
 		<label>Fecha del evento:</label> {{item.fecha.day}}/{{item.fecha.month}}/{{item.fecha.year}} {% if item.hora != None %} a las {{ item.hora.hour}}:{{item.hora.minute}} {% endif %}<br>
 		<label>Plazas disponibles:</label> {{ item.plazas_disponibles }}<br>
 		<label>Lugar del transcurso del evento:</label> {{ item.lugar.nombre }}<br>
-		{% if item.url != None %}<a href="{{ item.url }}" > +info </a>{% endif %}
-	</div>
+		{% if item.url != None %}
+		<button title="Más información" class="btn btn-default" href="{{ item.url }}" > 
+		<span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+		</button>&nbsp
+		{% endif %}
 
 	<!-- Botón de ver asistentes -->
 	<button title="Mostrar asistentes" onClick="location.href='/administracion/mostrarasistentes?s={{ item.key() }}'" class="btn btn-primary">
