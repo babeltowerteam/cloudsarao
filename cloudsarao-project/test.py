@@ -1,6 +1,6 @@
 import unittest
 import sys
-sys.path.append('/tmp/gae/google/appengine')
+sys.path.append('/tmp/gae/google_appengine/google/appengine')
 
 from api import *
 from ext import *
