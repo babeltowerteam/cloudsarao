@@ -1,12 +1,16 @@
-import unittest
-import sys
-sys.path.append('/tmp/gae/google_appengine/google/appengine')
 
-from api import *
-from ext import *
-from ext import db
-from runtime import *
+#import sys
+#sys.path.append('/tmp/gae/google_appengine/google/appengine')
+
+#from api import *
+#from ext import *
+#from ext import db
+#from runtime import *
+import unittest
+from google.appengine.ext import db
+from google.appengine.ext import testbed
 from persistence_tests import *
+
 
 class SaraoTestCase(unittest.TestCase):
 	def setUp(self):
