@@ -24,7 +24,7 @@ class SaraoTestCase(unittest.TestCase):
 
 
 	def tearDown(self):
-		self.testbed.desactivate()
+		self.testbed.deactivate()
 
 
 	def testInsertarSarao(self):
