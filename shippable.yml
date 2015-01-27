@@ -31,7 +31,6 @@ before_script:
    - sudo dpkg-reconfigure --frontend noninteractive tzdata
    - mkdir -p shippable/testresults
    - mkdir -p shippable/codecoverage
-   - which appcfg.py
    - export PYTHONPATH="$PYTHONPATH:/tmp/gae/google_appengine/:/tmp/gae/google_appengine/lib/:/tmp/gae/google_appengine/lib/yaml/:/tmp/gae/google_appengine/lib/yaml-3.10/:/tmp/gae/google_appengine/google/appengine"
 
 #Script que se va a ejecutar, pero solo si se está en la rama master.
