@@ -82,6 +82,7 @@ class Sarao(db.Model):
 class Asistente(db.Model):
     correo = db.EmailProperty(required=True)
     nombre = db.StringProperty(required=True)
+    apellidos = db.StringProperty(required=True)
     nick_twitter = db.StringProperty()
     colectivo = db.StringProperty(required=True, choices=('alumno', 'PDI', 'PAS', 'otro'))
     procedencia = db.StringProperty()
