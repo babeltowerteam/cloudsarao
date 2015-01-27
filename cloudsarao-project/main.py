@@ -183,7 +183,13 @@ class ModificarSarao(Handler):
       l = Lugar.getLugares()
       sarao = Sarao.getSarao(id_sarao)
       self.render("modificar_sarao.html",sarao=Sarao.getSarao(id_sarao), lugares = l, id_sarao=id_sarao)
+
       
+class InformacionSarao(Handler):
+  def get(self):
+      id_sarao = cgi.escape(self.request.get('s'))
+      sarao = Sarao.getSarao(id_sarao)
+      self.render("informacion_sarao.html",sarao=Sarao.getSarao(id_sarao), id_sarao=id_sarao)
 
 
 class EliminarSarao(Handler):
@@ -250,5 +256,6 @@ application = webapp2.WSGIApplication([
     ('/administracion/modificarlugar', ModificarLugar),
     ('/administracion/eliminarlugar', EliminarLugar),
     ('/administracion/mostrarasistentes', MostrarAsistentes),
+    ('/informacionsarao', InformacionSarao),
     ('/logout', LogoutPage),
 ], debug=True)
