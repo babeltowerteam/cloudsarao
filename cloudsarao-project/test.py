@@ -9,6 +9,7 @@
 import unittest
 from google.appengine.ext import db
 from google.appengine.ext import testbed
+import datetime
 from persistence_tests import *
 
 
@@ -24,19 +25,20 @@ class SaraoTestCase(unittest.TestCase):
 
 
 	def tearDown(self):
-		self.testbed.desactivate()
+		self.testbed.deactivate()
 
 
 	def testInsertarSarao(self):
-		sarao = Sarao(nombre="Sarao de prueba", fecha="11\11\2009", max_asistentes=11, lugar = lugar)
+		lugar = Lugar.gql("WHERE nombre = :n", n="Lugar de prueba").get()
+		sarao = Sarao(nombre="Sarao de prueba", fecha=datetime.datetime.now().date(), max_asistentes=11, lugar = lugar)
 		sarao.put()
-		sarao = Sarao.gql("WHERE nombre = :n", n=sarao.nombre)
+		sarao = Sarao.gql("WHERE nombre = :n", n=sarao.nombre).get()
 		sarao.delete()
 
 	def testInsertarLugar(self):
 		lugar = Lugar(nombre="testLugar", calle="testCalle", cod_postal=1111)
 		lugar.put()
-		lugar = Lugar.gql("WHERE nombre = :n", n=lugar.nombre)
+		lugar = Lugar.gql("WHERE nombre = :n", n=lugar.nombre).get()
 		lugar.delete()
 
 if __name__ == "__main__":
