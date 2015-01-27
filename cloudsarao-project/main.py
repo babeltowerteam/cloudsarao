@@ -135,6 +135,7 @@ class NuevoAsistente(Handler):
       a = Asistente(
           correo = cgi.escape(self.request.get('correo')),
           nombre = cgi.escape(self.request.get('nombre')),
+          apellidos = cgi.escape(self.request.get('apellidos')),
           nick_twitter = cgi.escape(self.request.get('nick_twitter')),
           colectivo = cgi.escape(self.request.get('colectivo')),
           procedencia = cgi.escape(self.request.get('procedencia'))
