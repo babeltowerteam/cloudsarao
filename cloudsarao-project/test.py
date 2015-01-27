@@ -29,7 +29,7 @@ class SaraoTestCase(unittest.TestCase):
 
 	def testInsertarSarao(self):
 		lugar = Lugar.gql("WHERE nombre = :n", n="Lugar de prueba").get()
-		sarao = Sarao(nombre="Sarao de prueba", fecha="11\11\2009", max_asistentes=11, lugar = lugar)
+		sarao = Sarao(nombre="Sarao de prueba", fecha="11/11/2009", max_asistentes=11, lugar = lugar)
 		sarao.put()
 		sarao = Sarao.gql("WHERE nombre = :n", n=sarao.nombre).get()
 		sarao.delete()
