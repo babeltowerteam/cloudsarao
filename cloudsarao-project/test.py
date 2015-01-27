@@ -4,6 +4,7 @@ sys.path.append('/tmp/gae/google_appengine/google/appengine')
 
 from api import *
 from ext import *
+from ext import db
 from runtime import *
 from persistence_tests import *
 
