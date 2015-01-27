@@ -6,20 +6,27 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="">
 	<meta name="author" content="">
-	<title>CloudSarao</title>
+	<title>Información del Sarao</title>
 	<!-- Bootstrap Core CSS - Uses Bootswatch Flatly Theme: http://bootswatch.com/flatly/ -->
 	<link href="css/bootstrap.css" rel="stylesheet">
 	<!-- Custom CSS -->
 	<link href="css/freelancer.css" rel="stylesheet">
 	<!-- Custom Fonts -->
-	<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet"
-	type="text/css">
-	<link href="http://fonts.googleapis.com/css?family=Montserrat:400,700"
-	rel="stylesheet" type="text/css">
-	<link href="http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic"
-	rel="stylesheet" type="text/css">
-	<script src="js/jquery.js"></script>
-	<script src="js/bootstrap.min.js"></script>
+	<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+	<link href="http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+	<script src="../js/jquery.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+	<script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+
+	<script>
+		$(function(){
+			$('input').filter('.datepick').datepicker({ dateFormat: 'dd/mm/yy' });
+		});
+	</script>
+
 	<style type="text/css">
 		.obligatorio {
 			color: red;
@@ -30,21 +37,8 @@
 			font-style: italic;
 			font-size: small;
 		}
-		.fondo {
-			width:45%;
-			height:65%;
-			position: abslute;
-			top: 10%;
-			left:60%;
-		}
-	    @media (max-width: 600px) {
-		.fondo{
-			display:none;
-		}
-	    } 
 	</style>
 </head>
-
 <body>
 	<!-- ---------------------------------------- -->
 	<!-- Barra del de navegación -->
@@ -73,29 +67,32 @@
 	</nav>
 	<!-- Fin de barra de navegación. -->
 	<!-- ---------------------------------------- -->
-
-
 <br><br><br><br><br><br>
 <div class="container">
-	<img src="img/alistate_pinguino.png" class="fondo" align="right">
-	{% for item in saraos %}
-		<h1> {{ item.nombre }} </h1><br>
-		<label>Fecha del evento:</label> {{item.fecha.day}}/{{item.fecha.month}}/{{item.fecha.year}} {% if item.hora != None %} a las {{ item.hora.hour}}:{{item.hora.minute}} {% endif %}<br>
-		<label>Plazas disponibles:</label> {{ item.plazas_disponibles }}<br>
-		<label>Lugar del transcurso del evento:</label> {{ item.lugar.nombre }}<br>
-		{% if item.url != '' %}
-		<button title="Más información en: '{{ item.url }}'" class="btn btn-primary" onclick="location.href='{{ item.url }}'" > 
+	<h1>Información del sarao {{ sarao.nombre }}</h1>
+
+		<label>Fecha del evento:</label> {{sarao.fecha.day}}/{{sarao.fecha.month}}/{{sarao.fecha.year}} {% if sarao.hora != None %} a las {{ sarao.hora.hour}}:{{sarao.hora.minute}} {% endif %}<br>
+		<label>Fecha límite de inscripción al evento:</label> {{sarao.limite_inscripcion.day}}/{{sarao.limite_inscripcion.month}}/{{sarao.limite_inscripcion.year}}<br>
+		<label>Plazas disponibles:</label> {{ sarao.plazas_disponibles }}<br>
+		<label>Lugar del transcurso del evento:</label> {{ sarao.lugar.nombre }}, Dirección: {{ sarao.lugar.calle }}, CP: {{ sarao.lugar.cod_postal }} <br>
+		{% if sarao.organizacion != '' %}
+		<label>Organización:</label><p> {{ sarao.organizacion }} </p>
+		{% endif %}
+		{% if sarao.descripcion != '' %}
+		<label>Descripcion:</label><p> {{ sarao.descripcion }} </p>
+		{% endif %}
+		{% if sarao.nota != '' %}
+		<label>Nota:</label><p> {{ sarao.nota }} </p>
+		{% endif %}
+		{% if sarao.url != '' %}
+		<button title="Más información en: '{{ sarao.url }}'" class="btn btn-primary" onclick="location.href='{{ sarao.url }}'" > 
 		<span class="glyphicon glyphicon-link" aria-hidden="true"></span>
 		</button>&nbsp
 		{% endif %}
-		<button title="Consulte la información del sarao" class="btn btn-default" onclick="location.href='/informacionsarao?s={{ item.key() }}'" > 
-		<span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
-		</button>&nbsp
-		<button title="Apuntarse al sarao" onClick="location.href='/nuevoasistente?s={{ item.key() }}'" class="btn btn-primary">
+		<button title="Apuntarse al sarao" onClick="location.href='/nuevoasistente?s={{ sarao.key() }}'" class="btn btn-primary">
 		<span class="glyphicon glyphicon-tag" aria-hidden="true"></span>
 		</button>
-		<br><hr class="alert-success">
-	{% endfor %}
+		<br>
 </div>
 <br><br>
 </body>
