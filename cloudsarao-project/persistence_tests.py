@@ -1,6 +1,11 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+import sys
+sys.path.append('/tmp/gae/google_appengine/google/appengine')
 
+from api import *
+from ext import *
+from ext import db
 #from google.appengine.ext import db
 import datetime
 
