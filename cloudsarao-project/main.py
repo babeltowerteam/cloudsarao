@@ -15,6 +15,7 @@ import cgi
 import jinja2
 import os
 
+import time
 
 template_dir = os.path.join(os.path.dirname(__file__), 'templates')
 jinja_env = jinja2.Environment(loader = jinja2.FileSystemLoader(template_dir),
@@ -104,6 +105,7 @@ class NuevoSarao(Handler):
           s.hora = (datetime.datetime.strptime(h+":"+m, "%H:%M")).time()
 
         s.put()
+        time.sleep(1)
         self.redirect('/administracion')
       
 
@@ -123,6 +125,7 @@ class NuevoLugar(Handler):
               cod_postal = int(cgi.escape(self.request.get('cod_postal')))
         ).put()
         self.response.write("Añadido lugar.")
+        time.sleep(1)
         self.redirect('/administracion/gestionlugares')
 
     def get(self):
@@ -176,7 +179,7 @@ class ModificarSarao(Handler):
       sarao.lugar = Lugar.getLugar(cgi.escape(self.request.get('lugar')))
       sarao.limite_inscripcion = (datetime.datetime.strptime(cgi.escape(self.request.get('fecha_limite')), '%d/%m/%Y')).date()
       sarao.put()
-      #<meta http-equiv="refresh" content="0.5;URL='/administracion'">
+      time.sleep(1)
       self.redirect('/administracion')
 
   def get(self):
@@ -197,6 +200,7 @@ class EliminarSarao(Handler):
   def post(self):
       sarao = Sarao.getSarao(cgi.escape(self.request.get('key')))
       sarao.delete()
+      time.sleep(1)
       self.redirect('/administracion')
       
 
@@ -216,14 +220,15 @@ class ModificarLugar(Handler):
       lugar.nombre = cgi.escape(self.request.get('nombre'))
       lugar.calle = cgi.escape(self.request.get('calle'))
       lugar.cod_postal = int(cgi.escape(self.request.get('cod_postal')))
-
       lugar.put()
+      time.sleep(1)
       self.redirect('/administracion/gestionlugares')
 
 class EliminarLugar(Handler):
   def post(self):
       lugar = Lugar.getLugar(cgi.escape(self.request.get('key')))
       lugar.delete()
+      time.sleep(1)
       self.redirect('/administracion/gestionlugares')
 
 
