@@ -170,7 +170,9 @@ class ModificarSarao(Handler):
       sarao = Sarao.getSarao(cgi.escape(self.request.get('id_sarao')))
       sarao.nombre = cgi.escape(self.request.get('nombre'))
       sarao.fecha = (datetime.datetime.strptime(cgi.escape(self.request.get('fecha')), '%d/%m/%Y')).date() #Casting a datetime format
-      #hora = horas+":"+minutos,
+      h = str(cgi.escape(self.request.get('hora')))
+      m = str(cgi.escape(self.request.get('minutos')))
+      sarao.hora = (datetime.datetime.strptime(h+":"+m, "%H:%M")).time()
       sarao.max_asistentes = int(cgi.escape(self.request.get('max_asistentes')))
       sarao.url = cgi.escape(self.request.get('url'))
       sarao.nota = cgi.escape(self.request.get('nota'))

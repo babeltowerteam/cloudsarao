@@ -90,7 +90,7 @@
 		<div class="form-group">
 			<label for="hora">Hora:</label> <br>
 			<span class="aclaracion">Formato 24 horas. Por ejemplo, 20:15</span><br>
-			<input type="number" class="form-control-number" name="hora" id="hora" min="0" max="23" value="{{ sarao.hora }}">:<input type="number" class="form-control-number" name="minutos" id="minutos" min="0" max="59" value="{{ sarao.minutos }}">
+			<input type="number" class="form-control-number" name="hora" id="hora" min="0" max="23" value="{{ sarao.hora.hour }}">:<input type="number" class="form-control-number" name="minutos" id="minutos" min="0" max="59" value="{{ sarao.hora.minute }}">
 			<br>
 			<br>
 
