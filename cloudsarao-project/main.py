@@ -237,7 +237,8 @@ class EliminarLugar(Handler):
 class MostrarAsistentes(Handler):
   def get(self):
       sarao = Sarao.getSarao(cgi.escape(self.request.get('s')))
-      self.render("mostrar_asistentes.html", asistentes=sarao.asistentes, sarao=sarao)
+      nAsistentes = sarao.nAsistentes
+      self.render("mostrar_asistentes.html", nAsistentes=nAsistentes, asistentes=sarao.asistentes, sarao=sarao)
 
 #==============================================================================
 #==============================================================================

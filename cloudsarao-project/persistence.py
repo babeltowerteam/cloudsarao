@@ -57,6 +57,10 @@ class Sarao(db.Model):
     def asistentes(self):
         return Asistente.gql("WHERE asistencia_saraos = :1", self.key()).run()
 
+    @property
+    def nAsistentes(self):
+        return Asistente.gql("WHERE asistencia_saraos = :1", self.key()).count()
+
     @classmethod
     def getSaraosActivos(self):
         fecha_actual = datetime.datetime.now()
