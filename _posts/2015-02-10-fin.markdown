@@ -13,17 +13,17 @@ Hoy anunciamos el término de una de las etapas más importantes de nuestro proy
 
 Aún así [CloudSarao](http://cloud-sarao.appspot.com) está bastante avanzado, infinitamente más desde la última entrada en el blog. Durante toda esta etapa, se ha conseguido:
 
-\- Montar nuestra aplicación web sobre la tecnología de AppEngine (hito1).
+- Montar nuestra aplicación web sobre la tecnología de AppEngine (hito1).
 
-\- Montar una plataforma de despliegue automático con nuestro repo de github y Shippable (hito 2).
+- Montar una plataforma de despliegue automático con nuestro repo de github y Shippable (hito 2).
 
-\- Realizar pruebas unitaria antes del despliegue con la integración continua que ofrece Shippable (hito 3).
+- Realizar pruebas unitaria antes del despliegue con la integración continua que ofrece Shippable (hito 3).
 
-\- Desarrollar una base de datos basada en objetos persistentes que ofrece GAE para suplir las necesidades de nuestro sistema.
+- Desarrollar una base de datos basada en objetos persistentes que ofrece GAE para suplir las necesidades de nuestro sistema.
 
-\- Diseñar un cliente web con las tecnologías más avanzadas, promoviendo un diseño gráfico atractivo y resposive, perfecto para móviles, con ayuda de Bootstrap, una facilidad de desarrollo y uso, para nosotros y nuestros usuarios con templates de Jinja2, JavaScript y Jquery.
+- Diseñar un cliente web con las tecnologías más avanzadas, promoviendo un diseño gráfico atractivo y resposive, perfecto para móviles, con ayuda de Bootstrap, una facilidad de desarrollo y uso, para nosotros y nuestros usuarios con templates de Jinja2, JavaScript y Jquery.
 
-\- Implementar un servicio con python para GAE con la funcionalidades principales de CloudSarao:
+- Implementar un servicio con python para GAE con la funcionalidades principales de CloudSarao:
    - Añadir, modificar y eliminar "saraos".
 
    - Consultar los saraos activos, cuya fecha limite de inscripción no ha vencido, para luego apuntarse.
@@ -39,11 +39,11 @@ Aún así [CloudSarao](http://cloud-sarao.appspot.com) está bastante avanzado, 
 
 Aunque el software es funcional, quedan ciertas funciones para dotar de un nivel profesional a la plafatorma. Como trabajo futuro tenemos: 
 
-\- E-mail automático a los asistentes para confirmar la inscripción y el día de antes del sarao para recordárselo.
+- E-mail automático a los asistentes para confirmar la inscripción y el día de antes del sarao para recordárselo.
 
-\- Inserción automática en blog del sarao.
+- Inserción automática en blog del sarao.
 
-\- Publicación en Twitter de nuevos saraos.
+- Publicación en Twitter de nuevos saraos.
 
 
 Gracias por vuestro apoyo!! Esperamos poderos traer cosas nuevas pronto.
